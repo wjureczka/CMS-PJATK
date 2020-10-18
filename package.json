@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/wjureczka/CMS-PJATK/issues"
   },
-  "homepage": "https://github.com/wjureczka/CMS-PJATK#readme"
+  "homepage": "https://github.com/wjureczka/CMS-PJATK#readme",
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
 }
