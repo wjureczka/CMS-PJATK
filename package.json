@@ -4,12 +4,16 @@
   "description": "Final projects of CMS implementation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cms:start": "lerna run --parallel --scope backend --scope frontend"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wjureczka/CMS-PJATK.git"
   },
+  "workspaces": [
+    "./packages/*"
+  ],
   "keywords": [
     "cms",
     "pjatk",
@@ -24,6 +28,6 @@
   },
   "homepage": "https://github.com/wjureczka/CMS-PJATK#readme",
   "devDependencies": {
-    "lerna": "^3.22.1"
+    "lerna": "3.22.1"
   }
 }
