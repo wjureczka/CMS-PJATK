@@ -21,3 +21,4 @@ npm run cms:build
  
 ## Designs and prototypes
 Here you can find designs and prototypes used to develop CMS: https://www.figma.com/file/YcCKRfK9SY10Vri9K01wNU/CMS-Design?node-id=2%3A0
+Helpful library fot Ant Design: https://github.com/NG-ZORRO/ng-zorro-antd
