@@ -1,1 +1,18 @@
-<app-credentials-form type="login"></app-credentials-form>
+<app-credentials-form>
+
+  <p>{{'COMMON.SIGN_IN' | translate}}</p>
+
+  <button mat-raised-button color="primary">{{'BUTTON.LOGIN' | translate | uppercase}}</button>
+
+  <ng-container footer>
+
+    <div class="divider"></div>
+
+    <div class="footer">
+      <span>{{'SHARED.FORMS.CREDENTIALS.NO_ACCOUNT' | translate}}</span>
+      <a [routerLink]="['']">{{'COMMON.REGISTER' | translate}}</a>
+    </div>
+
+  </ng-container>
+
+</app-credentials-form>

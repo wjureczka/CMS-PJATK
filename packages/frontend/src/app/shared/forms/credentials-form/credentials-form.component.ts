@@ -1,53 +1,28 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-credentials-form',
   templateUrl: './credentials-form.component.html',
   styleUrls: ['./credentials-form.component.scss']
 })
-export class CredentialsFormComponent implements OnInit {
-
-  @Input() type: 'login' | 'register' = 'login';
-
-  header = 'COMMON';
-
-  button = 'BUTTON';
+export class CredentialsFormComponent {
 
   isPasswordVisible = false;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-    this.prepareView();
-  }
+  visibilityIcon = 'visibility';
 
   showPassword(): void {
     this.isPasswordVisible = true;
+    this.setVisibilityIcon();
   }
 
   hidePassword(): void {
     this.isPasswordVisible = false;
+    this.setVisibilityIcon();
   }
 
-  getPasswordIcon(): string {
-    if (this.isPasswordVisible) {
-      return 'visibility_off';
-    }
-    return 'visibility';
-  }
-
-  private prepareView(): void {
-    switch (this.type) {
-      case 'login':
-        this.header = `${this.header}.SIGN_IN`;
-        this.button = `${this.button}.LOGIN`;
-        break;
-      case 'register':
-        this.header = `${this.header}.REGISTER`;
-        this.button = `${this.button}.REGISTER`;
-        break;
-    }
+  setVisibilityIcon(): void {
+    this.visibilityIcon = this.isPasswordVisible ? 'visibility_off' : 'visibility';
   }
 
 }
