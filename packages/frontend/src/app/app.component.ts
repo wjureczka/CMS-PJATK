@@ -12,5 +12,4 @@ export class AppComponent {
     this.languageService.prepareTranslationService();
   }
 
-
 }

@@ -9,3 +9,16 @@ body {
   margin: 0;
   font-family: Lato, "Helvetica Neue", sans-serif;
 }
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+form .mat-form-field-underline {
+  width: 0;
+}
