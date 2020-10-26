@@ -5,4 +5,13 @@
   "navbar.productsLink": "Produkty",
   "navbar.creatorLink": "Kreator",
   "navbar.cartLink": "Koszyk"
+  "button.login": "zaloguj",
+  "button.register": "zarejestruj",
+
+  "shared.forms.credentials.login": "Login",
+  "shared.forms.credentials.password": "Hasło" ,
+
+  "views.sessions.login.sign_in": "Zaloguj się",
+  "views.sessions.login.no_account": "Nie masz konta?",
+  "views.sessions.login.register": "Zarejestruj się"
 }
