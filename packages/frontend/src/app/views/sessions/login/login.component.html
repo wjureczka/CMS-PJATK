@@ -1,8 +1,12 @@
-<app-credentials-form>
+<app-credentials-form #form>
 
   <p>{{'views.sessions.login.sign_in' | translate}}</p>
 
-  <button mat-raised-button color="primary">{{'button.login' | translate | uppercase}}</button>
+  <button mat-raised-button
+          color="primary"
+          [disabled]="!form.isValid"
+          (click)="signIn()">{{'button.login' | translate | uppercase}}
+  </button>
 
   <ng-container footer>
 

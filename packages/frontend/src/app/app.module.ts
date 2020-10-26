@@ -13,7 +13,6 @@ import {AuthLayoutComponent} from './shared/layouts/auth-layout/auth-layout.comp
 @NgModule({
   declarations: [
     AppComponent,
-    AppComponent,
     AuthLayoutComponent,
   ],
   imports: [
