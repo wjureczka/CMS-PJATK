@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {TranslateModule} from '@ngx-translate/core';
 import {NavbarComponent} from './navbar.component';
 import {LanguageSelectorComponent} from './language-selector/language-selector.component';
 import {UserMenuComponent} from './user-menu/user-menu.component';
@@ -12,10 +13,12 @@ import {UserMenuComponent} from './user-menu/user-menu.component';
   ],
   exports: [
     LanguageSelectorComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    NavbarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TranslateModule
   ]
 })
 export class NavbarModule { }
