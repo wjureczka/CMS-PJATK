@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LanguageService} from 'src/app/shared/language.service';
 
 @Component({
   selector: 'app-language-selector',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguageSelectorComponent implements OnInit {
 
-  constructor() { }
+  public availableLanguages: string[];
+
+  constructor(public languageService: LanguageService) {
+    this.availableLanguages = languageService.getAvailableLanguages();
+  }
 
   ngOnInit(): void {
   }
-
 }

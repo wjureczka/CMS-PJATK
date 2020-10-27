@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
-import AvailableLanguageCode from 'src/environments/available-languages';
+import {LanguageService} from './shared/language.service';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +8,9 @@ import AvailableLanguageCode from 'src/environments/available-languages';
 })
 export class AppComponent {
 
-  constructor(private translateService: TranslateService) {
-    this.prepareTranslationService();
+  constructor(private languageService: LanguageService) {
+    this.languageService.prepareTranslationService();
   }
 
-  private prepareTranslationService(): void {
-    const browserLang = this.translateService.getBrowserLang();
 
-    if (browserLang in AvailableLanguageCode) {
-      this.translateService.setDefaultLang(browserLang);
-    } else {
-      this.translateService.setDefaultLang(AvailableLanguageCode.Polish);
-    }
-  }
 }
