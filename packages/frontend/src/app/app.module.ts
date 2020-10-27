@@ -7,17 +7,17 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import {NavbarModule} from './shared/navbar/navbar.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NavbarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

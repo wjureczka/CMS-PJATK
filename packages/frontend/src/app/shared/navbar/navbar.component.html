@@ -1,3 +1,25 @@
-<nav>
+<nav class="nav">
 
+  <h3 class="nav__company-name">
+    {{'companyName' | translate}}
+  </h3>
+
+  <a class="nav__item">
+    {{'navbar.productsLink' | translate}}
+  </a>
+
+  <a class="nav__item">
+    {{'navbar.creatorLink' | translate}}
+
+  </a>
+
+  <a class="nav__item">
+    {{'navbar.cartLink' | translate}}
+
+  </a>
+
+
+  <app-language-selector></app-language-selector>
+
+  <app-user-menu></app-user-menu>
 </nav>

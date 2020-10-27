@@ -1,4 +1,8 @@
 {
   "TITLE": "Komputiren Store CMS",
-  "HELLO": "Herzlisz, wilkomen!"
+  "HELLO": "Herzlisz, wilkomen!",
+  "companyName": "Computerladen",
+  "navbar.productsLink": "Produkte",
+  "navbar.creatorLink": "Schöpfer",
+  "navbar.cartLink": "Korb"
 }
