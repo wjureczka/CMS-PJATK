@@ -1,5 +1,6 @@
 .auth-layout {
-  background-image: url(/assets/images/auth-layout/auth-background.jpg);
+  background-image: url(/assets/images/auth-layout/background.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: bottom;
 }

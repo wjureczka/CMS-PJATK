@@ -15,7 +15,7 @@ const routes: Routes = [
       {
         path: 'auth',
         loadChildren: () => import('./views/sessions/sessions.module')
-          .then(mod => mod.SessionsModule)
+          .then(module => module.SessionsModule)
       }
     ]
   }
