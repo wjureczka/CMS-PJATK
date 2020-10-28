@@ -2,11 +2,11 @@ import {Component, ViewChild} from '@angular/core';
 import {CredentialsFormComponent} from '../../../shared/forms/credentials-form/credentials-form.component';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-login-page',
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.scss']
 })
-export class LoginComponent {
+export class LoginPageComponent {
 
   @ViewChild('form')
   form: CredentialsFormComponent;

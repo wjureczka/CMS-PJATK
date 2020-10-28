@@ -11,7 +11,7 @@
   "shared.forms.credentials.login": "Login",
   "shared.forms.credentials.password": "Hasło" ,
 
-  "views.sessions.login.sign_in": "Zaloguj się",
-  "views.sessions.login.no_account": "Nie masz konta?",
-  "views.sessions.login.register": "Zarejestruj się"
+  "views.sessions.login-page.sign_in": "Zaloguj się",
+  "views.sessions.login-page.no_account": "Nie masz konta?",
+  "views.sessions.login-page.register": "Zarejestruj się"
 }
