@@ -22,7 +22,6 @@ export class LanguageSelectorComponent implements OnInit {
     languageService.currentLanguage.subscribe({
       next: (value) => {
         this.currentLanguage = value;
-        console.log(value);
       }
     });
   }
