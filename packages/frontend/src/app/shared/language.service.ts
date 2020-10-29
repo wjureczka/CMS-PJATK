@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
+import {BehaviorSubject} from 'rxjs';
+
 import {availableLanguagesCodes, AvailableLanguageToCode} from 'src/environments/available-languages-codes';
-import {BehaviorSubject, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,27 +15,31 @@ export class LanguageService {
     });
   }
 
-  public currentLanguage: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private defaultLanguageCode: AvailableLanguageToCode = AvailableLanguageToCode.Polish;
+
+  public currentLanguage: BehaviorSubject<AvailableLanguageToCode> = new BehaviorSubject<AvailableLanguageToCode>(this.defaultLanguageCode);
+
+  private checkLanguageAvailability(languageCode): boolean {
+    const availableLanguages = this.getAvailableLanguages();
+
+    return availableLanguages.includes(languageCode);
+  }
 
   public prepareTranslationService(): void {
     const browserLang = this.translateService.getBrowserLang();
-    const availableLanguages = this.getAvailableLanguages();
 
-    if (browserLang in availableLanguages) {
-      this.translateService.use(browserLang);
-    } else {
-      this.translateService.use(AvailableLanguageToCode.Polish);
+    try {
+      this.setLanguage(browserLang);
+    } catch {
+      this.setLanguage(this.defaultLanguageCode);
     }
   }
 
   public setLanguage(newLanguageCode: string): void {
-    const availableLanguages = this.getAvailableLanguages();
-    const isLanguageAvailable = availableLanguages.includes(newLanguageCode);
-
-    if (isLanguageAvailable) {
+    if (this.checkLanguageAvailability(newLanguageCode)) {
       this.translateService.use(newLanguageCode);
     } else {
-      console.error(`Language is not available, code: ${newLanguageCode}`);
+      throw new Error(`This language is not available: ${newLanguageCode}`);
     }
   }
 
