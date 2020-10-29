@@ -1,3 +1,16 @@
-<button *ngFor="let language of availableLanguages;" (click)="languageService.setLanguage(language)">
-  {{language}}
-</button>
+<div class="language-selector">
+  <button mat-button [matMenuTriggerFor]="menu" class="language-selector__button">
+    {{languageCodeToFlagEmoji.get(currentLanguage)}}
+  </button>
+
+  <mat-menu #menu="matMenu" class="language-selector__menu">
+    <button *ngFor="let language of languageService.getAvailableLanguages();"
+            (click)="languageService.setLanguage(language)"
+            mat-menu-item
+            class="language-selector__menu-button"
+            [class.language-selector__menu-button--active]="currentLanguage === language"
+    >
+      <span class="language-selector__menu-flag">{{languageCodeToFlagEmoji.get(language)}}</span>
+    </button>
+  </mat-menu>
+</div>
