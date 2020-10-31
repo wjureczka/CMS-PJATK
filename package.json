@@ -2,7 +2,6 @@
   "name": "cms-pjatk",
   "version": "1.0.0",
   "description": "Final projects of CMS implementation",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cms:start": "lerna run --parallel --scope backend --scope frontend start",
