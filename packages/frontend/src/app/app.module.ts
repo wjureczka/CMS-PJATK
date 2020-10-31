@@ -28,7 +28,7 @@ import {LanguageService} from './shared/language.service';
     }),
     BrowserAnimationsModule,
   ],
-  providers: [LanguageService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

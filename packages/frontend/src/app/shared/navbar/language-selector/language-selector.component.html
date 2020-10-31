@@ -1,6 +1,6 @@
 <div class="language-selector">
   <button mat-button [matMenuTriggerFor]="menu" class="language-selector__button">
-    {{languageCodeToFlagEmoji.get(currentLanguage)}}
+    {{languageCodeToFlagEmoji.get(languageService.currentLanguage$ | async)}}
   </button>
 
   <mat-menu #menu="matMenu" class="language-selector__menu">
@@ -8,7 +8,7 @@
             (click)="languageService.setLanguage(language)"
             mat-menu-item
             class="language-selector__menu-button"
-            [class.language-selector__menu-button--active]="currentLanguage === language"
+            [class.language-selector__menu-button--active]="(languageService.currentLanguage$ | async) === language"
     >
       <span class="language-selector__menu-flag">{{languageCodeToFlagEmoji.get(language)}}</span>
     </button>

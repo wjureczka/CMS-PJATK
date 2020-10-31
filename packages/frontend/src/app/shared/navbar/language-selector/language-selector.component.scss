@@ -9,7 +9,7 @@ $flag-font-size: 25px;
     filter: $flag-filter-shadow;
   }
 
-  ::ng-deep &__menu {
+  :host ::ng-deep &__menu {
     &.mat-menu-panel {
       min-width: 0;
       width: auto;

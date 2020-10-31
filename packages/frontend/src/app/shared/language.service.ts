@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 import {availableLanguagesCodes, AvailableLanguageToCode} from 'src/environments/available-languages-codes';
 
@@ -17,7 +17,10 @@ export class LanguageService {
 
   private defaultLanguageCode: AvailableLanguageToCode = AvailableLanguageToCode.Polish;
 
-  public currentLanguage: BehaviorSubject<AvailableLanguageToCode> = new BehaviorSubject<AvailableLanguageToCode>(this.defaultLanguageCode);
+  private currentLanguage: BehaviorSubject<AvailableLanguageToCode> =
+    new BehaviorSubject<AvailableLanguageToCode>(this.defaultLanguageCode);
+
+  public currentLanguage$: Observable<AvailableLanguageToCode> = this.currentLanguage.asObservable();
 
   private checkLanguageAvailability(languageCode): boolean {
     const availableLanguages = this.getAvailableLanguages();

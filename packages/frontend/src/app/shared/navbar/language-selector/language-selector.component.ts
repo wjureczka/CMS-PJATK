@@ -10,8 +10,6 @@ import {AvailableLanguageToCode} from '../../../../environments/available-langua
 })
 export class LanguageSelectorComponent implements OnInit {
 
-  public currentLanguage: string;
-
   public languageCodeToFlagEmoji = new Map([
     [AvailableLanguageToCode.Polish as string, '🇵🇱'],
     [AvailableLanguageToCode.German as string, '🇩🇪'],
@@ -19,13 +17,9 @@ export class LanguageSelectorComponent implements OnInit {
   ]);
 
   constructor(public languageService: LanguageService) {
-    languageService.currentLanguage.subscribe({
-      next: (value) => {
-        this.currentLanguage = value;
-      }
-    });
   }
 
   ngOnInit(): void {
   }
+
 }
