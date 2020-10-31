@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "CMS backend",
+  "main": "index.ts",
+  "scripts": {
+    "start": "nodemon -r .env index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.17.1",
+    "passport": "0.4.1",
+    "passport-auth0": "1.4.0"
+  },
+  "devDependencies": {
+    "@types/express": "4.17.8",
+    "@types/node": "14.14.6",
+    "dotenv": "8.2.0",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "6.4.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jest": "24.0.1",
+    "eslint-plugin-prettier": "3.1.1",
+    "eslint-plugin-security": "1.4.0",
+    "jest": "26.6.1",
+    "nodemon": "2.0.6",
+    "prettier": "2.1.2",
+    "ts-node": "9.0.0",
+    "typescript": "4.0.5"
+  }
+}
