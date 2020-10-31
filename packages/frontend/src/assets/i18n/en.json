@@ -1,4 +1,8 @@
 {
   "TITLE": "Computer Store CMS",
-  "HELLO": "Welcome, welcome!"
+  "HELLO": "Welcome, welcome!",
+  "companyName": "Computer shop",
+  "navbar.productsLink": "Products",
+  "navbar.creatorLink": "Creator",
+  "navbar.cartLink": "Cart"
 }

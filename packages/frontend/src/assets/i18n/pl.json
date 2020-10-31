@@ -1,4 +1,8 @@
 {
   "TITLE": "Sklep Komputerowy CMS",
-  "HELLO": "Siemano kolano!"
+  "HELLO": "Siemano kolano!",
+  "companyName": "Sklep komputerowy",
+  "navbar.productsLink": "Produkty",
+  "navbar.creatorLink": "Kreator",
+  "navbar.cartLink": "Koszyk"
 }
