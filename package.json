@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cms:start": "lerna run --parallel --scope backend --scope frontend start",
+    "cms:start-docker": "lerna run --parallel --scope backend --scope frontend start:docker",
     "cms:build": "lerna run --parallel --scope backend --scope frontend build",
     "cms:test": "lerna run --parallel --scope backend --scope frontend test"
   },
