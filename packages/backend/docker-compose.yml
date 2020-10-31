@@ -1,0 +1,32 @@
+version: '3'
+
+networks:
+  cms-network:
+    driver: bridge
+
+services:
+  node-app:
+    build: .
+    image: backend
+    ports:
+      - '${SERVER_PORT}:${SERVER_PORT}'
+    depends_on:
+      - mongodb
+    networks:
+      - cms-network
+
+  mongodb:
+    image: mongo:4.2.1-bionic
+    ports:
+      - '${MONGODB_PORT}:${MONGODB_PORT}'
+    networks:
+      - cms-network
+
+  mongo-ui:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      - ME_CONFIG_MONGODB_PORT=${MONGODB_PORT}
+    networks:
+      - cms-network

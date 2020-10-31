@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "CMS backend",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "start": "nodemon -r .env index.ts",
+    "start": "nodemon -r tsconfig-paths/register -r dotenv/config src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -28,6 +28,7 @@
     "nodemon": "2.0.6",
     "prettier": "2.1.2",
     "ts-node": "9.0.0",
+    "tsconfig-paths": "3.9.0",
     "typescript": "4.0.5"
   }
 }
