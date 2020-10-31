@@ -5,8 +5,8 @@ import { SERVER_PORT } from 'src/config';
 const app = express();
 
 
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
+app.get('/', (req, res) => res.send('Express + TypeScript Server: CMS PJATK PL'));
 
 app.listen(SERVER_PORT, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${SERVER_PORT}`);
+    console.log(`⚡️[server]: Server is running at http://localhost:${SERVER_PORT}`);
 });
