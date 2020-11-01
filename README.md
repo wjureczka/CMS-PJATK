@@ -36,3 +36,7 @@ Helpful library for Material Design: https://material.angular.io/
 
 ## Using docker
 If you have problem running docker check: https://github.com/docker/compose/issues/6677#issuecomment-544204451
+
+## Styleguides used in project
+Node: https://github.com/goldbergyoni/nodebestpractices
+Angular: https://angular.io/guide/styleguide
