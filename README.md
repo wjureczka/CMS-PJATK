@@ -4,6 +4,7 @@ CMS-PJATK is a final exam study project. It consists of 2 subprojects: frontend 
 ## Prerequisites
 - npm >=6.x.x
 - node lts >=12.x.x
+- docker for dockerized db and db's ui
 
 ## Installation
 ```bash
@@ -11,7 +12,7 @@ npm i
 ```
 
 ```bash
-lerna bootstrap
+npx lerna bootstrap
 ```
 
 ## How to run in development mode
