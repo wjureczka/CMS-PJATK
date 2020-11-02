@@ -1,8 +1,17 @@
 {
-  "TITLE": "Sklep Komputerowy CMS",
-  "HELLO": "Siemano kolano!",
   "companyName": "Sklep komputerowy",
+
   "navbar.productsLink": "Produkty",
   "navbar.creatorLink": "Kreator",
-  "navbar.cartLink": "Koszyk"
+  "navbar.cartLink": "Koszyk",
+
+  "button.login": "zaloguj",
+  "button.register": "zarejestruj",
+
+  "shared.forms.credentials.login": "Login",
+  "shared.forms.credentials.password": "Hasło" ,
+
+  "views.sessions.login-page.signIn": "Zaloguj się",
+  "views.sessions.login-page.noAccount": "Nie masz konta?",
+  "views.sessions.login-page.register": "Zarejestruj się"
 }

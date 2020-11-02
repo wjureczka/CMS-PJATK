@@ -1,8 +1,17 @@
 {
-  "TITLE": "Computer Store CMS",
-  "HELLO": "Welcome, welcome!",
   "companyName": "Computer shop",
+
   "navbar.productsLink": "Products",
   "navbar.creatorLink": "Creator",
-  "navbar.cartLink": "Cart"
+  "navbar.cartLink": "Cart",
+
+  "button.login": "sign in",
+  "button.register": "register",
+
+  "shared.forms.credentials.login": "Login",
+  "shared.forms.credentials.password": "Password",
+
+  "views.sessions.login-page.signIn": "Sign in",
+  "views.sessions.login-page.noAccount": "You do not have an account?",
+  "views.sessions.login-page.register": "Register"
 }

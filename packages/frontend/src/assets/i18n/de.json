@@ -1,8 +1,17 @@
 {
-  "TITLE": "Komputiren Store CMS",
-  "HELLO": "Herzlisz, wilkomen!",
   "companyName": "Computerladen",
+
   "navbar.productsLink": "Produkte",
   "navbar.creatorLink": "Schöpfer",
-  "navbar.cartLink": "Korb"
+  "navbar.cartLink": "Korb",
+
+  "button.login": "einloggen",
+  "button.register": "registrieren",
+
+  "shared.forms.credentials.login": "Login",
+  "shared.forms.credentials.password": "Passwort" ,
+
+  "views.sessions.login-page.signIn": "Einloggen",
+  "views.sessions.login-page.noAccount": "Du hast kein Konto?",
+  "views.sessions.login-page.register": "Registrieren"
 }
