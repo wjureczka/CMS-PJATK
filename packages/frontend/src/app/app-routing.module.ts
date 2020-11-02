@@ -1,19 +1,19 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {AuthLayoutComponent} from './shared/layouts/auth-layout/auth-layout.component';
+import {PublicLayoutComponent} from './shared/layouts/public-layout/public-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'public',
     pathMatch: 'full'
   },
   {
     path: '',
-    component: AuthLayoutComponent,
+    component: PublicLayoutComponent,
     children: [
       {
-        path: 'auth',
+        path: 'public',
         loadChildren: () => import('./views/sessions/sessions.module')
           .then(module => module.SessionsModule)
       }
