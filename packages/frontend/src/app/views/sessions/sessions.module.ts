@@ -6,10 +6,12 @@ import {CredentialsFormModule} from '../../shared/forms/credentials-form/credent
 import {TranslateModule} from '@ngx-translate/core';
 import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
+import {RegisterPageComponent} from './register-page/register-page.component';
 
 @NgModule({
   declarations: [
-    LoginPageComponent
+    LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     CommonModule,
