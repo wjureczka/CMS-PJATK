@@ -20,6 +20,10 @@
     margin-left: 25px;
   }
 
+  &__link.active {
+    opacity: .6;
+  }
+
   &__menu {
     display: flex;
     align-items: center;
