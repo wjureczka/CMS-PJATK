@@ -8,12 +8,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavbarModule} from './shared/navbar/navbar.module';
-import {PublicLayoutComponent} from './shared/layouts/public-layout/public-layout.component';
+import {UserLayoutComponent} from './shared/layouts/user-layout/user-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PublicLayoutComponent,
+    UserLayoutComponent,
   ],
   imports: [
     BrowserModule,

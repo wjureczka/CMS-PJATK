@@ -1,20 +1,20 @@
 <nav class="nav">
-  <a href="#" class="nav__company-name">
+  <a class="nav__company-name" routerLink="./home" routerLinkActive="active">
     <h3>
       {{'companyName' | translate}}
     </h3>
   </a>
 
   <div class="nav__links">
-    <a href="#" class="nav__link">
+    <a class="nav__link" routerLink="./products" routerLinkActive="active">
       {{'navbar.productsLink' | translate}}
     </a>
 
-    <a href="#" class="nav__link">
+    <a class="nav__link" routerLink="./creator" routerLinkActive="active">
       {{'navbar.creatorLink' | translate}}
     </a>
 
-    <a href="#" class="nav__link">
+    <a class="nav__link" routerLink="./cart" routerLinkActive="active">
       {{'navbar.cartLink' | translate}}
     </a>
   </div>
