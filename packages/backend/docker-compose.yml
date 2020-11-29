@@ -31,15 +31,15 @@ services:
     networks:
       - cms-pjatk-network
 
-  cms-pjatk-backend:
-    restart: always
-    build: .
-    ports:
-      - '${SERVER_PORT}:${SERVER_PORT}'
-    volumes:
-      - ./:/usr/src/app
-      - /usr/src/app/node_modules
-    depends_on:
-      - mongo
-    networks:
-      - cms-pjatk-network
+#  cms-pjatk-backend:
+#    restart: always
+#    build: .
+#    ports:
+#      - '${SERVER_PORT}:${SERVER_PORT}'
+#    volumes:
+#      - ./:/usr/src/app
+#      - /usr/src/app/node_modules
+#    depends_on:
+#      - mongo
+#    networks:
+#      - cms-pjatk-network

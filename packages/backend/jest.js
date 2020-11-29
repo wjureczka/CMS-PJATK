@@ -1,9 +1,17 @@
 module.exports = {
-    testEnvironment: 'node',
-    testEnvironmentOptions: {
-        NODE_ENV: 'test',
+    "moduleFileExtensions": [
+        "js",
+        "json",
+        "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+        "^.+\\.(t|j)s$": "ts-jest"
     },
-    restoreMocks: true,
-    coveragePathIgnorePatterns: ['node_modules', 'src/config', 'src/app.js', 'tests'],
-    coverageReporters: ['text', 'lcov', 'clover', 'html'],
+    "collectCoverageFrom": [
+        "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
 };
