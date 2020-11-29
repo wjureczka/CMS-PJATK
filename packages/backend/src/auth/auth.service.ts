@@ -11,7 +11,10 @@ export class AuthService {
   ) {}
 
   async login(user: User) {
-    const payload = { username: user.email };
+    const payload = {
+      username: user.email,
+      zalogowany: new Date().toUTCString(),
+    };
 
     const access_token = await this.jwtService.signAsync(payload);
 
