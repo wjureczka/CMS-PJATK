@@ -8,7 +8,7 @@
   "button.login": "einloggen",
   "button.register": "registrieren",
 
-  "shared.forms.credentials.login": "Login",
+  "shared.forms.credentials.email": "Email",
   "shared.forms.credentials.password": "Passwort" ,
 
   "views.sessions.login-page.signIn": "Einloggen",
