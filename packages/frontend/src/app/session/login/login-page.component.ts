@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {CredentialsFormComponent} from '../../../shared/forms/credentials-form/credentials-form.component';
+import {CredentialsFormComponent} from '../../shared/forms/credentials-form/credentials-form.component';
 
 @Component({
   selector: 'app-login-page',

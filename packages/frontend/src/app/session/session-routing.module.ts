@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {LoginPageComponent} from './login-page/login-page.component';
-import {RegisterPageComponent} from './register-page/register-page.component';
+import {LoginPageComponent} from './login/login-page.component';
+import {RegisterPageComponent} from './register/register-page.component';
 
 const sessionsRoutes = [
   {
@@ -23,5 +23,5 @@ const sessionsRoutes = [
   imports: [RouterModule.forChild(sessionsRoutes)],
   exports: [RouterModule]
 })
-export class SessionsRoutingModule {
+export class SessionRoutingModule {
 }

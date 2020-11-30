@@ -23,7 +23,7 @@ export class AuthController {
   ) {}
 
   @Public()
-  @Post('/login')
+  @Post('/session')
   async login(@Res() response, @Body() loginUserDto: LoginUserDto) {
     const user = await this.userService.findOneByEmail(loginUserDto.email);
 

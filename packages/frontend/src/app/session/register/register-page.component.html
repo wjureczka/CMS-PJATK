@@ -1,11 +1,12 @@
 <app-credentials-form class="register-form" #form>
 
-  <p>{{'views.sessions.login-page.register' | translate}}</p>
+  <p>{{'views.sessions.session-page.register' | translate}}</p>
 
   <button mat-raised-button
           color="primary"
+          type="submit"
           [disabled]="!form.isValid"
-          (click)="register()">{{'button.register' | translate | uppercase}}
+          (click)="register()">{{'button.register' | translate | uppercase}}"
   </button>
 
 </app-credentials-form>
