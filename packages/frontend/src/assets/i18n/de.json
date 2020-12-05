@@ -8,10 +8,13 @@
   "button.login": "einloggen",
   "button.register": "registrieren",
 
-  "shared.forms.credentials.login": "Login",
+  "shared.forms.credentials.email": "Email",
   "shared.forms.credentials.password": "Passwort" ,
 
   "views.sessions.login-page.signIn": "Einloggen",
   "views.sessions.login-page.noAccount": "Du hast kein Konto?",
-  "views.sessions.login-page.register": "Registrieren"
+  "views.sessions.login-page.register": "Registrieren",
+  "views.sessions.register-page.register": "Registrieren",
+  "views.sessions.register-page.haveAccount": "Hast du ein Konto",
+  "views.sessions.register-page.login": "Einloggen"
 }

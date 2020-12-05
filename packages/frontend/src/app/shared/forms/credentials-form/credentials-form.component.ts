@@ -21,8 +21,8 @@ export class CredentialsFormComponent implements OnInit {
     this.form = this.buildForm();
   }
 
-  get login(): string {
-    return this.form.get('login').value as string;
+  get email(): string {
+    return this.form.get('email').value as string;
   }
 
   get password(): string {
@@ -49,8 +49,8 @@ export class CredentialsFormComponent implements OnInit {
 
   private buildForm(): FormGroup {
     return this.formBuilder.group({
-      login: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
   }
 

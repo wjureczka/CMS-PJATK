@@ -13,6 +13,11 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
+        path: 'session',
+        loadChildren: () => import('./session/session.module')
+          .then(module => module.SessionModule),
+      },
+      {
         path: 'cart',
         loadChildren: () => import('./views/cart/cart.module')
           .then(module => module.CartModule)
@@ -34,8 +39,8 @@ const routes: Routes = [
       },
       {
         path: 'public',
-        loadChildren: () => import('./views/sessions/sessions.module')
-          .then(module => module.SessionsModule)
+        loadChildren: () => import('./session/session.module')
+          .then(module => module.SessionModule)
       }
     ]
   }
