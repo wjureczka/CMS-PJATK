@@ -13,8 +13,8 @@ import {TranslateModule} from '@ngx-translate/core';
   declarations: [CredentialsFormComponent],
   imports: [
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,

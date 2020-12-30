@@ -9,18 +9,20 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {NavbarModule} from './shared/navbar/navbar.module';
-import {UserLayoutComponent} from './shared/layouts/user-layout/user-layout.component';
+import {CredentialsFormModule} from './shared/forms/credentials-form/credentials-form.module';
+import {SessionModule} from './session/session.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserLayoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NavbarModule,
+    CredentialsFormModule,
+    SessionModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -8,7 +8,6 @@ import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {RegisterPageComponent} from './register/register-page.component';
 import {SessionService} from './session.service';
-import {SessionRoutingModule} from './session-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import {SessionRoutingModule} from './session-routing.module';
     MatButtonModule,
     CredentialsFormModule,
     TranslateModule,
-    SessionRoutingModule,
     RouterModule,
   ],
   providers: [
