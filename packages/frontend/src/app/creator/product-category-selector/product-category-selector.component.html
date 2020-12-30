@@ -1,0 +1,9 @@
+<div class="product-category-selector">
+
+  <h2 class="mat-h2">{{productCategory}}</h2>
+
+  <p *ngIf="!selectedProduct">Nie wybrano produktu</p>
+
+  <button class="product-category-selector__button" mat-raised-button (click)="openProductSelector()">Wybierz produkt</button>
+
+</div>

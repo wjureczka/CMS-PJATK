@@ -11,6 +11,7 @@ import {AppComponent} from './app.component';
 import {NavbarModule} from './shared/navbar/navbar.module';
 import {CredentialsFormModule} from './shared/forms/credentials-form/credentials-form.module';
 import {SessionModule} from './session/session.module';
+import {CreatorModule} from './creator/creator.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {SessionModule} from './session/session.module';
     NavbarModule,
     CredentialsFormModule,
     SessionModule,
+    CreatorModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -1,6 +1,10 @@
 @import "~@angular/material/theming";
 @import "~src/assets/layout";
 
+.navbar {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
 .nav {
   display: flex;
   align-items: baseline;

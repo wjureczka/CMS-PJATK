@@ -1,16 +1,22 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
 
-import {CreatorRoutingModule} from './creator-routing.module';
+import {ProductCategorySelectorComponent} from './product-category-selector/product-category-selector.component';
+import {ProductSelectorDialogComponent} from './product-selector-dialog/product-selector-dialog.component';
 import {CreatorComponent} from './creator.component';
+import {CreatorService} from './creator.service';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
-  declarations: [CreatorComponent],
+  declarations: [ProductCategorySelectorComponent, ProductSelectorDialogComponent, CreatorComponent],
   imports: [
     CommonModule,
-    CreatorRoutingModule
-  ]
+    MatButtonModule,
+    MatDialogModule,
+  ],
+  providers: [CreatorService],
 })
 export class CreatorModule {
 }
