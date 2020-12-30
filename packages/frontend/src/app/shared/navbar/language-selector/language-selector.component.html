@@ -1,9 +1,12 @@
 <div class="language-selector">
   <button mat-button [matMenuTriggerFor]="menu" class="language-selector__button">
     {{languageCodeToFlagEmoji.get(languageService.currentLanguage$ | async)}}
+    <span class="material-icons">
+      expand_more
+    </span>
   </button>
 
-  <mat-menu #menu="matMenu" class="language-selector__menu">
+  <mat-menu #menu="matMenu" class="language-selector__menu" xPosition="before">
     <button *ngFor="let language of languageService.getAvailableLanguages();"
             (click)="languageService.setLanguage(language)"
             mat-menu-item

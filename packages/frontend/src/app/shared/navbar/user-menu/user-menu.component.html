@@ -1,1 +1,13 @@
-<p>user-menu works!</p>
+<button mat-button [matMenuTriggerFor]="menu">
+  <span class="material-icons">
+    account_circle
+  </span>
+  <span class="material-icons">
+    expand_more
+  </span>
+</button>
+
+<mat-menu #menu="matMenu" xPosition="before">
+  <a routerLink="/login" routerLinkActive="true" mat-menu-item>Zaloguj się</a>
+  <a routerLink="/register" routerLinkActive="true" mat-menu-item>Zarejestruj się</a>
+</mat-menu>

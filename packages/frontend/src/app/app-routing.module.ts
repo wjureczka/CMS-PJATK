@@ -19,22 +19,22 @@ const routes: Routes = [
       },
       {
         path: 'cart',
-        loadChildren: () => import('./views/cart/cart.module')
+        loadChildren: () => import('./cart/cart.module')
           .then(module => module.CartModule)
       },
       {
         path: 'creator',
-        loadChildren: () => import('./views/creator/creator.module')
+        loadChildren: () => import('./creator/creator.module')
           .then(module => module.CreatorModule)
       },
       {
         path: 'home',
-        loadChildren: () => import('./views/home/home.module')
+        loadChildren: () => import('./home/home.module')
           .then(module => module.HomeModule)
       },
       {
         path: 'products',
-        loadChildren: () => import('./views/products/products.module')
+        loadChildren: () => import('./products/products.module')
           .then(module => module.ProductsModule)
       },
       {
