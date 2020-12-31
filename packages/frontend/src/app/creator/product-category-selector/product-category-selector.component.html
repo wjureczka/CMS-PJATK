@@ -1,10 +1,8 @@
 <div class="product-category-selector">
 
   <h2 class="mat-h2">{{productCategory}}</h2>
-
-  <p *ngIf="!selectedProduct">Nie wybrano produktu</p>
-
-  <p *ngIf="selectedProduct">{{selectedProduct}}</p>
+  
+  <p *ngIf="selectedProduct">{{selectedProduct | async}}</p>
 
   <button class="product-category-selector__button" mat-raised-button (click)="openProductSelector()">Wybierz produkt</button>
 
