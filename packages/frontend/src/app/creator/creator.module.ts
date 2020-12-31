@@ -7,6 +7,7 @@ import {ProductSelectorDialogComponent} from './product-selector-dialog/product-
 import {CreatorComponent} from './creator.component';
 import {CreatorService} from './creator.service';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     CommonModule,
     MatButtonModule,
     MatDialogModule,
+    MatDividerModule
   ],
   providers: [CreatorService],
 })

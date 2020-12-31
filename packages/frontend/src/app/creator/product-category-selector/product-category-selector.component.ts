@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProductSelectorDialogComponent} from '../product-selector-dialog/product-selector-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 
@@ -13,17 +13,21 @@ export class ProductCategorySelectorComponent implements OnInit {
 
   @Input() productCategory: string;
 
-  @Input() selectedProduct: object | undefined;
+  @Output() selectedProduct = new EventEmitter<object | undefined>();
 
   ngOnInit(): void {
   }
 
   public openProductSelector(): void {
-    const dialogRef = this.dialog.open(ProductSelectorDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    const dialogRef = this.dialog.open(ProductSelectorDialogComponent, {
+      width: '50%',
+      height: '80%'
     });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.selectedProduct.emit(result);
+      }
+    });
   }
 }

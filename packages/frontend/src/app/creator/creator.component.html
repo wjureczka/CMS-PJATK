@@ -3,17 +3,17 @@
   <h1 class="mat-h1 creator__header">Kreator komputerowy</h1>
 
   <div class="creator__products-categories">
-    <app-product-category-selector [productCategory]="'Procesor'"></app-product-category-selector>
+    <app-product-category-selector [productCategory]="'Procesor'" (selectedProduct)="handleProcessorChange($event)"></app-product-category-selector>
 
-    <app-product-category-selector [productCategory]="'Karta graficzna'"></app-product-category-selector>
+    <app-product-category-selector [productCategory]="'Karta graficzna'" (selectedProduct)="handleGraphicCardChange($event)"></app-product-category-selector>
 
-    <app-product-category-selector [productCategory]="'Płyta główna'"></app-product-category-selector>
+    <app-product-category-selector [productCategory]="'Płyta główna'" (selectedProduct)="handleMotherboardChange($event)"></app-product-category-selector>
 
-    <app-product-category-selector [productCategory]="'Pamięć'"></app-product-category-selector>
+    <app-product-category-selector [productCategory]="'Pamięć'" (selectedProduct)="handleRAMChange($event)"></app-product-category-selector>
 
-    <app-product-category-selector [productCategory]="'Zasilacz'"></app-product-category-selector>
+    <app-product-category-selector [productCategory]="'Zasilacz'" (selectedProduct)="handlePowerSupplyChange($event)"></app-product-category-selector>
 
-    <app-product-category-selector [productCategory]="'Obudowa'"></app-product-category-selector>
+    <app-product-category-selector [productCategory]="'Obudowa'" (selectedProduct)="handleComputerCaseChange($event)"></app-product-category-selector>
   </div>
 </div>
 

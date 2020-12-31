@@ -4,6 +4,8 @@
 
   <p *ngIf="!selectedProduct">Nie wybrano produktu</p>
 
+  <p *ngIf="selectedProduct">{{selectedProduct}}</p>
+
   <button class="product-category-selector__button" mat-raised-button (click)="openProductSelector()">Wybierz produkt</button>
 
 </div>
