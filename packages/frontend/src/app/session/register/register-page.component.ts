@@ -26,7 +26,7 @@ export class RegisterPageComponent implements OnInit {
   async register(): Promise<any> {
     const { email, password } = this.form;
 
-    this.sessionService.register({ username: email, password }).subscribe(
+    this.sessionService.register({ email, password }).subscribe(
       () => {
         this.snackbar.open('Zarejestrowano!');
 

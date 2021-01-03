@@ -3,12 +3,12 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 interface LoginDTO {
-  username: string;
+  email: string;
   password: string;
 }
 
 interface RegisterDTO {
-  username: string;
+  email: string;
   password: string;
 }
 
