@@ -20,10 +20,10 @@ export class SessionService {
   constructor(private http: HttpClient) { }
 
   login(loginDTO: LoginDTO): Observable<any> {
-    return this.http.post('auth/login', loginDTO);
+    return this.http.post(`/api/auth/sign-in`, loginDTO);
   }
 
   register(registerDTO: RegisterDTO): Observable<any> {
-    return this.http.post('http://localhost:3000/users', registerDTO);
+    return this.http.post('/api/auth/sign-up', registerDTO);
   }
 }

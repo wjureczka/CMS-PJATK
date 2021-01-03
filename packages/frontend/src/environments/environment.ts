@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  CMS_API_URL: 'http://localhost:8000'
+  CMS_API_URL: 'http://localhost:8080',
+  PUBLIC_URL: 'http://localhost:4200'
 };
 
 /*
