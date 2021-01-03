@@ -13,6 +13,7 @@ import {CredentialsFormModule} from './shared/forms/credentials-form/credentials
 import {SessionModule} from './session/session.module';
 import {CreatorModule} from './creator/creator.module';
 import {CMSInterceptor} from './core/cms.interceptor';
+import {ProductsModule} from './products/products.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {CMSInterceptor} from './core/cms.interceptor';
     CredentialsFormModule,
     SessionModule,
     CreatorModule,
+    ProductsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
