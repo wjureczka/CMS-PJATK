@@ -1,22 +1,29 @@
+@import "src/assets/layout";
+
+:host {
+  height: 100%;
+}
+
 .main-page {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  margin: auto;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
+  max-width: $max-width;
 
-  &__hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 110px;
+  &__image {
+    width: 100%;
+    max-width: 300px;
   }
 
   &__header {
     font-size: 48px;
-    margin-top: 70px;
+    margin-top: 30px;
     text-align: center;
   }
 

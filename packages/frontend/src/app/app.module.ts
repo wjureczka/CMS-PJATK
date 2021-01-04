@@ -14,6 +14,7 @@ import {SessionModule} from './session/session.module';
 import {CreatorModule} from './creator/creator.module';
 import {CMSInterceptor} from './core/cms.interceptor';
 import {ProductsModule} from './products/products.module';
+import {HomeModule} from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {ProductsModule} from './products/products.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    HomeModule,
     NavbarModule,
     CredentialsFormModule,
     SessionModule,
