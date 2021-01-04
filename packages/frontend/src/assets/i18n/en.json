@@ -18,6 +18,10 @@
   "views.sessions.register-page.haveAccount": "Have account already?",
   "views.sessions.register-page.login": "Log in",
 
+  "products.header": "Our products",
+  "products.category-select.categories": "Categories",
+  "products.category-select.search": "Search",
+
   "category.motherboard": "Motherboard",
   "category.processor": "Processor",
   "category.graphics_card": "Graphics Card",

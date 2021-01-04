@@ -11,13 +11,16 @@
   "shared.forms.credentials.email": "Email",
   "shared.forms.credentials.password": "Hasło" ,
 
-
   "views.sessions.login-page.signIn": "Zaloguj się",
   "views.sessions.login-page.noAccount": "Nie masz konta?",
   "views.sessions.login-page.register": "Zarejestruj się",
   "views.sessions.register-page.register": "Rejestracja",
   "views.sessions.register-page.haveAccount": "Masz już konto?",
   "views.sessions.register-page.login": "Zaloguj się",
+
+  "products.header": "Nasze produkty",
+  "products.category-select.categories": "Kategorie",
+  "products.category-select.search": "Szukaj",
 
   "category.motherboard": "Płyta główna",
   "category.processor": "Procesor",

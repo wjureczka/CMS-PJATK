@@ -18,7 +18,11 @@
   "views.sessions.register-page.haveAccount": "Hast du ein Konto",
   "views.sessions.register-page.login": "Einloggen",
 
-    "category.motherboard": "Hauptplatine",
+  "products.header": "Unsere Produkte",
+  "products.category-select.categories": "Kategorien",
+  "products.category-select.search": "Suche",
+
+  "category.motherboard": "Hauptplatine",
   "category.processor": "Prozessor",
   "category.graphics_card": "Grafikkarte",
   "category.memory": "Computerspeicher",

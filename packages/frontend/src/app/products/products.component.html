@@ -1,19 +1,20 @@
-<div class="">
-  <h3>Produkty</h3>
-</div>
-
-
 <div class="products">
 
-  <app-product-category-select></app-product-category-select>
+  <h1 class="mat-h1 products__header">{{'products.header' | translate}}</h1>
 
   <div class="products__list">
 
-    <app-product-card *ngFor="let prod of products$ | async"
-                      [category]="prod.category.categoryType"
-                      [description]="prod.description"
-                      [price]="prod.price">
-    </app-product-card>
+    <app-product-category-select></app-product-category-select>
+
+    <div class="products__list-cards">
+
+      <app-product-card *ngFor="let prod of products$ | async"
+                        [category]="prod.category.categoryType"
+                        [description]="prod.description"
+                        [price]="prod.price">
+      </app-product-card>
+
+    </div>
 
   </div>
 
