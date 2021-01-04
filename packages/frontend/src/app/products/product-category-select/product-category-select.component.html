@@ -5,19 +5,13 @@
   </mat-card-header>
 
   <mat-card-content>
-        <span class="example-list-section">
-    <ul>
-      <li *ngFor>
-        <mat-checkbox color="primary">PŁYTA GŁÓWNA</mat-checkbox>
-      </li>
-      <li>
-        <mat-checkbox color="primary">PROCESOR</mat-checkbox>
-      </li>
-      <li>
-        <mat-checkbox color="primary">ZASILACZ</mat-checkbox>
-      </li>
-    </ul>
-  </span>
+    <div class="example-list-section">
+      <ul>
+        <li *ngFor="let category of categories$ | async">
+          <mat-checkbox color="primary">{{category.categoryType}}</mat-checkbox>
+        </li>
+      </ul>
+    </div>
   </mat-card-content>
 
 </mat-card>
