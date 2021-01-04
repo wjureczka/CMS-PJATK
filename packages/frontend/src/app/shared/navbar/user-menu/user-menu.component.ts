@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+
+import {AuthService, User} from '../../../core/auth.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserMenuComponent implements OnInit {
 
-  constructor() { }
+  public user$: Observable<User | null> = null;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.user$ = this.authService.user$;
   }
 
 }

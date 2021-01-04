@@ -2,12 +2,22 @@
   <span class="material-icons">
     account_circle
   </span>
+
+  <span *ngIf="this.user$ | async as user">
+    {{user.email}}
+  </span>
+
   <span class="material-icons">
     expand_more
   </span>
 </button>
 
 <mat-menu #menu="matMenu" xPosition="before">
-  <a routerLink="/login" routerLinkActive="true" mat-menu-item>Zaloguj się</a>
-  <a routerLink="/register" routerLinkActive="true" mat-menu-item>Zarejestruj się</a>
+
+
+  <ng-container *ngIf="!(this.user$ | async)">
+    <a routerLink="/login" routerLinkActive="true" mat-menu-item>Zaloguj się</a>
+    <a routerLink="/register" routerLinkActive="true" mat-menu-item>Zarejestruj się</a>
+  </ng-container>
 </mat-menu>
+

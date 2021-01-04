@@ -26,7 +26,7 @@ import {RouterModule} from '@angular/router';
     MatMenuModule,
     MatButtonModule,
     RouterModule
-  ]
+  ],
 })
 export class NavbarModule {
 }
