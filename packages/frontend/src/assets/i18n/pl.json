@@ -17,5 +17,12 @@
   "views.sessions.login-page.register": "Zarejestruj się",
   "views.sessions.register-page.register": "Rejestracja",
   "views.sessions.register-page.haveAccount": "Masz już konto?",
-  "views.sessions.register-page.login": "Zaloguj się"
+  "views.sessions.register-page.login": "Zaloguj się",
+
+  "category.motherboard": "Płyta główna",
+  "category.processor": "Procesor",
+  "category.graphics_card": "Karta graficzna",
+  "category.memory": "Pamięć",
+  "category.hardware": "Hardware"
+
 }

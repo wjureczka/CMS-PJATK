@@ -8,7 +8,7 @@
     <div class="example-list-section">
       <ul>
         <li *ngFor="let category of categories$ | async">
-          <mat-checkbox color="primary">{{category.categoryType}}</mat-checkbox>
+          <mat-checkbox color="primary">{{category.categoryType | category}}</mat-checkbox>
         </li>
       </ul>
     </div>

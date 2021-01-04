@@ -6,6 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {NgModule} from '@angular/core';
 import {ProductCategorySelectComponent} from './product-category-select/product-category-select.component';
 import {CommonModule} from '@angular/common';
+import {CategoryPipe} from './pipes/category.pipe';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import {CommonModule} from '@angular/common';
     ProductsComponent,
     ProductCardComponent,
     ProductCategorySelectComponent,
+    CategoryPipe
   ],
   imports: [
     CommonModule,

@@ -16,5 +16,12 @@
   "views.sessions.login-page.register": "Register",
   "views.sessions.register-page.register": "Registration",
   "views.sessions.register-page.haveAccount": "Have account already?",
-  "views.sessions.register-page.login": "Log in"
+  "views.sessions.register-page.login": "Log in",
+
+  "category.motherboard": "Motherboard",
+  "category.processor": "Processor",
+  "category.graphics_card": "Graphics Card",
+  "category.memory": "Memory",
+  "category.hardware": "Hardware"
+
 }
