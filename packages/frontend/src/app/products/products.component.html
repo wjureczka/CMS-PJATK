@@ -9,7 +9,11 @@
 
   <div class="products__list">
 
-    <app-product-card *ngFor="let prod of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]"></app-product-card>
+    <app-product-card *ngFor="let prod of products"
+                      [category]="prod.category.categoryType"
+                      [description]="prod.description"
+                      [price]="prod.price">
+    </app-product-card>
 
   </div>
 
