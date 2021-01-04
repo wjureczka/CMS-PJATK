@@ -1,4 +1,5 @@
 @import "~@angular/material/theming";
+@import "~src/assets/breakpoints";
 @import "~src/assets/layout";
 
 .navbar {
@@ -16,8 +17,12 @@
   margin-right: auto;
 
   &__links {
-    display: flex;
+    display: none;
     margin-left: 25px;
+
+    @include laptop {
+      display: flex;
+    }
   }
 
   &__link {

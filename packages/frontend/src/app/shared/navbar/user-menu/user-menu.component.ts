@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 
-import {AuthService, User} from '../../../core/auth.service';
+import {AuthService, Role, User} from '../../../core/auth.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -9,6 +9,8 @@ import {AuthService, User} from '../../../core/auth.service';
   styleUrls: ['./user-menu.component.scss']
 })
 export class UserMenuComponent implements OnInit {
+
+  public role = Role;
 
   public user$: Observable<User | null> = null;
 

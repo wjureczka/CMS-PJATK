@@ -1,0 +1,9 @@
+@import "src/assets/breakpoints";
+
+.mobile-menu-item {
+  display: block;
+
+  @include laptop {
+    display: none;
+  }
+}
