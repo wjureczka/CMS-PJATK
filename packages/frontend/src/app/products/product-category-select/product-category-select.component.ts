@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ProductsService} from '../products.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-product-category-select',
@@ -7,10 +9,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ProductCategorySelectComponent implements OnInit {
 
-  constructor() {
+  public categories$: Observable<string[]>;
+
+  constructor(private productService: ProductsService) {
   }
 
   ngOnInit(): void {
+    this.categories$ = this.productService.getProductCategories();
   }
 
 }

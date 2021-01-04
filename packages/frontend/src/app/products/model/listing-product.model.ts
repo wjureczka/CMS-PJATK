@@ -7,7 +7,7 @@ export interface ListingProduct {
   price: number;
 }
 
-interface Category {
+export interface Category {
   categoryId: number;
   categoryType: string;
 }
