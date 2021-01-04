@@ -1,12 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {ListingProduct} from './model/listing-product.model';
 
-interface ListingProduct {
-  id: number;
-  price: number;
-  description: string;
-}
 
 @Injectable({
   providedIn: 'root'

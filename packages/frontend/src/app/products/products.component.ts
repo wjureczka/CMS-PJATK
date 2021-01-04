@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from './products.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {ListingProduct} from './model/listing-product.model';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +10,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ProductsComponent implements OnInit {
 
-  public products: any[] = [];
+  public products: ListingProduct[] = [];
 
   public isLoading = true;
 
