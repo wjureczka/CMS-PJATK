@@ -4,7 +4,9 @@ import {CookieService} from 'ngx-cookie-service';
 import jwtDecode from 'jwt-decode';
 
 export enum Role {
-  ROLE_USER = 'ROLE_USER'
+  ROLE_USER = 'ROLE_USER',
+  ROLE_MODERATOR = 'ROLE_MODERATOR',
+  ROLE_ADMIN = 'ROLE_ADMIN'
 }
 
 export interface User {
