@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {LanguageService} from './shared/language.service';
+import {AuthService} from './core/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,9 @@ import {LanguageService} from './shared/language.service';
 })
 export class AppComponent {
 
-  constructor(private languageService: LanguageService) {
+  constructor(private languageService: LanguageService, private authService: AuthService) {
     this.languageService.prepareTranslationService();
+    this.authService.loadUser();
   }
 
 }

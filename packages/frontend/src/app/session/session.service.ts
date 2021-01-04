@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpResponseBase} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Role, User} from '../core/auth.service';
 
 interface LoginDTO {
   email: string;
@@ -12,6 +13,14 @@ interface RegisterDTO {
   password: string;
 }
 
+interface LoginResponse {
+  id: number;
+  username: string;
+  email: string;
+  roles: Role[];
+  token: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,11 +28,11 @@ export class SessionService {
 
   constructor(private http: HttpClient) { }
 
-  login(loginDTO: LoginDTO): Observable<any> {
-    return this.http.post(`/api/auth/sign-in`, loginDTO);
+  login(loginDTO: LoginDTO): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`/api/auth/sign-in`, loginDTO);
   }
 
-  register(registerDTO: RegisterDTO): Observable<any> {
-    return this.http.post('/api/auth/sign-up', registerDTO);
+  register(registerDTO: RegisterDTO): Observable<HttpResponseBase> {
+    return this.http.post<HttpResponseBase>('/api/auth/sign-up', registerDTO);
   }
 }

@@ -6,6 +6,7 @@ import {LoginPageComponent} from './session/login/login-page.component';
 import {HomeComponent} from './home/home.component';
 import {ProductsComponent} from './products/products.component';
 import {CartComponent} from './cart/cart.component';
+import {NotAuthenticatedGuard} from './core/not-authenticated.guard';
 
 const routes: Routes = [
   {
@@ -22,11 +23,13 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterPageComponent
+    component: RegisterPageComponent,
+    canActivate: [NotAuthenticatedGuard]
   },
   {
     path: 'login',
     component: LoginPageComponent,
+    canActivate: [NotAuthenticatedGuard]
   },
   {
     path: 'products',
