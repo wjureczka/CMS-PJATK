@@ -1,3 +1,16 @@
-<mat-spinner></mat-spinner>
+<div class="">
+  <h3>Produkty</h3>
+</div>
 
-<p>products works!</p>
+
+<div class="products">
+
+  <app-product-category-select></app-product-category-select>
+
+  <div class="products__list">
+
+    <app-product-card *ngFor="let prod of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]"></app-product-card>
+
+  </div>
+
+</div>
