@@ -11,6 +11,8 @@ export class DetailsPanelComponent implements OnInit {
 
   @Input() description: string;
 
+  quantity = 1;
+
   constructor() {
   }
 

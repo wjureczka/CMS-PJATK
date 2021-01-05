@@ -15,6 +15,7 @@ import {DetailsPanelComponent} from './product-details/details-panel/details-pan
 import {MatSelectModule} from '@angular/material/select';
 import {RouterModule} from '@angular/router';
 import {MatInputModule} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {MatInputModule} from '@angular/material/input';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MatCheckboxModule,
     RouterModule,
     MatButtonModule,

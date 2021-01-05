@@ -8,13 +8,13 @@
   <div class="panel__footer">
 
     <div>
-      <label class="panel__price">{{price | currency:'PLN'}}</label>
+      <label class="panel__price">{{price * quantity | currency:'PLN'}}</label>
       <button mat-raised-button color="primary">Dodaj do koszyka</button>
     </div>
 
     <mat-form-field class="panel__quantity">
       <mat-label>ilość</mat-label>
-      <input type="number" min="0" matInput>
+      <input type="number" min="0" matInput [(ngModel)]="quantity">
     </mat-form-field>
 
   </div>
