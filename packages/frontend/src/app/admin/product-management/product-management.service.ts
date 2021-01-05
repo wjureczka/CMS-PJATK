@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponseBase} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 export interface Product {
@@ -8,7 +8,7 @@ export interface Product {
   price: number;
   category: {
     categoryId: number;
-    category: string;
+    categoryType: string;
   };
 }
 
@@ -21,5 +21,9 @@ export class ProductManagementService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>('/api/products');
+  }
+
+  deleteProduct(productId: number): Observable<HttpResponseBase> {
+    return this.http.delete<HttpResponseBase>(`/api/products/${productId}`);
   }
 }

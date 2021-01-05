@@ -1,0 +1,103 @@
+@import "~@angular/material/theming";
+
+.product {
+  position: relative;
+  display: flex;
+  width: 100%;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+
+    .product__actions {
+      flex-basis: 50px;
+    }
+  }
+
+  &--loading {
+    &:hover {
+      cursor: progress;
+    }
+
+    .product__loader {
+      display: flex;
+    }
+
+    .product__actions {
+      display: none;
+    }
+  }
+
+  &__loader {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(map-get($mat-gray, 100), 0.75);
+    z-index: 10;
+  }
+
+  &__image {
+    flex: 1;
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 150px;
+  }
+
+  &__details {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+  }
+
+  &__details-name {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  &__details-category {
+    margin-left: auto;
+  }
+
+  &__details-description {
+
+  }
+
+  &__details-price {
+    margin-top: auto;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-basis: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    transition: all 225ms;
+  }
+
+  &__actions-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    flex: 1;
+    border: none;
+    color: #ffffff;
+
+    &--edit {
+      background: map-get($mat-blue, 500);
+    }
+
+    &--delete {
+      background: map-get($mat-red, 500);
+    }
+  }
+}

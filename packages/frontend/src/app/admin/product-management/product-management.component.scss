@@ -1,3 +1,5 @@
+@import "src/assets/layout";
+
 .loader {
   display: flex;
   justify-content: center;
@@ -8,20 +10,21 @@
 
 .product-management {
   width: 100%;
+  max-width: $max-width;
   margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
 
   &__actions {
     display: flex;
     justify-content: flex-end;
   }
 
-  &__table {
-    width: 100%;
-    margin-top: 30px;
-
-    th, td {
-      vertical-align: middle;
-    }
+  &__list {
+    padding-left: 15px;
   }
 
+  &__list-item {
+    margin-top: 15px;
+  }
 }
