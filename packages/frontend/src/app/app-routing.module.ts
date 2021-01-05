@@ -42,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent
+    loadChildren: () => import('src/app/admin/admin.module').then((module) => module.AdminModule)
   }
 ];
 
