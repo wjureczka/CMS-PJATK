@@ -1,10 +1,13 @@
-<div class="admin">
+<section class="admin">
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" opened class="admin__sidenav">
+      <mat-nav-list class="admin__nav">
+        <a mat-list-item routerLink="./product-management" routerLinkActive="admin__nav-route--active" class="admin__nav-route">Zarządzanie produktami</a>
+      </mat-nav-list>
+    </mat-sidenav>
 
-  <h1 class="mat-h1">Panel administracyjny</h1>
-
-    <nav mat-tab-nav-bar>
-      <a mat-tab-link routerLink="./product-management" routerLinkActive="true">Zarządzanie produktami</a>
-    </nav>
-
-  <router-outlet></router-outlet>
-</div>
+    <mat-sidenav-content class="admin__sidenav-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</section>
