@@ -1,11 +1,9 @@
-<mat-card class="product-card">
+<mat-card class="product-card" [routerLink]="['/products', id]">
 
   <img class="product-card__image"
        mat-card-image
-       src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-       alt="Product PHOTO"
-       width="220"
-       height="140">
+       [src]="'assets/img/product.png'"
+       alt="Product PHOTO">
 
   <div class="product-card__category">
     <p>{{category | category}}</p>

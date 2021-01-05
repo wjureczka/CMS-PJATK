@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductsService} from './products.service';
+import {ProductsService} from './services/products.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ListingProduct} from './model/listing-product.model';
 import {catchError, finalize} from 'rxjs/operators';

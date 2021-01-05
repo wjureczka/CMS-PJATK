@@ -7,6 +7,8 @@ import {Component, Input} from '@angular/core';
 })
 export class ProductCardComponent {
 
+  @Input() id = 1;
+
   @Input() category: string;
 
   @Input() description: string;

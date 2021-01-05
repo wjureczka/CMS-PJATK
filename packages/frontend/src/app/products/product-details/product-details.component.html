@@ -1,0 +1,56 @@
+<div class="details">
+
+  <span class="details__back-btn">
+    <button mat-mini-fab color="primary" routerLink="/products">
+      <mat-icon>arrow_back_ios_new</mat-icon>
+    </button>
+    <label>Wróć do wyszukiwarki</label>
+  </span>
+
+  <div class="details__header">
+
+    <img class="img"
+         [src]="'assets/img/product.png'"
+         alt="Product PHOTO"
+         width="400"
+         height="200">
+
+    <app-details-panel class="panel"></app-details-panel>
+
+  </div>
+
+  <div class="details__description">
+    <h2>Opis</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi doloremque hic laboriosam laudantium
+      numquam quia repellendus sit! Accusamus aspernatur, facere impedit nostrum numquam quas repellendus. Minus
+      nesciunt, officiis. Dolore,
+      reiciendis.Aliquid amet animi, dolore eaque enim, in incidunt ipsam laborum laudantium modi nesciunt
+      numquam porro ullam velit vero voluptate voluptates! Corporis cupiditate deserunt quasi recusandae voluptates!
+      Aliquam deleniti dignissimos nesciunt.
+      Adipisci consequatur eligendi eveniet hic ipsum, non vel. Assumenda eaque magni nulla quia quis suscipit
+      temporibus voluptas voluptatum? Doloribus est eum id iste laudantium maiores nam optio sint soluta velit</p>
+  </div>
+
+  <div class="details__technical">
+    <h2>Dane techniczne</h2>
+
+    <table class="mat-elevation-z8" [dataSource]="dataSource" mat-table>
+
+      <ng-container matColumnDef="1">
+        <th mat-header-cell *matHeaderCellDef>Key</th>
+        <td mat-cell *matCellDef="let element">{{element.key}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="2">
+        <th mat-header-cell *matHeaderCellDef>Value</th>
+        <td mat-cell *matCellDef="let element">{{element.value}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['1','2']"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+  </div>
+
+</div>

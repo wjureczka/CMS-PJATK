@@ -14,6 +14,7 @@ import {SessionModule} from './session/session.module';
 import {CreatorModule} from './creator/creator.module';
 import {CMSInterceptor} from './core/cms.interceptor';
 import {ProductsModule} from './products/products.module';
+import {ProductsRoutingModule} from './products/products-routing.module';
 import {HomeModule} from './home/home.module';
 import {AdminModule} from './admin/admin.module';
 import {AdminRoutingModule} from './admin/admin-routing.module';
@@ -34,6 +35,7 @@ import {AdminRoutingModule} from './admin/admin-routing.module';
     CreatorModule,
     ProductsModule,
     AdminModule,
+    ProductsRoutingModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
