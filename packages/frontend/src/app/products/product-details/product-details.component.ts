@@ -1,4 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {ProductsService} from '../services/products.service';
+import {Observable} from 'rxjs';
+import {ListingProduct} from '../model/listing-product.model';
+import {ActivatedRoute} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-details',
@@ -22,10 +27,19 @@ export class ProductDetailsComponent implements OnInit {
 
   displayedColumns = ['1', '2'];
 
-  constructor() {
+  details$: Observable<ListingProduct>;
+
+  constructor(private productsService: ProductsService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.details$ = this.route.paramMap
+      .pipe(
+        switchMap(params =>
+          this.productsService.getProductById(params.get('productId'))
+        )
+      );
   }
 
 }

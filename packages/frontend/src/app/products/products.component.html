@@ -9,6 +9,7 @@
     <div class="products__list-cards">
 
       <app-product-card *ngFor="let prod of products$ | async"
+                        [id]="prod.id"
                         [category]="prod.category.categoryType"
                         [description]="prod.description"
                         [price]="prod.price">

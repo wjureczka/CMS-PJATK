@@ -1,14 +1,14 @@
 <div class="panel">
 
   <div class="panel__header">
-    <h2>Nazwa produktu</h2>
+    <h2>{{description}}</h2>
     <p>Producent</p>
   </div>
 
   <div class="panel__footer">
 
     <div>
-      <label class="panel__price">20000.00zł</label>
+      <label class="panel__price">{{price | currency:'PLN'}}</label>
       <button mat-raised-button color="primary">Dodaj do koszyka</button>
     </div>
 

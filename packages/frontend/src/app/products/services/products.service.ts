@@ -20,4 +20,8 @@ export class ProductsService {
     return this.http.get<Category[]>('/api/categories');
   }
 
+  public getProductById(id: string): Observable<ListingProduct> {
+    return this.http.get<ListingProduct>(`/api/products/${id}`);
+  }
+
 }
