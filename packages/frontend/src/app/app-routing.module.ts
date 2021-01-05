@@ -6,6 +6,8 @@ import {LoginPageComponent} from './session/login/login-page.component';
 import {HomeComponent} from './home/home.component';
 import {ProductsComponent} from './products/products.component';
 import {CartComponent} from './cart/cart.component';
+import {NotAuthenticatedGuard} from './core/not-authenticated.guard';
+import {AdminComponent} from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -22,11 +24,13 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterPageComponent
+    component: RegisterPageComponent,
+    canActivate: [NotAuthenticatedGuard]
   },
   {
     path: 'login',
     component: LoginPageComponent,
+    canActivate: [NotAuthenticatedGuard]
   },
   {
     path: 'products',
@@ -35,6 +39,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('src/app/admin/admin.module').then((module) => module.AdminModule)
   }
 ];
 

@@ -2,12 +2,36 @@
   <span class="material-icons">
     account_circle
   </span>
+
+  <span *ngIf="user$ | async as user">
+    {{user.email}}
+  </span>
+
   <span class="material-icons">
     expand_more
   </span>
 </button>
 
 <mat-menu #menu="matMenu" xPosition="before">
-  <a routerLink="/login" routerLinkActive="true" mat-menu-item>Zaloguj się</a>
-  <a routerLink="/register" routerLinkActive="true" mat-menu-item>Zarejestruj się</a>
+
+  <a class="mobile-menu-item" routerLink="/products" routerLinkActive="true" mat-menu-item>Produkty</a>
+  <a class="mobile-menu-item" routerLink="/creator" routerLinkActive="true" mat-menu-item>Kreator</a>
+  <a class="mobile-menu-item" routerLink="/cart" routerLinkActive="true" mat-menu-item>Koszyk</a>
+
+  <ng-container *ngIf="(user$ | async)">
+    <a *ngIf="(user$ | async)?.roles.includes(role.ROLE_ADMIN)"
+       routerLink="/admin"
+       routerLinkActive="true"
+       mat-menu-item
+    >
+      Admin
+    </a>
+    <a routerLink="/logout" routerLinkActive="true" mat-menu-item>Wyloguj się</a>
+  </ng-container>
+
+  <ng-container *ngIf="!(user$ | async)">
+    <a routerLink="/login" routerLinkActive="true" mat-menu-item>Zaloguj się</a>
+    <a routerLink="/register" routerLinkActive="true" mat-menu-item>Zarejestruj się</a>
+  </ng-container>
 </mat-menu>
+

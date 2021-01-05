@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import { HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpBackend, HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -12,6 +12,11 @@ import {NavbarModule} from './shared/navbar/navbar.module';
 import {CredentialsFormModule} from './shared/forms/credentials-form/credentials-form.module';
 import {SessionModule} from './session/session.module';
 import {CreatorModule} from './creator/creator.module';
+import {CMSInterceptor} from './core/cms.interceptor';
+import {ProductsModule} from './products/products.module';
+import {HomeModule} from './home/home.module';
+import {AdminModule} from './admin/admin.module';
+import {AdminRoutingModule} from './admin/admin-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,27 +26,38 @@ import {CreatorModule} from './creator/creator.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AdminModule,
+    HomeModule,
     NavbarModule,
     CredentialsFormModule,
     SessionModule,
     CreatorModule,
+    ProductsModule,
+    AdminModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: TranslationLoaderFactory,
-        deps: [HttpClient]
+        deps: [HttpBackend]
       }
     }),
     BrowserAnimationsModule,
   ],
   providers: [
     MatSnackBar,
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: CMSInterceptor,
+    }
 ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
 
-export function TranslationLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
+export function TranslationLoaderFactory(http: HttpBackend): TranslateHttpLoader {
+  const handler = new HttpClient(http);
+
+  return new TranslateHttpLoader(handler);
 }

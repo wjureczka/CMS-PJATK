@@ -1,0 +1,27 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.product-management {
+  width: 100%;
+  margin-top: 30px;
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__table {
+    width: 100%;
+    margin-top: 30px;
+
+    th, td {
+      vertical-align: middle;
+    }
+  }
+
+}

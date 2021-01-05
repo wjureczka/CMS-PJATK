@@ -1,0 +1,42 @@
+@import "~@angular/material/theming";
+
+:host {
+  height: 100%;
+}
+
+.admin {
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  .mat-drawer-container {
+    background-color: transparent;
+    height: 100%;
+  }
+
+  &__sidenav {
+    background-color: transparent;
+  }
+
+  &__sidenav-content {
+    background-color: transparent;
+    padding-right: 15px;
+  }
+
+  &__nav-route.mat-list-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__nav-route--active {
+    color: map-get($mat-blue, 500);
+
+    &:after {
+      display: inline;
+      content: '•';
+      position: relative;
+      margin-right: 15px;
+    }
+  }
+}
