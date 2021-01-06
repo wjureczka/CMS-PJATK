@@ -11,5 +11,5 @@ export interface ListingProduct {
 
 export interface Category {
   categoryId: number;
-  categoryType: string;
+  categoryType: CategoryType;
 }
