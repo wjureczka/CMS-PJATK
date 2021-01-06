@@ -5,10 +5,8 @@ export interface ListingProduct {
   category: Category;
   description: string;
   longDescription: string;
-  producer: {
-    producerName: string;
-  };
   price: number;
+  producer: any;
 }
 
 export interface Category {
