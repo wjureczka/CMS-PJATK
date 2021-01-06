@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductsService} from '../services/products.service';
+import {ProductsService} from '../../services/products.service';
 import {Observable} from 'rxjs';
-import {Category} from '../model/listing-product.model';
+import {Category} from '../../model/listing-product.model';
 
 @Component({
   selector: 'app-product-category-select',
-  templateUrl: './product-category-select.component.html',
-  styleUrls: ['./product-category-select.component.scss']
+  templateUrl: './products-listing-category-select.component.html',
+  styleUrls: ['./products-listing-category-select.component.scss']
 })
-export class ProductCategorySelectComponent implements OnInit {
+export class ProductsListingCategorySelectComponent implements OnInit {
 
   public categories$: Observable<Category[]>;
 

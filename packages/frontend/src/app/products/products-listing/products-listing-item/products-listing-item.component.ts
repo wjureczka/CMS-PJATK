@@ -13,6 +13,8 @@ export class ProductsListingItemComponent {
 
   @Input() description: string;
 
+  @Input() producer: string;
+
   @Input() price: number;
 
 }

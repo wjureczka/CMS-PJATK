@@ -1,6 +1,7 @@
 package com.ddebinski.app.product;
 
 import com.ddebinski.app.category.Category;
+import com.ddebinski.app.producer.Producer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
@@ -12,10 +13,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
@@ -39,12 +37,20 @@ public class Product {
     @NotBlank
     private String description;
 
+    @NotBlank
+    private String longDescription;
+
+    @Min(1)
     private Long price;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name="category_id", nullable=false)
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "producer_id")
+    private Producer producer;
 
     @OneToMany(
             mappedBy = "product",
