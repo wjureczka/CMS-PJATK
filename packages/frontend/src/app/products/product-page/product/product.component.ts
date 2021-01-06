@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ListingProduct} from '../../model/listing-product.model';
 
 @Component({
@@ -24,4 +24,6 @@ export class ProductComponent {
   displayedColumns = ['1', '2'];
 
   @Input() product: ListingProduct;
+
 }
+

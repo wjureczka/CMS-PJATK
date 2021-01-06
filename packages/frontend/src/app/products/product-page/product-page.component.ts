@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {ListingProduct} from '../model/listing-product.model';
 import {ProductsService} from '../services/products.service';
 import {ActivatedRoute} from '@angular/router';
-import {switchMap} from 'rxjs/operators';
+import {share, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-page',
@@ -23,7 +23,8 @@ export class ProductPageComponent implements OnInit {
       .pipe(
         switchMap(params =>
           this.productsService.getProductById(params.get('productId'))
-        )
+        ),
+        share()
       );
   }
 }

@@ -9,23 +9,17 @@
            width="400"
            height="200">
 
-<!--      <app-details-panel class="panel"-->
-<!--                         [price]="product.price"-->
-<!--                         [description]="product.description">-->
-<!--      </app-details-panel>-->
+      <app-details-panel class="panel"
+                         [price]="product.price"
+                         [description]="product.description"
+                         [producer]="product.producer?.producerName">
+      </app-details-panel>
 
     </div>
 
     <div class="details__description">
       <h2>Opis</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi doloremque hic laboriosam laudantium
-        numquam quia repellendus sit! Accusamus aspernatur, facere impedit nostrum numquam quas repellendus. Minus
-        nesciunt, officiis. Dolore,
-        reiciendis.Aliquid amet animi, dolore eaque enim, in incidunt ipsam laborum laudantium modi nesciunt
-        numquam porro ullam velit vero voluptate voluptates! Corporis cupiditate deserunt quasi recusandae voluptates!
-        Aliquam deleniti dignissimos nesciunt.
-        Adipisci consequatur eligendi eveniet hic ipsum, non vel. Assumenda eaque magni nulla quia quis suscipit
-        temporibus voluptas voluptatum? Doloribus est eum id iste laudantium maiores nam optio sint soluta velit</p>
+      <p>{{product.longDescription}}</p>
     </div>
 
     <div class="details__technical">
