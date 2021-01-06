@@ -1,16 +1,16 @@
 <div class="cart-list-item">
 
   <img class="cart-list-item__img"
-    [src]="'assets/img/product.png'" alt="Product FOTO">
+       [src]="'assets/img/product.png'" alt="Product FOTO">
 
   <mat-card class="cart-list-item__banner">
 
     <div class="cart-list-item__banner-info">
-      <p class="product-name">Nazwa produktu</p>
-      <p class="producer">Producent</p>
+      <p class="product-name">{{cartItem.description}}</p>
+      <p class="producer">{{cartItem.producer}}</p>
     </div>
 
-    <div class="cart-list-item__banner-price">2000.00zł</div>
+    <div class="cart-list-item__banner-price">{{cartItem.price | currency: 'PLN'}}</div>
 
     <div class="cart-list-item__banner-btn">
       <mat-icon color="warn">clear</mat-icon>

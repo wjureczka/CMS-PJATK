@@ -6,13 +6,15 @@
 
     <div class="cart-page__list">
 
-      <app-cart-list-item *ngFor="let dupa of [1,2,3,3,4,5,6,7,8,9,0,2,1]"></app-cart-list-item>
+      <ng-container *ngFor="let cartItem of cartItems$ | async">
+        <app-cart-list-item [cartItem]="cartItem"></app-cart-list-item>
+      </ng-container>
 
     </div>
 
     <div class="cart-page__summary">
 
-      <app-cart-summary></app-cart-summary>
+      <app-cart-summary [totalPrice]="totalPrice$| async"></app-cart-summary>
 
     </div>
 

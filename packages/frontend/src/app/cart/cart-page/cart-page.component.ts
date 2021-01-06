@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {CartItem, CartStore} from '../../core/cart/cart.store';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-cart-page',
@@ -6,12 +8,17 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./cart-page.component.scss']
 })
 export class CartPageComponent implements OnInit {
-  dupas = [1, 2, 3, 4, 5];
 
-  constructor() {
+  cartItems$: Observable<CartItem[]>;
+
+  totalPrice$: Observable<number>;
+
+  constructor(private cart: CartStore) {
   }
 
   ngOnInit(): void {
+    this.cartItems$ = this.cart.cartItems$;
+    this.totalPrice$ = this.cart.totalPrice$;
   }
 
 }

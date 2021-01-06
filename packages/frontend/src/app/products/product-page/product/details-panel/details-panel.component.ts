@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CartItem, CartStore} from '../../../../core/cart/cart.store';
 
 @Component({
   selector: 'app-details-panel',
@@ -6,6 +7,8 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./details-panel.component.scss']
 })
 export class DetailsPanelComponent implements OnInit {
+
+  @Input() productId: number;
 
   @Input() price: number;
 
@@ -15,10 +18,20 @@ export class DetailsPanelComponent implements OnInit {
 
   selectedQuantity: 0;
 
-  constructor() {
+  constructor(private cart: CartStore) {
   }
 
   ngOnInit(): void {
   }
 
+  putToCart(): void {
+    const product: CartItem = {
+      productId: this.productId,
+      description: this.description,
+      producer: this.producer,
+      price: this.price,
+      quantity: this.selectedQuantity,
+    };
+    this.cart.putProduct(product);
+  }
 }

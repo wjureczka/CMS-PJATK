@@ -9,7 +9,10 @@
 
     <div>
       <label class="panel__price">{{price * selectedQuantity | currency:'PLN'}}</label>
-      <button mat-raised-button color="primary">Dodaj do koszyka</button>
+      <button mat-raised-button
+              color="primary"
+              (click)="putToCart()">Dodaj do koszyka
+      </button>
     </div>
 
     <mat-form-field appearance="standard" class="panel__quantity-select">
