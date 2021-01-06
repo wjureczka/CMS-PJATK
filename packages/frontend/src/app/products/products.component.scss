@@ -11,17 +11,20 @@
     margin-top: 30px;
   }
 
-  &__list {
+  &__listing {
     display: flex;
     flex-direction: row;
   }
 
-  &__list-cards{
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-gap: 15px;
     width: 100%;
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    margin-right: 60px;
+    margin-left: 15px;
   }
 
+  &__list-item {
+
+  }
 }

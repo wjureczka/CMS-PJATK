@@ -11,7 +11,7 @@ export class DetailsPanelComponent implements OnInit {
 
   @Input() description: string;
 
-  quantity = 1;
+  selectedQuantity: null | number = null;
 
   constructor() {
   }
