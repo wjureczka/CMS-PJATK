@@ -51,6 +51,9 @@ public class ProductController {
             domain.setDateFrom(product.getDateFrom());
             domain.setDateTo(product.getDateTo());
             domain.setCategory(product.getCategory());
+            domain.setDescription(product.getDescription());
+            domain.setLongDescription(product.getLongDescription());
+            domain.setProducer(product.getProducer());
             domain.setPrice(product.getPrice());
             repository.save(domain);
 
