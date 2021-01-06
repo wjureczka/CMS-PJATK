@@ -1,6 +1,5 @@
 package com.ddebinski.app.product;
 
-import com.ddebinski.app.auth.model.Role;
 import com.ddebinski.app.category.Category;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
@@ -9,21 +8,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
@@ -47,7 +37,6 @@ public class Product {
     @NotBlank
     private String description;
 
-    @Min(1)
     private Long price;
 
     @NotNull
@@ -55,4 +44,9 @@ public class Product {
     @JoinColumn(name="category_id", nullable=false)
     private Category category;
 
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<ProductProperty> properties;
 }
