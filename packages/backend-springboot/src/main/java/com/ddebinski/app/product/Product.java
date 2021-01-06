@@ -11,9 +11,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
