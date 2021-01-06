@@ -16,7 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import { ProductComponent } from './product/product.component';
 import { ProductsListingComponent } from './products-listing/products-listing.component';
-import { ProductsListingListItemComponent } from './products-listing/products-listing-list-item/products-listing-list-item.component';
+import { ProductsListingItemComponent } from './products-listing/products-listing-item/products-listing-item.component';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { ProductsListingListItemComponent } from './products-listing/products-li
     DetailsPanelComponent,
     ProductComponent,
     ProductsListingComponent,
-    ProductsListingListItemComponent
+    ProductsListingItemComponent
   ],
   imports: [
     CommonModule,
