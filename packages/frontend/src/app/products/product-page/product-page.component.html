@@ -1,10 +1,8 @@
 <section class="product-page">
-    <span class="details__back-btn">
-    <button mat-mini-fab color="primary" routerLink="/products">
-      <mat-icon>arrow_back_ios_new</mat-icon>
-    </button>
-    <label>Wróć do wyszukiwarki</label>
-  </span>
+  <button class="product-page__go-back" mat-button routerLink="/products">
+    <mat-icon>arrow_back_ios_new</mat-icon>
+    Wróć do wyszukiwarki
+  </button>
 
 
   <ng-container *ngIf="product$ | async as product">
