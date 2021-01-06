@@ -2,7 +2,7 @@
 
   <div class="panel__header">
     <h2>{{description}}</h2>
-    <p>Producent</p>
+    <p>{{producer}}</p>
   </div>
 
   <div class="panel__footer">
@@ -13,7 +13,7 @@
     </div>
 
     <mat-form-field appearance="standard" class="panel__quantity-select">
-    <mat-label>Ilość</mat-label>
+      <mat-label>Ilość</mat-label>
       <mat-select [(value)]="selectedQuantity">
         <mat-option *ngFor="let i of [0, 1, 2, 3, 4, 5]" value="{{i}}">{{i}}</mat-option>
       </mat-select>
