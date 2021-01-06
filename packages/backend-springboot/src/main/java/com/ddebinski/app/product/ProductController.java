@@ -54,6 +54,7 @@ public class ProductController {
             domain.setDateTo(product.getDateTo());
             domain.setCategory(product.getCategory());
             domain.setPrice(product.getPrice());
+            domain.setDescription(product.getDescription());
             domain.setLongDescription(product.getLongDescription());
             domain.setProducer(product.getProducer());
             domain.clearAllProperties();
