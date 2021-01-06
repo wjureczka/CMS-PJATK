@@ -62,8 +62,16 @@ public class ProductController {
     }
 
     @PostMapping
-    ResponseEntity save(@RequestBody @Valid Product product) {
-        repository.save(product);
+    ResponseEntity<HttpStatus> save(@RequestBody @Valid Product product) {
+        Product newProduct = new Product();
+        newProduct.setDateFrom(product.getDateFrom());
+        newProduct.setDateTo(product.getDateTo());
+        newProduct.setCategory(product.getCategory());
+        newProduct.setDescription(product.getDescription());
+        newProduct.addProperties(product.getProperties());
+
+        repository.save(newProduct);
+
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
