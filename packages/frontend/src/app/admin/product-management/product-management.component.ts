@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Product, ProductManagementService} from './product-management.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
+import {ProductManagementAddItemDialogComponent} from './product-management-add-item-dialog/product-management-add-item-dialog.component';
 
 @Component({
   selector: 'app-product-management',
@@ -13,7 +15,10 @@ export class ProductManagementComponent implements OnInit {
 
   public isLoading = true;
 
-  constructor(private productManagementService: ProductManagementService, private snackbar: MatSnackBar) {
+  constructor(private productManagementService: ProductManagementService,
+              private snackbar: MatSnackBar,
+              private dialog: MatDialog
+  ) {
   }
 
   ngOnInit(): void {
@@ -30,5 +35,13 @@ export class ProductManagementComponent implements OnInit {
 
   handleProductDelete(deletedProduct: Product): void {
     this.products = this.products.filter((product) => product.id !== deletedProduct.id);
+  }
+
+  openAddItemDialog(): void {
+    const dialogRef = this.dialog.open(ProductManagementAddItemDialogComponent);
+
+    dialogRef.afterClosed().subscribe((itemAdded) => {
+      this.products.unshift(itemAdded);
+    });
   }
 }

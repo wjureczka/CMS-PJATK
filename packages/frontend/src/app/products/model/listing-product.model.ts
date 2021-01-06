@@ -1,4 +1,4 @@
-import {CategoryType} from './category-type.enum';
+import {CategoryType} from '../../shared/category-type.enum';
 
 export interface ListingProduct {
   id: number;
@@ -11,5 +11,5 @@ export interface ListingProduct {
 
 export interface Category {
   categoryId: number;
-  categoryType: CategoryType;
+  categoryType: string;
 }

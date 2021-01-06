@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Dodaj produkt</h1>
+
+<form mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Favorite food</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let categoryType of categoryTypes" [value]="categoryType">
+        {{categoryType}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</form>
+
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary">Zamknij</button>
+  <button mat-raised-button color="primary">Dodaj</button>
+</div>

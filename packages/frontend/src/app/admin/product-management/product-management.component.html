@@ -7,7 +7,7 @@
 <ng-container *ngIf="!isLoading">
   <section class="product-management">
     <div class="product-management__actions">
-      <button mat-raised-button color="primary">Dodaj</button>
+      <button mat-raised-button color="primary" (click)="openAddItemDialog()">Dodaj</button>
     </div>
 
     <ul class="product-management__list">

@@ -12,19 +12,18 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 
 import {ProductsListingCategorySelectComponent} from './products-listing/products-listing-category-select/products-listing-category-select.component';
-import {CategoryPipe} from './pipes/category.pipe';
 import {DetailsPanelComponent} from './product-page/product/details-panel/details-panel.component';
 import { ProductsListingComponent } from './products-listing/products-listing.component';
 import { ProductsListingItemComponent } from './products-listing/products-listing-item/products-listing-item.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductComponent } from './product-page/product/product.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
   declarations: [
     ProductsListingCategorySelectComponent,
-    CategoryPipe,
     DetailsPanelComponent,
     ProductsListingComponent,
     ProductsListingItemComponent,
@@ -44,7 +43,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     TranslateModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    SharedModule,
   ]
 })
 
