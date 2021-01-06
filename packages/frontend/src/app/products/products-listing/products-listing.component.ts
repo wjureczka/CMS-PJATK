@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductsService} from './services/products.service';
+import {ProductsService} from '../services/products.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {ListingProduct} from './model/listing-product.model';
+import {ListingProduct} from '../model/listing-product.model';
 import {catchError, finalize} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  templateUrl: './products-listing.component.html',
+  styleUrls: ['./products-listing.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsListingComponent implements OnInit {
 
   public products$: Observable<ListingProduct[]>;
 

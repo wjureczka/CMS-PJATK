@@ -1,0 +1,23 @@
+<div class="products">
+
+  <h1 class="mat-h1 products__header">{{'products.header' | translate}}</h1>
+
+  <div class="products__listing">
+
+    <app-product-category-select></app-product-category-select>
+
+    <ul class="products__list">
+
+      <li class="products__list-item">
+        <app-products-listing-list-item *ngFor="let product of products$ | async"
+                          [id]="product.id"
+                          [category]="product.category.categoryType"
+                          [description]="product.description"
+                          [price]="product.price">
+        </app-products-listing-list-item>
+      </li>
+    </ul>
+
+  </div>
+
+</div>

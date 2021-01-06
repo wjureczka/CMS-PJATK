@@ -1,5 +1,3 @@
-import {ProductsComponent} from './products.component';
-import {ProductCardComponent} from './product-card/product-card.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
@@ -16,16 +14,20 @@ import {MatSelectModule} from '@angular/material/select';
 import {RouterModule} from '@angular/router';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import { ProductComponent } from './product/product.component';
+import { ProductsListingComponent } from './products-listing/products-listing.component';
+import { ProductsListingListItemComponent } from './products-listing/products-listing-list-item/products-listing-list-item.component';
 
 
 @NgModule({
   declarations: [
-    ProductsComponent,
-    ProductCardComponent,
     ProductCategorySelectComponent,
     CategoryPipe,
     ProductDetailsComponent,
-    DetailsPanelComponent
+    DetailsPanelComponent,
+    ProductComponent,
+    ProductsListingComponent,
+    ProductsListingListItemComponent
   ],
   imports: [
     CommonModule,
