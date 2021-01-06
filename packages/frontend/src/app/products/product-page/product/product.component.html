@@ -1,13 +1,5 @@
 <div class="details">
 
-  <span class="details__back-btn">
-    <button mat-mini-fab color="primary" routerLink="/products">
-      <mat-icon>arrow_back_ios_new</mat-icon>
-    </button>
-    <label>Wróć do wyszukiwarki</label>
-  </span>
-
-  <ng-container *ngIf="details$ | async as details">
 
     <div class="details__header">
 
@@ -17,10 +9,10 @@
            width="400"
            height="200">
 
-      <app-details-panel class="panel"
-                         [price]="details.price"
-                         [description]="details.description">
-      </app-details-panel>
+<!--      <app-details-panel class="panel"-->
+<!--                         [price]="product.price"-->
+<!--                         [description]="product.description">-->
+<!--      </app-details-panel>-->
 
     </div>
 
@@ -58,6 +50,5 @@
 
     </div>
 
-  </ng-container>
 
 </div>

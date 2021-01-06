@@ -7,7 +7,7 @@ import {HomeComponent} from './home/home.component';
 import {CartComponent} from './cart/cart.component';
 import {NotAuthenticatedGuard} from './core/not-authenticated.guard';
 import {ProductsListingComponent} from './products/products-listing/products-listing.component';
-import {ProductComponent} from './products/product/product.component';
+import {ProductPageComponent} from './products/product-page/product-page.component';
 
 const routes: Routes = [
   {
@@ -43,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'products/:productId',
-    component: ProductComponent
+    component: ProductPageComponent
   },
   {
     path: 'admin',
