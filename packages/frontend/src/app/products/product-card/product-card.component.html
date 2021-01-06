@@ -1,0 +1,24 @@
+<mat-card class="product-card" [routerLink]="['/products', id]">
+
+  <img class="product-card__image"
+       mat-card-image
+       [src]="'assets/img/product.png'"
+       alt="Product PHOTO">
+
+  <div class="product-card__category">
+    <p>{{category | category}}</p>
+  </div>
+
+  <mat-card-content>
+
+    <div class="product-card__name">{{description}}</div>
+
+    <div class="product-card__producer">Producent</div>
+
+    <div class="product-card__price">
+      <span>{{price | currency: 'PLN'}}</span>
+    </div>
+
+  </mat-card-content>
+
+</mat-card>

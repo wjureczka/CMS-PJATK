@@ -16,5 +16,16 @@
   "views.sessions.login-page.register": "Register",
   "views.sessions.register-page.register": "Registration",
   "views.sessions.register-page.haveAccount": "Have account already?",
-  "views.sessions.register-page.login": "Log in"
+  "views.sessions.register-page.login": "Log in",
+
+  "products.header": "Our products",
+  "products.category-select.categories": "Categories",
+  "products.category-select.search": "Search",
+
+  "category.motherboard": "Motherboard",
+  "category.processor": "Processor",
+  "category.graphics_card": "Graphics Card",
+  "category.memory": "Memory",
+  "category.hardware": "Hardware"
+
 }

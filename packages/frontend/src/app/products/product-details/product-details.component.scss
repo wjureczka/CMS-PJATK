@@ -1,0 +1,49 @@
+@import "src/assets/layout";
+
+.details {
+  display: flex;
+  flex-direction: column;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__back-btn {
+    margin: 30px 0;
+
+    label {
+      padding-left: 10px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+
+    img {
+      width: 55%;
+      height: auto;
+    }
+
+    .panel {
+      width: 45%;
+    }
+  }
+
+  &__description, &__technical {
+    h2 {
+      font-size: 1.6rem;
+      padding: 15px 0;
+    }
+  }
+
+  &__technical {
+    table {
+      width: 100%;
+      margin: 5px 0;
+    }
+  }
+}
+
+.mat-row:nth-child(odd) {
+  background-color: rgba(178, 178, 185, 0.61);
+}

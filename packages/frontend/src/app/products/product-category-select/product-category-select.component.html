@@ -1,0 +1,24 @@
+<div class="category-select">
+  <mat-card>
+
+    <mat-card-header>
+      <mat-card-title>{{'products.category-select.categories' | translate}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div>
+        <ul class="category-select__list">
+          <li *ngFor="let category of categories$ | async">
+            <mat-checkbox color="primary">{{category.categoryType | category}}</mat-checkbox>
+          </li>
+        </ul>
+      </div>
+    </mat-card-content>
+
+  </mat-card>
+
+  <button class="category-select__button"
+          mat-raised-button
+          color="primary">{{'products.category-select.search' | translate}}
+  </button>
+</div>

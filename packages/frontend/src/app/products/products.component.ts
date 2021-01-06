@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductsService} from './products.service';
+import {ProductsService} from './services/products.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {ListingProduct} from './model/listing-product.model';
+import {catchError, finalize} from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
 
 @Component({
   selector: 'app-products',
@@ -9,7 +12,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ProductsComponent implements OnInit {
 
-  public products: any[] = [];
+  public products$: Observable<ListingProduct[]>;
 
   public isLoading = true;
 
@@ -17,19 +20,15 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.productsService
-      .getProducts()
-      .subscribe(
-        (response) => {
-          this.products = response;
-        },
-        (error) => {
+    this.products$ = this.productsService.getProducts()
+      .pipe(
+        catchError(err => {
           this.snackbar.open('Nie udało się pobrać produktów', '', {duration: 3000});
-        },
-        () => {
+          return throwError(err);
+        }),
+        finalize(() => {
           this.isLoading = false;
-        }
+        })
       );
   }
 

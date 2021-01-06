@@ -8,11 +8,13 @@ import {ProductsComponent} from './products/products.component';
 import {CartComponent} from './cart/cart.component';
 import {NotAuthenticatedGuard} from './core/not-authenticated.guard';
 import {AdminComponent} from './admin/admin.component';
+import {ProductDetailsComponent} from './products/product-details/product-details.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    pathMatch: 'full',
+    redirectTo: 'home'
   },
   {
     path: 'home',
@@ -35,6 +37,10 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent
+  },
+  {
+    path: 'products/details',
+    component: ProductDetailsComponent
   },
   {
     path: 'cart',

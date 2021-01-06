@@ -1,3 +1,22 @@
-<mat-spinner></mat-spinner>
+<div class="products">
 
-<p>products works!</p>
+  <h1 class="mat-h1 products__header">{{'products.header' | translate}}</h1>
+
+  <div class="products__list">
+
+    <app-product-category-select></app-product-category-select>
+
+    <div class="products__list-cards">
+
+      <app-product-card *ngFor="let prod of products$ | async"
+                        [id]="prod.id"
+                        [category]="prod.category.categoryType"
+                        [description]="prod.description"
+                        [price]="prod.price">
+      </app-product-card>
+
+    </div>
+
+  </div>
+
+</div>
