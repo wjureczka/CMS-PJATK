@@ -9,34 +9,33 @@
   margin-left: auto;
   margin-right: auto;
 
-  .mat-drawer-container {
+  &__sidenav-container {
     background-color: transparent;
     height: 100%;
   }
 
   &__sidenav {
-    background-color: transparent;
+    background-color: map-get($mat-gray, 900);
+    border-right: none;
   }
 
   &__sidenav-content {
-    background-color: transparent;
+    background-color: rgba(map-get($mat-blue-gray, 50), 0.5);
     padding-right: 15px;
+  }
+
+  &__nav {
+    padding-top: 0;
   }
 
   &__nav-route.mat-list-item {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
   }
 
   &__nav-route--active {
-    color: map-get($mat-blue, 500);
-
-    &:after {
-      display: inline;
-      content: '•';
-      position: relative;
-      margin-right: 15px;
-    }
+    background-color: map-get($mat-blue, 500);
   }
 }

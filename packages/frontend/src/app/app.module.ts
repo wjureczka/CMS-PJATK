@@ -16,7 +16,6 @@ import {CMSInterceptor} from './core/cms.interceptor';
 import {ProductsModule} from './products/products.module';
 import {HomeModule} from './home/home.module';
 import {AdminModule} from './admin/admin.module';
-import {AdminRoutingModule} from './admin/admin-routing.module';
 
 @NgModule({
   declarations: [

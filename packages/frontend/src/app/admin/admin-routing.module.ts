@@ -8,6 +8,11 @@ const routes: Routes = [{
   component: AdminComponent,
   children: [
     {
+      path: '',
+      pathMatch: 'full',
+      redirectTo: 'product-management'
+    },
+    {
       path: 'product-management',
       component: ProductManagementComponent
     }

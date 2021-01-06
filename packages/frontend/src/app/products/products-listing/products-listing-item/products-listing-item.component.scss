@@ -1,0 +1,44 @@
+.product-card {
+  width: 100%;
+  cursor: pointer;
+
+  &__image {
+    position: relative;
+    height: 125px;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 3px 0;
+  }
+
+  &__producer {
+    font-size: 10px;
+    color: gray;
+  }
+
+  &__category {
+    top: 100px;
+    right: 15px;
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    font-size: .7rem;
+    background: darkcyan;
+    color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__price {
+    font-size: .9em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: -20 0;
+  }
+
+}
