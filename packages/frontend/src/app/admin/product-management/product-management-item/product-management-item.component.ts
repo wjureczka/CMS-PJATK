@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Product} from '../product-management.service';
+import {Product, ProductManagementService} from '../product-management.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-management-item',
@@ -12,9 +13,33 @@ export class ProductManagementItemComponent implements OnInit {
 
   @Output() productDelete = new EventEmitter<Product>();
 
-  constructor() { }
+  public isLoading = false;
+
+  constructor(
+    private productManagementService: ProductManagementService,
+    private snackbar: MatSnackBar
+  ) {
+  }
 
   ngOnInit(): void {
+  }
+
+  editProduct(): void {
+
+  }
+
+  deleteProduct(): void {
+    this.isLoading = true;
+
+    this.productManagementService.deleteProduct(this.product.id)
+      .subscribe(
+        () => {
+          this.productDelete.emit(this.product);
+        },
+        () => {
+          this.snackbar.open('Nie udało się usunąć produktu', '', {duration: 3000});
+          this.isLoading = false;
+        });
   }
 
 }

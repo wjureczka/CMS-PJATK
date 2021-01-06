@@ -12,6 +12,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ProductManagementItemComponent } from './product-management/product-management-item/product-management-item.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ProductManagementItemComponent } from './product-management/product-man
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule
   ]
 })
 export class AdminModule {

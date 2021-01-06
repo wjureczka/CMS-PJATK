@@ -28,4 +28,7 @@ export class ProductManagementComponent implements OnInit {
       });
   }
 
+  handleProductDelete(deletedProduct: Product): void {
+    this.products = this.products.filter((product) => product.id !== deletedProduct.id);
+  }
 }

@@ -1,5 +1,32 @@
-<div>
-  <img src="assets/barcode.jpeg" />
+<div class="product" [class.product--loading]="isLoading">
+  <div class="product__loader" *ngIf="isLoading">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
 
+  <img src="assets/barcode.jpeg" class="product__image"/>
 
+  <div class="product__details">
+
+    <h2 class="product__details-name">
+      {{product.description}}
+
+      <mat-chip-list aria-label="Fish selection" class="product__details-category">
+        <mat-chip>{{product.category.categoryType}}</mat-chip>
+      </mat-chip-list>
+    </h2>
+
+    <p class="product__details-description"></p>
+
+    <p class="product__details-price">Cena: <span>{{product.price}}</span></p>
+  </div>
+
+  <div class="product__actions">
+    <button class="product__actions-button product__actions-button--edit" (click)="editProduct()">
+      <span class="material-icons">edit</span>
+    </button>
+
+    <button class="product__actions-button product__actions-button--delete" (click)="deleteProduct()">
+      <span class="material-icons">delete</span>
+    </button>
+  </div>
 </div>
