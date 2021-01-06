@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
@@ -54,6 +56,7 @@ public class ProductController {
             domain.setPrice(product.getPrice());
             domain.setLongDescription(product.getLongDescription());
             domain.setProducer(product.getProducer());
+            domain.setProperties(new HashSet<>());
             domain.addProperties(product.getProperties());
             repository.save(domain);
 
@@ -70,6 +73,8 @@ public class ProductController {
         newProduct.setDateTo(product.getDateTo());
         newProduct.setCategory(product.getCategory());
         newProduct.setDescription(product.getDescription());
+        newProduct.setLongDescription(product.getLongDescription());
+        newProduct.setProducer(product.getProducer());
         newProduct.addProperties(product.getProperties());
 
         repository.save(newProduct);
