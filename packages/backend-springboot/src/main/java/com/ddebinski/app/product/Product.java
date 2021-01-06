@@ -75,4 +75,9 @@ public class Product {
         properties.remove(property);
         property.setProduct(null);
     }
+
+    public void clearAllProperties() {
+        this.properties.forEach(property -> property.setProduct(null));
+        this.properties.clear();
+    }
 }

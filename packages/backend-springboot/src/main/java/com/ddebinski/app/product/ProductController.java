@@ -56,7 +56,7 @@ public class ProductController {
             domain.setPrice(product.getPrice());
             domain.setLongDescription(product.getLongDescription());
             domain.setProducer(product.getProducer());
-            domain.setProperties(new HashSet<>());
+            domain.clearAllProperties();
             domain.addProperties(product.getProperties());
             repository.save(domain);
 
