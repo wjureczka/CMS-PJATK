@@ -1,0 +1,33 @@
+.summary {
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__header {
+    font-size: 1.2rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    label {
+      font-size: .8rem;
+      margin-top: -30px;
+      opacity: .7;
+    }
+
+    span {
+      padding-top: 10px;
+      font-size: 1.8rem;
+    }
+  }
+
+  &__btn {
+    width: 100%;
+  }
+}

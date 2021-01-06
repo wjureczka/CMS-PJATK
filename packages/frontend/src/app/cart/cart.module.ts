@@ -7,12 +7,19 @@ import {CartListItemComponent} from './cart-page/cart-list-item/cart-list-item.c
 import {RouterModule} from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import {CartSummaryComponent} from './cart-page/cart-summary/cart-summary.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
-  declarations: [CartPageComponent, CartListItemComponent],
+  declarations: [
+    CartPageComponent,
+    CartListItemComponent,
+    CartSummaryComponent
+  ],
   imports: [
     CommonModule,
+    MatButtonModule,
     MatCardModule,
     MatIconModule,
     RouterModule
