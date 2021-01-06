@@ -1,5 +1,6 @@
 package com.ddebinski.app.product;
 
+import com.ddebinski.app.category.ECategoryType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
@@ -69,18 +70,26 @@ public class ProductController {
 
     @PostMapping
     ResponseEntity<HttpStatus> save(@RequestBody @Valid Product product) {
-        Product newProduct = new Product();
-        newProduct.setDateFrom(product.getDateFrom());
-        newProduct.setDateTo(product.getDateTo());
-        newProduct.setCategory(product.getCategory());
-        newProduct.setDescription(product.getDescription());
-        newProduct.setLongDescription(product.getLongDescription());
-        newProduct.setProducer(product.getProducer());
-        newProduct.addProperties(product.getProperties());
+        ResponseEntity<HttpStatus> responseEntity = validatePropertiesForCategory(product.getCategory().getCategoryType(), product.getProperties());
 
-        repository.save(newProduct);
+        if (responseEntity.getStatusCode().is2xxSuccessful()) {
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+            Product newProduct = new Product();
+            newProduct.setDateFrom(product.getDateFrom());
+            newProduct.setDateTo(product.getDateTo());
+            newProduct.setPrice(product.getPrice());
+            newProduct.setCategory(product.getCategory());
+            newProduct.setDescription(product.getDescription());
+            newProduct.setLongDescription(product.getLongDescription());
+            newProduct.setProducer(product.getProducer());
+            newProduct.addProperties(product.getProperties());
+
+            repository.save(newProduct);
+
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } else {
+            return responseEntity;
+        }
     }
 
     @DeleteMapping(path = "/{id}")
@@ -90,6 +99,50 @@ public class ProductController {
             return ResponseEntity.noContent().build();
         } catch (ConstraintViolationException e) {
             return new ResponseEntity(e, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    ResponseEntity validatePropertiesForCategory(ECategoryType categoryType, Set<ProductProperty> properties) {
+        if (categoryType == null || properties.isEmpty()) {
+            return ResponseEntity.badRequest().body("Category type or properties are empty, fill it and try again.");
+        }
+
+        Stream<EProperty> ePropertyStream = properties.stream()
+                .map(ProductProperty::getName);
+
+        boolean invalidate = false;
+        if (categoryType.equals(ECategoryType.MOTHERBOARD)) {
+            invalidate = ePropertyStream
+                    .anyMatch(eProperty -> eProperty.equals(EProperty.CLOCK_SPEED)
+                            || eProperty.equals(EProperty.CORE_COUNT)
+                            || eProperty.equals(EProperty.CASE_TYPE)
+                            || eProperty.equals(EProperty.MEMORY_CL)
+                            || eProperty.equals(EProperty.MEMORY_COUNT)
+                            || eProperty.equals(EProperty.POWER));
+        } else if (categoryType.equals(ECategoryType.PROCESSOR)) {
+            invalidate = ePropertyStream
+                    .anyMatch(eProperty -> eProperty.equals(EProperty.CASE_TYPE)
+                            || eProperty.equals(EProperty.MEMORY_CL)
+                            || eProperty.equals(EProperty.POWER));
+        } else if (categoryType.equals(ECategoryType.GRAPHICS_CARD)) {
+            invalidate = ePropertyStream
+                    .anyMatch(eProperty -> eProperty.equals(EProperty.CASE_TYPE)
+                            || eProperty.equals(EProperty.MEMORY_CL)
+                            || eProperty.equals(EProperty.POWER)
+                            || eProperty.equals(EProperty.SOCKET));
+        } else if (categoryType.equals(ECategoryType.MEMORY)) {
+            invalidate = ePropertyStream
+                    .anyMatch(eProperty -> eProperty.equals(EProperty.CLOCK_SPEED)
+                            || eProperty.equals(EProperty.CORE_COUNT)
+                            || eProperty.equals(EProperty.CASE_TYPE)
+                            || eProperty.equals(EProperty.SOCKET)
+                            || eProperty.equals(EProperty.POWER));
+        }
+
+        if (invalidate) {
+            return ResponseEntity.badRequest().body("Invalidate properties for this category");
+        } else {
+            return ResponseEntity.ok().build();
         }
     }
 }
