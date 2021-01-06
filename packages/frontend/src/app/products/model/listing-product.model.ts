@@ -4,6 +4,10 @@ export interface ListingProduct {
   id: number;
   category: Category;
   description: string;
+  longDescription: string;
+  producer: {
+    producerName: string;
+  };
   price: number;
 }
 
