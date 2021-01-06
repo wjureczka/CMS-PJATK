@@ -48,23 +48,29 @@ public class ProductController {
 
     @PutMapping
     ResponseEntity<HttpStatus> update(@RequestBody @Valid Product product) {
-        Optional<Product> result = repository.findById(product.getId());
-        if (result.isPresent()) {
-            Product domain = result.get();
-            domain.setDateFrom(product.getDateFrom());
-            domain.setDateTo(product.getDateTo());
-            domain.setCategory(product.getCategory());
-            domain.setPrice(product.getPrice());
-            domain.setDescription(product.getDescription());
-            domain.setLongDescription(product.getLongDescription());
-            domain.setProducer(product.getProducer());
-            domain.clearAllProperties();
-            domain.addProperties(product.getProperties());
-            repository.save(domain);
+        ResponseEntity<HttpStatus> responseEntity = validatePropertiesForCategory(product.getCategory().getCategoryType(), product.getProperties());
 
-            return new ResponseEntity<>(HttpStatus.CREATED);
+        if (responseEntity.getStatusCode().is2xxSuccessful()) {
+            Optional<Product> result = repository.findById(product.getId());
+            if (result.isPresent()) {
+                Product domain = result.get();
+                domain.setDateFrom(product.getDateFrom());
+                domain.setDateTo(product.getDateTo());
+                domain.setCategory(product.getCategory());
+                domain.setPrice(product.getPrice());
+                domain.setDescription(product.getDescription());
+                domain.setLongDescription(product.getLongDescription());
+                domain.setProducer(product.getProducer());
+                domain.clearAllProperties();
+                domain.addProperties(product.getProperties());
+                repository.save(domain);
+
+                return new ResponseEntity<>(HttpStatus.CREATED);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
         } else {
-            return ResponseEntity.notFound().build();
+            return responseEntity;
         }
     }
 
