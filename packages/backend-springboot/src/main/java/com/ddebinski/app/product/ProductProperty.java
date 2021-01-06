@@ -22,7 +22,7 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @Getter
 @Setter
-@EqualsAndHashCode
+@EqualsAndHashCode(of = {"name", "value", "product"})
 public class ProductProperty {
 
     @Id

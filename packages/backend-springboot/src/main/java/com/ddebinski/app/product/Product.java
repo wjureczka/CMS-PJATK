@@ -57,8 +57,7 @@ public class Product {
 
     @OneToMany(
             mappedBy = "product",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            cascade = CascadeType.ALL
     )
     @JsonIgnoreProperties("product")
     private Set<ProductProperty> properties = new HashSet<>();
