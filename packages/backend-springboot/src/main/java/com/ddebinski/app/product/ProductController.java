@@ -52,7 +52,9 @@ public class ProductController {
             domain.setDateTo(product.getDateTo());
             domain.setCategory(product.getCategory());
             domain.setPrice(product.getPrice());
-            domain.setProperties(product.getProperties());
+            domain.setLongDescription(product.getLongDescription());
+            domain.setProducer(product.getProducer());
+            domain.addProperties(product.getProperties());
             repository.save(domain);
 
             return new ResponseEntity<>(HttpStatus.CREATED);
