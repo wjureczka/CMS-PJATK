@@ -7,6 +7,21 @@ import {ProductManagementService} from '../product-management.service';
 import {ProductCategoryType} from '../../../shared/product-category-type.enum';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
+enum InputType {
+  NUMBER = 'number',
+  TEXT = 'text'
+}
+
+enum ProductPropertyType {
+  SOCKET = 'SOCKET',
+  CORE_COUNT = 'CORE_COUNT',
+  CLOCK_SPEED = 'CLOCK_SPEED',
+  MEMORY_COUNT = 'MEMORY_COUNT',
+  MEMORY_CL = 'MEMORY_CL',
+  POWER = 'POWER',
+  CASE_TYPE = 'CASE_TYPE'
+}
+
 @Component({
   selector: 'app-product-management-add-item-dialog',
   templateUrl: './product-management-add-item-dialog.component.html',
@@ -16,17 +31,40 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public productCategories$: Observable<ProductCategory[]>;
 
-  public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, any>([
-    [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
-      name: ['', [Validators.minLength(1), Validators.required]],
-      socket: ['', [Validators.minLength(1), Validators.required]]
-    })],
-    [ProductCategoryType.MEMORY, this.formBuilder.group({})],
-    [ProductCategoryType.PROCESSOR, this.formBuilder.group({})],
-    [ProductCategoryType.GRAPHICS_CARD, this.formBuilder.group({})],
+  public propertyNameToInputType: Map<ProductPropertyType, InputType> = new Map<ProductPropertyType, InputType>([
+    [ProductPropertyType.MEMORY_COUNT, InputType.NUMBER],
+    [ProductPropertyType.CORE_COUNT, InputType.NUMBER],
+    [ProductPropertyType.CLOCK_SPEED, InputType.NUMBER],
+    [ProductPropertyType.POWER, InputType.NUMBER],
+    [ProductPropertyType.MEMORY_COUNT, InputType.NUMBER],
+    [ProductPropertyType.CASE_TYPE, InputType.TEXT],
+    [ProductPropertyType.MEMORY_CL, InputType.TEXT]
   ]);
 
-  public selectedFormGroup: FormGroup = new FormGroup({});
+  public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, any>([
+    [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
+      [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
+      name: ['', [Validators.minLength(1), Validators.required]]
+    })],
+    [ProductCategoryType.MEMORY, this.formBuilder.group({
+      [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(1), Validators.required]],
+      [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
+      name: ['', [Validators.minLength(1), Validators.required]]
+    })],
+    [ProductCategoryType.PROCESSOR, this.formBuilder.group({
+      [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
+      [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
+      [ProductPropertyType.CORE_COUNT]: [0, [Validators.min(1), Validators.required]],
+      name: ['', [Validators.minLength(1), Validators.required]]
+    })],
+    [ProductCategoryType.GRAPHICS_CARD, this.formBuilder.group({
+      [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
+      [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
+      name: ['', [Validators.minLength(1), Validators.required]]
+    })],
+  ]);
+
+  public selectedFormGroup = new FormGroup({});
 
   public selectedProductCategoryType: number | undefined;
 

@@ -15,13 +15,15 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" *ngFor="let control of selectedFormGroup.controls | keyvalue">
+    <mat-form-field *ngFor="let control of selectedFormGroup.controls | keyvalue">
       <mat-label>{{control.key}}</mat-label>
-      <input matInput type="text" [formControlName]="control.key">
+      <input matInput [type]="propertyNameToInputType.get(control.key)" [formControlName]="control.key">
     </mat-form-field>
-  </form>
 
+
+  </form>
 </div>
+
 
 <div mat-dialog-actions>
   <button mat-stroked-button color="primary">Zamknij</button>
