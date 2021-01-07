@@ -18,6 +18,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, any>([
     [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
+      name: ['', [Validators.minLength(1), Validators.required]],
       socket: ['', [Validators.minLength(1), Validators.required]]
     })],
     [ProductCategoryType.MEMORY, this.formBuilder.group({})],
@@ -25,8 +26,9 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
     [ProductCategoryType.GRAPHICS_CARD, this.formBuilder.group({})],
   ]);
 
-  public selectedFormGroup: FormGroup | undefined;
+  public selectedFormGroup: FormGroup = new FormGroup({});
 
+  public selectedProductCategoryType: number | undefined;
 
   constructor(private dialogRef: MatDialogRef<ProductManagementAddItemDialogComponent>,
               private productManagementService: ProductManagementService,
@@ -37,6 +39,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
   }
 
   public handleProductCategoryValueChange($event): void {
+    this.selectedProductCategoryType = $event;
     this.selectedFormGroup = this.productCategoryTypeToFormGroup.get($event);
   }
 
@@ -44,6 +47,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
     $event.preventDefault();
     console.log($event);
     console.log(this.selectedFormGroup.getRawValue());
+    console.log(this.selectedProductCategoryType);
   }
 
 }
