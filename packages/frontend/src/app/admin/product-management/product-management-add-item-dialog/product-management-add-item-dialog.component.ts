@@ -44,7 +44,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
   public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, any>([
     [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
       [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
-      name: ['', [Validators.minLength(1), Validators.required]]
+      name: ['', [Validators.minLength(1), Validators.required]],
     })],
     [ProductCategoryType.MEMORY, this.formBuilder.group({
       [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(1), Validators.required]],
@@ -62,6 +62,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
       [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
       name: ['', [Validators.minLength(1), Validators.required]]
     })],
+    [ProductCategoryType.HARDWARE, this.formBuilder.group({})]
   ]);
 
   public selectedFormGroup = new FormGroup({});
