@@ -10,7 +10,7 @@
       <mat-label>Wybierz kategorie</mat-label>
       <mat-select (valueChange)="handleProductCategoryValueChange($event)">
         <mat-option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory.categoryId">
-          {{productCategory.categoryType}}
+          {{productCategory.categoryType | productCategoryTranslate}}
         </mat-option>
       </mat-select>
     </mat-form-field>
