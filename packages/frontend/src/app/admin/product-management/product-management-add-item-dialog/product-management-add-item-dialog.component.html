@@ -2,11 +2,11 @@
 
 <form mat-dialog-content>
 
-  <mat-form-field>
+  <mat-form-field >
     <mat-label>Favorite food</mat-label>
     <mat-select>
-      <mat-option *ngFor="let categoryType of categoryTypes" [value]="categoryType">
-        {{categoryType}}
+      <mat-option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory">
+        {{productCategory}}
       </mat-option>
     </mat-select>
   </mat-form-field>

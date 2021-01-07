@@ -6,7 +6,7 @@
   <mat-card-content>
     <ul class="category-select__list">
       <li *ngFor="let category of categories$ | async" class="category-select__list-item">
-        <mat-checkbox color="primary">{{category.categoryType | category}}</mat-checkbox>
+        <mat-checkbox color="primary">{{category.categoryType | productCategoryTranslate}}</mat-checkbox>
       </li>
     </ul>
 

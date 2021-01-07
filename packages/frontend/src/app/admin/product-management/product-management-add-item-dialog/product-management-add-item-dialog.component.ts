@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
-import {CategoryType} from '../../../shared/category-type.enum';
+import {Observable} from 'rxjs';
+
+import {ProductCategory} from '../../../shared/product-category.model';
+import {ProductManagementService} from '../product-management.service';
 
 @Component({
   selector: 'app-product-management-add-item-dialog',
@@ -9,12 +12,13 @@ import {CategoryType} from '../../../shared/category-type.enum';
 })
 export class ProductManagementAddItemDialogComponent implements OnInit {
 
-  public categoryTypes = CategoryType;
+  public productCategories$: Observable<ProductCategory[]>;
 
-  constructor(    private dialogRef: MatDialogRef<ProductManagementAddItemDialogComponent>) { }
+  constructor(private dialogRef: MatDialogRef<ProductManagementAddItemDialogComponent>,
+              private productManagementService: ProductManagementService) { }
 
   ngOnInit(): void {
-    console.log(this.categoryTypes);
+    this.productCategories$ = this.productManagementService.getProductCategories();
   }
 
 }
