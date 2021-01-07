@@ -10,21 +10,21 @@
     </mat-select>
   </mat-form-field>
 
+  <mat-form-field class="add-item-dialog__category">
+    <mat-label>Wybierz producenta</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let productProducers of productProducers$ | async" [value]="productProducers.producerId">
+        {{productProducers.producerName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <form *ngIf="selectedFormGroup"
         [formGroup]="selectedFormGroup"
         (ngSubmit)="submitAddItemForm($event)"
         id="add-new-item-form"
         class="add-item-dialog__form"
   >
-    <mat-form-field class="add-item-dialog__category">
-      <mat-label>Wybierz producenta</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let productProducers of productProducers$ | async" [value]="productProducers.producerId">
-          {{productProducers.producerName | productCategoryTranslate}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
     <mat-form-field>
       <mat-label>Nazwa</mat-label>
       <input matInput type="text" [formControl]="selectedFormGroup.controls.name">

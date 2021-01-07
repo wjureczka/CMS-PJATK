@@ -38,7 +38,7 @@ export class ProductManagementComponent implements OnInit {
   }
 
   openAddItemDialog(): void {
-    const dialogRef = this.dialog.open(ProductManagementAddItemDialogComponent, { width: '300px' });
+    const dialogRef = this.dialog.open(ProductManagementAddItemDialogComponent, { width: '300px', height: '65%' });
 
     dialogRef.afterClosed().subscribe((itemAdded) => {
       if (!itemAdded) {
