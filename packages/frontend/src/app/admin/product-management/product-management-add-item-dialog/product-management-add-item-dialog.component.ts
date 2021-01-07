@@ -6,6 +6,7 @@ import {ProductCategory} from '../../../shared/product-category.model';
 import {ProductManagementService, ProductProducer} from '../product-management.service';
 import {ProductCategoryType} from '../../../shared/product-category-type.enum';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 enum InputType {
   NUMBER = 'number',
@@ -45,20 +46,23 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, any>([
     [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
-      name: ['', [Validators.minLength(2), Validators.required]],
+      description: ['', [Validators.minLength(2), Validators.required]],
+      longDescription: ['', [Validators.minLength(2), Validators.required]],
       productProperties: this.formBuilder.group({
         [ProductPropertyType.SOCKET]: ['', [Validators.minLength(2), Validators.required]],
       })
     })],
     [ProductCategoryType.MEMORY, this.formBuilder.group({
-      name: ['', [Validators.minLength(1), Validators.required]],
+      description: ['', [Validators.minLength(1), Validators.required]],
+      longDescription: ['', [Validators.minLength(2), Validators.required]],
       productProperties: this.formBuilder.group({
         [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(2), Validators.required]],
         [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
       })
     })],
     [ProductCategoryType.PROCESSOR, this.formBuilder.group({
-      name: ['', [Validators.minLength(2), Validators.required]],
+      description: ['', [Validators.minLength(2), Validators.required]],
+      longDescription: ['', [Validators.minLength(2), Validators.required]],
       productProperties: this.formBuilder.group({
         [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
         [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
@@ -66,7 +70,8 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
       })
     })],
     [ProductCategoryType.GRAPHICS_CARD, this.formBuilder.group({
-      name: ['', [Validators.minLength(2), Validators.required]],
+      description: ['', [Validators.minLength(2), Validators.required]],
+      longDescription: ['', [Validators.minLength(2), Validators.required]],
       productProperties: this.formBuilder.group({
         [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
         [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
@@ -77,11 +82,15 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public selectedFormGroup: FormGroup | undefined;
 
-  public selectedProductCategoryType: number | undefined;
+  public selectedProductCategory: ProductCategory | undefined;
+
+  public selectedProducerId: number | undefined;
 
   constructor(private dialogRef: MatDialogRef<ProductManagementAddItemDialogComponent>,
               private productManagementService: ProductManagementService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private snackbar: MatSnackBar) {
+  }
 
   ngOnInit(): void {
     this.productCategories$ = this.productManagementService.getProductCategories();
@@ -89,15 +98,38 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
   }
 
   public handleProductCategoryValueChange($event): void {
-    this.selectedProductCategoryType = $event;
-    this.selectedFormGroup = this.productCategoryTypeToFormGroup.get($event);
+    this.selectedProductCategory = $event;
+    this.selectedFormGroup = this.productCategoryTypeToFormGroup.get($event.categoryId);
   }
 
   public submitAddItemForm($event): void {
     $event.preventDefault();
-    console.log($event);
-    console.log(this.selectedFormGroup.getRawValue());
-    console.log(this.selectedProductCategoryType);
+    const formValues = this.selectedFormGroup.getRawValue();
+
+    const product = {
+      description: formValues.description,
+      longDescription: formValues.longDescription,
+      producer: {
+        producerId: this.selectedProducerId
+      },
+      category: {
+        categoryId: this.selectedProductCategory.categoryId,
+        categoryType: this.selectedProductCategory.categoryType
+      },
+      properties: Object.entries(formValues.productProperties).map(([name, value]) => ({
+        name,
+        value
+      }))
+    };
+
+    console.log(product);
+
+    this.productManagementService.addProduct(product).subscribe(() => {
+
+      },
+      () => {
+        this.snackbar.open('Nie udało dodać się produktu', '', {duration: 3000});
+      });
   }
 
   public closeDialog(): void {

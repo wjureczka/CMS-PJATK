@@ -33,6 +33,10 @@ export class ProductManagementService {
     return this.http.delete<HttpResponseBase>(`/api/products/${productId}`);
   }
 
+  public addProduct(product: any): Observable<HttpResponseBase> {
+    return this.http.post<HttpResponseBase>('/api/products', { ...product });
+  }
+
   public getProductCategories(): Observable<ProductCategory[]> {
     return this.http.get<ProductCategory[]>('/api/categories');
   }
