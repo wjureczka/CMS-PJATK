@@ -89,4 +89,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
     console.log(this.selectedProductCategoryType);
   }
 
+  public closeDialog(): void {
+    this.dialogRef.close();
+  }
 }
