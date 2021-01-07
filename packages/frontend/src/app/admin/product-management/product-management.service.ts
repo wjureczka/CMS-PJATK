@@ -13,6 +13,11 @@ export interface Product {
   };
 }
 
+export interface ProductProducer {
+  producerId: string;
+  producerName: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,5 +35,9 @@ export class ProductManagementService {
 
   public getProductCategories(): Observable<ProductCategory[]> {
     return this.http.get<ProductCategory[]>('/api/categories');
+  }
+
+  public getProductProducers(): Observable<ProductProducer[]> {
+    return this.http.get<ProductProducer[]>('/api/producers');
   }
 }

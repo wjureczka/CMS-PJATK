@@ -3,7 +3,7 @@ import {MatDialogRef} from '@angular/material/dialog';
 import {Observable} from 'rxjs';
 
 import {ProductCategory} from '../../../shared/product-category.model';
-import {ProductManagementService} from '../product-management.service';
+import {ProductManagementService, ProductProducer} from '../product-management.service';
 import {ProductCategoryType} from '../../../shared/product-category-type.enum';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
@@ -31,6 +31,8 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public productCategories$: Observable<ProductCategory[]>;
 
+  public productProducers$: Observable<ProductProducer[]>;
+
   public propertyNameToInputType: Map<ProductPropertyType, InputType> = new Map<ProductPropertyType, InputType>([
     [ProductPropertyType.MEMORY_COUNT, InputType.NUMBER],
     [ProductPropertyType.CORE_COUNT, InputType.NUMBER],
@@ -43,29 +45,37 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, any>([
     [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
-      [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
-      name: ['', [Validators.minLength(1), Validators.required]],
+      name: ['', [Validators.minLength(2), Validators.required]],
+      productProperties: this.formBuilder.group({
+        [ProductPropertyType.SOCKET]: ['', [Validators.minLength(2), Validators.required]],
+      })
     })],
     [ProductCategoryType.MEMORY, this.formBuilder.group({
-      [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(1), Validators.required]],
-      [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
-      name: ['', [Validators.minLength(1), Validators.required]]
+      name: ['', [Validators.minLength(1), Validators.required]],
+      productProperties: this.formBuilder.group({
+        [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(2), Validators.required]],
+        [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
+      })
     })],
     [ProductCategoryType.PROCESSOR, this.formBuilder.group({
-      [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
-      [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
-      [ProductPropertyType.CORE_COUNT]: [0, [Validators.min(1), Validators.required]],
-      name: ['', [Validators.minLength(1), Validators.required]]
+      name: ['', [Validators.minLength(2), Validators.required]],
+      productProperties: this.formBuilder.group({
+        [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
+        [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
+        [ProductPropertyType.CORE_COUNT]: [0, [Validators.min(1), Validators.required]],
+      })
     })],
     [ProductCategoryType.GRAPHICS_CARD, this.formBuilder.group({
-      [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
-      [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
-      name: ['', [Validators.minLength(1), Validators.required]]
+      name: ['', [Validators.minLength(2), Validators.required]],
+      productProperties: this.formBuilder.group({
+        [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
+        [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
+      })
     })],
-    [ProductCategoryType.HARDWARE, this.formBuilder.group({})]
+    [ProductCategoryType.HARDWARE, null]
   ]);
 
-  public selectedFormGroup = new FormGroup({});
+  public selectedFormGroup: FormGroup | undefined;
 
   public selectedProductCategoryType: number | undefined;
 
@@ -75,6 +85,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.productCategories$ = this.productManagementService.getProductCategories();
+    this.productProducers$ = this.productManagementService.getProductProducers();
   }
 
   public handleProductCategoryValueChange($event): void {
