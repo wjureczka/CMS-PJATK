@@ -41,6 +41,10 @@ export class ProductManagementComponent implements OnInit {
     const dialogRef = this.dialog.open(ProductManagementAddItemDialogComponent);
 
     dialogRef.afterClosed().subscribe((itemAdded) => {
+      if (!itemAdded) {
+        return;
+      }
+
       this.products.unshift(itemAdded);
     });
   }

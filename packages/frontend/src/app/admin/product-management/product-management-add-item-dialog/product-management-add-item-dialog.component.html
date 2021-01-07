@@ -1,19 +1,25 @@
 <h1 mat-dialog-title>Dodaj produkt</h1>
 
-<form mat-dialog-content>
-
-  <mat-form-field >
-    <mat-label>Favorite food</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory">
-        {{productCategory}}
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Wybierz kategorie</mat-label>
+    <mat-select (valueChange)="handleProductCategoryValueChange($event)">
+      <mat-option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory.categoryId">
+        {{productCategory.categoryType}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-</form>
+  <form *ngIf="!!selectedFormGroup" [formGroup]="selectedFormGroup" (ngSubmit)="submitAddItemForm($event)" id="add-new-item-form">
+    <mat-form-field appearance="fill" *ngFor="let control of selectedFormGroup.controls | keyvalue">
+      <mat-label>{{control.key}}</mat-label>
+      <input matInput type="text" [formControlName]="control.key">
+    </mat-form-field>
+  </form>
+
+</div>
 
 <div mat-dialog-actions>
   <button mat-stroked-button color="primary">Zamknij</button>
-  <button mat-raised-button color="primary">Dodaj</button>
+  <button mat-raised-button color="primary" type="submit" form="add-new-item-form">Dodaj</button>
 </div>
