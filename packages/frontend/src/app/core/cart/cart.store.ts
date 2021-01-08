@@ -28,7 +28,7 @@ export class CartStore {
   constructor() {
     this.totalPrice$ = this.cartItems$
       .pipe(
-        map(this.calculateTotalPrice)
+        map(this.calcTotalPrice)
       );
     this.productCount$ = this.cartItems$
       .pipe(
@@ -43,10 +43,10 @@ export class CartStore {
   }
 
   removeProduct(id: number): void {
-    /* const cartItems = this.subject.getValue();
-     const newItems = cartItems
-       .filter(({productId}) => productId !== id);
-     this.subject.next(newItems);*/
+    const cartItems = this.subject.getValue();
+    const newItems = new Map(cartItems);
+    newItems.delete(id);
+    this.subject.next(newItems);
   }
 
   private addProductAndGetNewMap(item: CartItem, items: Map<number, CartItem>): Map<number, CartItem> {
@@ -63,7 +63,7 @@ export class CartStore {
     return newItems;
   }
 
-  private calculateTotalPrice(items: Map<number, CartItem>): number {
+  private calcTotalPrice(items: Map<number, CartItem>): number {
     let totalPrice = 0;
     items.forEach(item => totalPrice += item.quantity * item.price);
     return totalPrice;

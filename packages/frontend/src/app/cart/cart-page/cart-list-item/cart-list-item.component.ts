@@ -14,6 +14,7 @@ export class CartListItemComponent {
   }
 
   removeItem(): void {
+    this.cart.removeProduct(this.cartItem.productId);
   }
 
 }
