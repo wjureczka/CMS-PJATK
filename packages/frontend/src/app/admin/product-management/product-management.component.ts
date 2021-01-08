@@ -22,6 +22,10 @@ export class ProductManagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  private getProducts(): void {
     this.productManagementService.getProducts().subscribe((response) => {
         this.products = response;
         this.isLoading = false;
@@ -44,7 +48,7 @@ export class ProductManagementComponent implements OnInit {
         return;
       }
 
-      this.products.unshift(itemAdded);
+      this.getProducts();
     });
   }
 }

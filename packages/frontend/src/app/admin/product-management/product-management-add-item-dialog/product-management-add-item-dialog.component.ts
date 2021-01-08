@@ -107,6 +107,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
     const product = {
       description: this.descriptionFormControl.value,
       longDescription: this.longDescriptionFormControl.value,
+      price: this.priceFormControl.value,
       producer: {
         producerId: this.selectedProducerId
       },
@@ -121,7 +122,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
     };
 
     this.productManagementService.addProduct(product).subscribe(() => {
-
+      this.dialogRef.close(true);
       },
       () => {
         this.snackbar.open('Nie udało dodać się produktu', '', {duration: 3000});

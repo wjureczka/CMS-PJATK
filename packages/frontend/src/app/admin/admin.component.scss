@@ -5,7 +5,7 @@
 }
 
 .admin {
-  height: 100%;
+  max-height: 100%;
   margin-left: auto;
   margin-right: auto;
 
@@ -33,9 +33,13 @@
     justify-content: center;
     align-items: center;
     color: white;
+
+    &:hover {
+      background-color: map-get($mat-blue, 400);
+    }
   }
 
   &__nav-route--active {
-    background-color: map-get($mat-blue, 500);
+    background-color: map-get($mat-blue, 700);
   }
 }
