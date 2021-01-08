@@ -9,13 +9,22 @@ import {ProductManagementService, ProductProducer} from '../product-management.s
 import {ProductPropertyType} from '../shared/product-property-type.enum';
 import {InputType} from '../shared/input-type.enum';
 import {Product} from '../../../shared/product.model';
+import {PropertyType} from 'codelyzer/componentMaxInlineDeclarationsRule';
 
 @Component({
   selector: 'app-product-management-edit-item-dialog',
   templateUrl: './product-management-edit-item-dialog.component.html',
   styleUrls: ['./product-management-edit-item-dialog.component.scss']
 })
-export class ProductManagementEditItemDialogComponent implements OnInit{
+export class ProductManagementEditItemDialogComponent implements OnInit {
+
+  constructor(private dialogRef: MatDialogRef<ProductManagementEditItemDialogComponent>,
+              private productManagementService: ProductManagementService,
+              private formBuilder: FormBuilder,
+              private snackbar: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public product: Product
+  ) {
+  }
 
   public propertyNameToInputType: Map<ProductPropertyType, InputType> = new Map<ProductPropertyType, InputType>([
     [ProductPropertyType.MEMORY_COUNT, InputType.NUMBER],
@@ -29,28 +38,20 @@ export class ProductManagementEditItemDialogComponent implements OnInit{
 
   public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, any>([
     [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
-      productProperties: this.formBuilder.group({
         [ProductPropertyType.SOCKET]: ['', [Validators.minLength(2), Validators.required]],
-      })
     })],
     [ProductCategoryType.MEMORY, this.formBuilder.group({
-      productProperties: this.formBuilder.group({
         [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(2), Validators.required]],
         [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
-      })
     })],
     [ProductCategoryType.PROCESSOR, this.formBuilder.group({
-      productProperties: this.formBuilder.group({
         [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
         [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
         [ProductPropertyType.CORE_COUNT]: [0, [Validators.min(1), Validators.required]],
-      })
     })],
     [ProductCategoryType.GRAPHICS_CARD, this.formBuilder.group({
-      productProperties: this.formBuilder.group({
         [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
         [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
-      })
     })],
     [ProductCategoryType.HARDWARE, null]
   ]);
@@ -63,40 +64,54 @@ export class ProductManagementEditItemDialogComponent implements OnInit{
 
   public selectedFormGroup: FormGroup | undefined;
 
-  constructor(private dialogRef: MatDialogRef<ProductManagementEditItemDialogComponent>,
-              private productManagementService: ProductManagementService,
-              private formBuilder: FormBuilder,
-              private snackbar: MatSnackBar,
-              @Inject(MAT_DIALOG_DATA) public product: Product
-  ) {
-  }
-
-  public ngOnInit(): void{
+  public ngOnInit(): void {
     this.selectedFormGroup = this.productCategoryTypeToFormGroup.get(this.product.category.categoryId);
+    this.setCurrentValues();
   }
 
-  public submitAddItemForm($event): void {
+  public submitEditItemForm($event): void {
     $event.preventDefault();
     const formValues = this.selectedFormGroup.getRawValue();
 
-    const product = {
+    const product: Product = {
+      id: this.product.id,
       description: this.descriptionFormControl.value,
       longDescription: this.longDescriptionFormControl.value,
       price: this.priceFormControl.value,
       producer: this.product.producer,
       category: this.product.category,
-      properties: Object.entries(formValues.productProperties).map(([name, value]) => ({
+      //@ts-ignore
+      properties: Object.entries(formValues).map(([name, value]) => ({
         name,
         value
       }))
     };
 
-    this.productManagementService.addProduct(product).subscribe(() => {
+
+    this.productManagementService.editProduct(product).subscribe(() => {
         this.dialogRef.close(true);
       },
       () => {
         this.snackbar.open('Nie udało dodać się produktu', '', {duration: 3000});
       });
+  }
+
+  setCurrentValues(): void {
+    const controls = this.selectedFormGroup.controls;
+
+    Object.entries(controls).forEach(([key, value]) => {
+      value.setValue(this.getPropertyValue(key));
+    });
+
+    this.priceFormControl.setValue(this.product.price);
+    this.descriptionFormControl.setValue(this.product.description);
+    this.longDescriptionFormControl.setValue(this.product.longDescription);
+  }
+
+  getPropertyValue(propertyType: string): string | number {
+    const {value} = this.product.properties.find(({name}) => name === propertyType);
+
+    return value;
   }
 
   public closeDialog(): void {
