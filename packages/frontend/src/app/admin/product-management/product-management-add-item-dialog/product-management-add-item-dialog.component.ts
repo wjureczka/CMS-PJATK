@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {ProductCategory} from '../../../shared/product-category.model';
 import {ProductManagementService, ProductProducer} from '../product-management.service';
 import {ProductCategoryType} from '../../../shared/product-category-type.enum';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 enum InputType {
@@ -46,23 +46,17 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, any>([
     [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
-      description: ['', [Validators.minLength(2), Validators.required]],
-      longDescription: ['', [Validators.minLength(2), Validators.required]],
       productProperties: this.formBuilder.group({
         [ProductPropertyType.SOCKET]: ['', [Validators.minLength(2), Validators.required]],
       })
     })],
     [ProductCategoryType.MEMORY, this.formBuilder.group({
-      description: ['', [Validators.minLength(1), Validators.required]],
-      longDescription: ['', [Validators.minLength(2), Validators.required]],
       productProperties: this.formBuilder.group({
         [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(2), Validators.required]],
         [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
       })
     })],
     [ProductCategoryType.PROCESSOR, this.formBuilder.group({
-      description: ['', [Validators.minLength(2), Validators.required]],
-      longDescription: ['', [Validators.minLength(2), Validators.required]],
       productProperties: this.formBuilder.group({
         [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
         [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
@@ -70,8 +64,6 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
       })
     })],
     [ProductCategoryType.GRAPHICS_CARD, this.formBuilder.group({
-      description: ['', [Validators.minLength(2), Validators.required]],
-      longDescription: ['', [Validators.minLength(2), Validators.required]],
       productProperties: this.formBuilder.group({
         [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
         [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
@@ -79,6 +71,12 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
     })],
     [ProductCategoryType.HARDWARE, null]
   ]);
+
+  public priceFormControl = new FormControl(0, [Validators.required, Validators.min(1)]);
+
+  public descriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
+
+  public longDescriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(15)]);
 
   public selectedFormGroup: FormGroup | undefined;
 
@@ -107,8 +105,8 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
     const formValues = this.selectedFormGroup.getRawValue();
 
     const product = {
-      description: formValues.description,
-      longDescription: formValues.longDescription,
+      description: this.descriptionFormControl.value,
+      longDescription: this.longDescriptionFormControl.value,
       producer: {
         producerId: this.selectedProducerId
       },
@@ -121,8 +119,6 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
         value
       }))
     };
-
-    console.log(product);
 
     this.productManagementService.addProduct(product).subscribe(() => {
 

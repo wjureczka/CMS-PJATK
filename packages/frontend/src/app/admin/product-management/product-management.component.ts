@@ -24,11 +24,10 @@ export class ProductManagementComponent implements OnInit {
   ngOnInit(): void {
     this.productManagementService.getProducts().subscribe((response) => {
         this.products = response;
+        this.isLoading = false;
       },
       () => {
         this.snackbar.open('Nie udało pobrać się produktów', '', {duration: 3000});
-      },
-      () => {
         this.isLoading = false;
       });
   }

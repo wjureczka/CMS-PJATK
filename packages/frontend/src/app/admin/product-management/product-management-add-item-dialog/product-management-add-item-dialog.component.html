@@ -25,20 +25,27 @@
         id="add-new-item-form"
         class="add-item-dialog__form"
   >
-
     <mat-form-field>
       <mat-label>Nazwa</mat-label>
-      <input matInput type="text" [formControl]="selectedFormGroup.controls.description" required>
+      <input matInput type="text" [formControl]="descriptionFormControl" required>
       <mat-error *ngIf="selectedFormGroup.controls.description.hasError('required')">Pole wymagane</mat-error>
-      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('minlength')">Pole musi mieć więcej niż 1 znak
+      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('minlength')">Pole musi mieć więcej niż 5 znaków
       </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Opis</mat-label>
-      <textarea matInput type="text" [formControl]="selectedFormGroup.controls.longDescription" required></textarea>
+      <textarea matInput type="text" [formControl]="longDescriptionFormControl" required></textarea>
       <mat-error *ngIf="selectedFormGroup.controls.description.hasError('required')">Pole wymagane</mat-error>
-      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('minlength')">Pole musi mieć więcej niż 1 znak
+      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('minlength')">Pole musi mieć więcej niż 15 znaków
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cena</mat-label>
+      <input matInput type="text" [formControl]="priceFormControl" required>
+      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('required')">Pole wymagane</mat-error>
+      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('min')">Ustaw wartość większą niż 0
       </mat-error>
     </mat-form-field>
 
