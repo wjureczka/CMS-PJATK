@@ -17,7 +17,11 @@
 
       <a class="nav__link" routerLink="./cart" routerLinkActive="active">
         {{'navbar.cartLink' | translate}}
+        <ng-container *ngIf="productCount$ | async as count">
+          <span [matBadge]="count" matBadgeColor="warn" matBadgeSize="small"></span>
+        </ng-container>
       </a>
+
     </div>
 
     <div class="nav__menu">

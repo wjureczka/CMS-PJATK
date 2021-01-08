@@ -8,6 +8,7 @@ import {LanguageSelectorComponent} from './language-selector/language-selector.c
 import {UserMenuComponent} from './user-menu/user-menu.component';
 import {MatButtonModule} from '@angular/material/button';
 import {RouterModule} from '@angular/router';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {RouterModule} from '@angular/router';
   ],
   imports: [
     CommonModule,
+    MatBadgeModule,
     TranslateModule,
     MatMenuModule,
     MatButtonModule,

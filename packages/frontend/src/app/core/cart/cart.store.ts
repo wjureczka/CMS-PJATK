@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, startWith} from 'rxjs/operators';
 
 export interface CartItem {
   productId: number;
@@ -23,10 +23,16 @@ export class CartStore {
 
   totalPrice$: Observable<number>;
 
+  productCount$: Observable<number>;
+
   constructor() {
     this.totalPrice$ = this.cartItems$
       .pipe(
         map(this.calculateTotalPrice)
+      );
+    this.productCount$ = this.cartItems$
+      .pipe(
+        map(this.calcProductsCount)
       );
   }
 
@@ -57,10 +63,16 @@ export class CartStore {
     return newItems;
   }
 
-  private calculateTotalPrice = (items: Map<number, CartItem>): number => {
+  private calculateTotalPrice(items: Map<number, CartItem>): number {
     let totalPrice = 0;
     items.forEach(item => totalPrice += item.quantity * item.price);
     return totalPrice;
+  }
+
+  private calcProductsCount(items: Map<number, CartItem>): number {
+    let itemsCount = 0;
+    items.forEach(item => itemsCount += item.quantity);
+    return itemsCount;
   }
 
 }
