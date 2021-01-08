@@ -5,11 +5,10 @@
        [src]="'assets/img/product.png'"
        alt="Product PHOTO">
 
-  <div class="product-card__category">
-    <p>{{category | productCategoryTranslate}}</p>
-  </div>
-
-  <mat-card-content>
+  <mat-card-content class="product-card__content">
+    <div class="product-card__category">
+      <p>{{category | productCategoryTranslate}}</p>
+    </div>
 
     <div class="product-card__name">{{description}}</div>
 

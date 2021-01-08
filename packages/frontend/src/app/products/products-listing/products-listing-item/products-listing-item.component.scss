@@ -5,7 +5,12 @@
 
   &__image {
     position: relative;
+    min-height: 125px;
     height: 125px;
+  }
+
+  &__content {
+    position: relative;
   }
 
   &__name {
@@ -20,12 +25,12 @@
   }
 
   &__category {
-    top: 100px;
-    right: 15px;
+    top: -33px;
+    right: 0;
     position: absolute;
     width: 100px;
     height: 25px;
-    font-size: .7rem;
+    font-size: 12px;
     background: darkcyan;
     color: white;
     border-radius: 30px;
