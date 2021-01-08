@@ -2,16 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpResponseBase} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ProductCategory} from '../../shared/product-category.model';
-
-export interface Product {
-  description: string;
-  id: number;
-  price: number;
-  category: {
-    categoryId: number;
-    categoryType: string;
-  };
-}
+import {Product} from '../../shared/product.model';
 
 export interface ProductProducer {
   producerId: string;
@@ -35,6 +26,10 @@ export class ProductManagementService {
 
   public addProduct(product: any): Observable<HttpResponseBase> {
     return this.http.post<HttpResponseBase>('/api/products', { ...product });
+  }
+
+  public editProduct(product: Product): Observable<HttpResponseBase> {
+    return this.http.put<HttpResponseBase>('/api/products', { ...product });
   }
 
   public getProductCategories(): Observable<ProductCategory[]> {

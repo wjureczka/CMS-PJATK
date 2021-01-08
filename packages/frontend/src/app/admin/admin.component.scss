@@ -5,9 +5,8 @@
 }
 
 .admin {
+  display: flex;
   height: 100%;
-  margin-left: auto;
-  margin-right: auto;
 
   &__sidenav-container {
     background-color: transparent;
@@ -20,6 +19,7 @@
   }
 
   &__sidenav-content {
+    flex-grow: 1;
     background-color: rgba(map-get($mat-blue-gray, 50), 0.5);
     padding-right: 15px;
   }
@@ -33,9 +33,13 @@
     justify-content: center;
     align-items: center;
     color: white;
+
+    &:hover {
+      background-color: map-get($mat-blue, 400);
+    }
   }
 
   &__nav-route--active {
-    background-color: map-get($mat-blue, 500);
+    background-color: map-get($mat-blue, 700);
   }
 }

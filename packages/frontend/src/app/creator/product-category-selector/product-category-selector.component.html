@@ -1,9 +1,14 @@
 <div class="product-category-selector">
 
-  <h2 class="mat-h2">{{productCategory}}</h2>
-  
-  <p *ngIf="selectedProduct">{{selectedProduct | async}}</p>
+  <h2 class="product-category-selector__category-name">{{productCategory.categoryType | productCategoryTranslate}}</h2>
 
-  <button class="product-category-selector__button" mat-raised-button (click)="openProductSelector()">Wybierz produkt</button>
+  <div class="product-category-selector__product" *ngIf="selectedProduct | async as product">
+    <p>{{product.description}}</p>
+    <p>{{product.price | currency: 'PLN'}}</p>
+  </div>
 
+  <div class="product-category-selector__actions">
+    <button class="product-category-selector__button" mat-raised-button (click)="openProductSelector()">Wybierz produkt
+    </button>
+  </div>
 </div>

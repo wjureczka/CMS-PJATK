@@ -11,9 +11,7 @@
 .product-management {
   width: 100%;
   max-width: $max-width;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 30px auto;
 
   &__actions {
     display: flex;

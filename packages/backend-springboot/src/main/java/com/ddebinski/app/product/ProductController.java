@@ -54,8 +54,6 @@ public class ProductController {
             Optional<Product> result = repository.findById(product.getId());
             if (result.isPresent()) {
                 Product domain = result.get();
-                domain.setDateFrom(product.getDateFrom());
-                domain.setDateTo(product.getDateTo());
                 domain.setCategory(product.getCategory());
                 domain.setPrice(product.getPrice());
                 domain.setDescription(product.getDescription());
@@ -81,8 +79,6 @@ public class ProductController {
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
 
             Product newProduct = new Product();
-            newProduct.setDateFrom(product.getDateFrom());
-            newProduct.setDateTo(product.getDateTo());
             newProduct.setPrice(product.getPrice());
             newProduct.setCategory(product.getCategory());
             newProduct.setDescription(product.getDescription());

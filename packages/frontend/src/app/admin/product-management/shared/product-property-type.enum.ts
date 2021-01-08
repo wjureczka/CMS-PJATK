@@ -1,0 +1,9 @@
+export enum ProductPropertyType {
+  SOCKET = 'SOCKET',
+  CORE_COUNT = 'CORE_COUNT',
+  CLOCK_SPEED = 'CLOCK_SPEED',
+  MEMORY_COUNT = 'MEMORY_COUNT',
+  MEMORY_CL = 'MEMORY_CL',
+  POWER = 'POWER',
+  CASE_TYPE = 'CASE_TYPE'
+}

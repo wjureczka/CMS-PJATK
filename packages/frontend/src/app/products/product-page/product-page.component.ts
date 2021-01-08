@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {ListingProduct} from '../model/listing-product.model';
-import {ProductsService} from '../services/products.service';
 import {ActivatedRoute} from '@angular/router';
 import {share, switchMap} from 'rxjs/operators';
+import {ProductsService} from '../services/products.service';
+import {Product} from '../../shared/product.model';
 
 @Component({
   selector: 'app-product-page',
@@ -12,7 +12,7 @@ import {share, switchMap} from 'rxjs/operators';
 })
 export class ProductPageComponent implements OnInit {
 
-  product$: Observable<ListingProduct>;
+  product$: Observable<Product>;
 
   constructor(private productsService: ProductsService,
               private route: ActivatedRoute) {

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {CreatorProduct} from '../creator.service';
 
 @Component({
   selector: 'app-product-selector-dialog',
@@ -8,12 +9,18 @@ import {MatDialogRef} from '@angular/material/dialog';
 })
 export class ProductSelectorDialogComponent implements OnInit {
 
-  constructor(    private dialogRef: MatDialogRef<ProductSelectorDialogComponent>) { }
+  constructor(private dialogRef: MatDialogRef<ProductSelectorDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public products: CreatorProduct[]) {
+  }
 
   ngOnInit(): void {
   }
 
   selectProduct(product: any): void {
     this.dialogRef.close(product);
+  }
+
+  close(): void {
+    this.dialogRef.close();
   }
 }

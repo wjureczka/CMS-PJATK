@@ -11,7 +11,7 @@
       {{product.description}}
 
       <mat-chip-list aria-label="Fish selection" class="product__details-category">
-        <mat-chip>{{product.category.categoryType}}</mat-chip>
+        <mat-chip>{{product.category.categoryType | productCategoryTranslate }}</mat-chip>
       </mat-chip-list>
     </h2>
 

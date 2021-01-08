@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 
 import {ListingProduct} from '../model/listing-product.model';
 import {ProductCategory} from '../../shared/product-category.model';
+import {Product} from '../../shared/product.model';
 
 
 @Injectable({
@@ -22,8 +23,8 @@ export class ProductsService {
     return this.http.get<ProductCategory[]>('/api/categories');
   }
 
-  public getProductById(id: string): Observable<ListingProduct> {
-    return this.http.get<ListingProduct>(`/api/products/${id}`);
+  public getProductById(id: string): Observable<Product > {
+    return this.http.get<Product>(`/api/products/${id}`);
   }
 
 }

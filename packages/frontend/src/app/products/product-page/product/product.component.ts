@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
-import {ListingProduct} from '../../model/listing-product.model';
+import {Component, Input, OnInit} from '@angular/core';
+
+import {Product} from '../../../shared/product.model';
 
 @Component({
   selector: 'app-product',
@@ -8,22 +9,9 @@ import {ListingProduct} from '../../model/listing-product.model';
 })
 export class ProductComponent {
 
-  dataSource = [
-    {key: 'key', value: 'value'},
-    {key: 'key', value: 'value'},
-    {key: 'key', value: 'value'},
-    {key: 'key', value: 'value'},
-    {key: 'key', value: 'value'},
-    {key: 'key', value: 'value'},
-    {key: 'key', value: 'value'},
-    {key: 'key', value: 'value'},
-    {key: 'key', value: 'value'},
-    {key: 'key', value: 'value'},
-  ];
+  @Input() product: Product;
 
-  displayedColumns = ['1', '2'];
-
-  @Input() product: ListingProduct;
-
+  constructor() {
+  }
 }
 

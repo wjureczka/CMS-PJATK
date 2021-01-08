@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CreatorService} from './creator.service';
+import {CreatorProduct, CreatorService} from './creator.service';
 
 @Component({
   selector: 'app-creator',
@@ -13,27 +13,27 @@ export class CreatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public handleProcessorChange($event): void {
-    console.log($event);
+  public handleProcessorChange($event: CreatorProduct): void {
+    this.creatorService.selectedProcessor = $event;
   }
 
   public handleRAMChange($event): void {
-    console.log($event);
+    this.creatorService.selectedRAM = $event;
   }
 
   public handleGraphicCardChange($event): void {
-    console.log($event);
+    this.creatorService.selectedGraphicCard = $event;
   }
 
   public handlePowerSupplyChange($event): void {
-    console.log($event);
+    this.creatorService.selectedPowerSupply = $event;
   }
 
   public handleMotherboardChange($event): void {
-    console.log($event);
+    this.creatorService.selectedMotherBoard = $event;
   }
 
   public handleComputerCaseChange($event): void {
-    console.log($event);
+    this.creatorService.selectedComputerCase = $event;
   }
 }

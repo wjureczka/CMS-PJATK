@@ -1,3 +1,5 @@
+@import "~@angular/material/theming";
+
 .product-selector-dialog-title {
   display: flex;
   justify-content: space-between;
@@ -7,6 +9,10 @@
 .product-selector {
   display: flex;
   height: 100%;
+
+  &__close {
+    width: 100%;
+  }
 }
 
 .products-list {
@@ -15,6 +21,7 @@
   width: 100%;
 
   &__item {
+    position: relative;
     margin-top: 15px;
 
     & .mat-divider {
@@ -22,6 +29,8 @@
     }
 
     &:last-of-type {
+      padding-bottom: 15px;
+
       & .mat-divider {
         display: none;
       }
@@ -29,12 +38,36 @@
   }
 }
 
+.incompatible-block {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  &__copy {
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+}
 
 .product {
   display: flex;
+  position: relative;
+
+  &--incompatible {
+    filter: blur(3px);
+  }
 
   &__image {
-    height: 100%;
+    min-height: 100px;
+    max-width: 125px;
   }
 
   &__details {
@@ -56,7 +89,7 @@
   &__action {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     margin-top: auto;
   }
 
@@ -67,4 +100,36 @@
   &__button {
     margin-top: 20px;
   }
+
+  &__properties {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+
+  &__property {
+    display: flex;
+
+    &:nth-child(2n - 1) {
+      background-color: map-get($mat-gray, 100);
+    }
+  }
+
+  &__property-name {
+    flex: 2;
+    flex-shrink: 0;
+    text-align: end;
+  }
+
+
+  &__property-value {
+    flex: 2;
+    flex-shrink: 0;
+  }
+
+
+  &__property-divider {
+    flex-basis: 30px;
+  }
+
 }

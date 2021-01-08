@@ -7,6 +7,18 @@
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   padding: 15px;
 
+  &__category-name {
+    font-size: 18px;
+  }
+
+  &__product {
+    margin-top: 30px;
+  }
+
+  &__actions {
+    margin-top: auto;
+  }
+
   &__button {
     margin-top: 30px;
   }

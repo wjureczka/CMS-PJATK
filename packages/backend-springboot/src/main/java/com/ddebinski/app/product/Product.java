@@ -29,14 +29,6 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date dateFrom;
-
-    @NotNull
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date dateTo;
-
     @NotBlank
     private String description;
 
@@ -44,6 +36,7 @@ public class Product {
     private String longDescription;
 
     @Min(1)
+    @NotNull
     private Long price;
 
     @NotNull

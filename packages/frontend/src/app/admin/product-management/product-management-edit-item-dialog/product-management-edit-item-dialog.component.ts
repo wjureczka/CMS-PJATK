@@ -1,25 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-
-import {ProductCategory} from '../../../shared/product-category.model';
-import {ProductManagementService, ProductProducer} from '../product-management.service';
-import {ProductCategoryType} from '../../../shared/product-category-type.enum';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {ProductPropertyType} from "../shared/product-property-type.enum";
-import {InputType} from "../shared/input-type.enum";
+
+import {ProductCategoryType} from '../../../shared/product-category-type.enum';
+import {ProductManagementService, ProductProducer} from '../product-management.service';
+import {ProductPropertyType} from '../shared/product-property-type.enum';
+import {InputType} from '../shared/input-type.enum';
+import {Product} from '../../../shared/product.model';
+import {PropertyType} from 'codelyzer/componentMaxInlineDeclarationsRule';
 
 @Component({
-  selector: 'app-product-management-add-item-dialog',
-  templateUrl: './product-management-add-item-dialog.component.html',
-  styleUrls: ['./product-management-add-item-dialog.component.scss']
+  selector: 'app-product-management-edit-item-dialog',
+  templateUrl: './product-management-edit-item-dialog.component.html',
+  styleUrls: ['./product-management-edit-item-dialog.component.scss']
 })
-export class ProductManagementAddItemDialogComponent implements OnInit {
+export class ProductManagementEditItemDialogComponent implements OnInit {
 
-  public productCategories$: Observable<ProductCategory[]>;
-
-  public productProducers$: Observable<ProductProducer[]>;
+  constructor(private dialogRef: MatDialogRef<ProductManagementEditItemDialogComponent>,
+              private productManagementService: ProductManagementService,
+              private formBuilder: FormBuilder,
+              private snackbar: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public product: Product
+  ) {
+  }
 
   public propertyNameToInputType: Map<ProductPropertyType, InputType> = new Map<ProductPropertyType, InputType>([
     [ProductPropertyType.MEMORY_COUNT, InputType.NUMBER],
@@ -59,49 +64,32 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public selectedFormGroup: FormGroup | undefined;
 
-  public selectedProductCategory: ProductCategory | undefined;
-
-  public selectedProducerId: number | undefined;
-
-  constructor(private dialogRef: MatDialogRef<ProductManagementAddItemDialogComponent>,
-              private productManagementService: ProductManagementService,
-              private formBuilder: FormBuilder,
-              private snackbar: MatSnackBar) {
+  public ngOnInit(): void {
+    this.selectedFormGroup = this.productCategoryTypeToFormGroup.get(this.product.category.categoryId);
+    this.setCurrentValues();
   }
 
-  ngOnInit(): void {
-    this.productCategories$ = this.productManagementService.getProductCategories();
-    this.productProducers$ = this.productManagementService.getProductProducers();
-  }
-
-  public handleProductCategoryValueChange($event): void {
-    this.selectedProductCategory = $event;
-    this.selectedFormGroup = this.productCategoryTypeToFormGroup.get($event.categoryId);
-  }
-
-  public submitAddItemForm($event): void {
+  public submitEditItemForm($event): void {
     $event.preventDefault();
-    const formValues = this.selectedFormGroup.getRawValue();
+    const formValues: [string, string] = this.selectedFormGroup.getRawValue();
 
-    const product = {
+    const product: Product = {
+      id: this.product.id,
       description: this.descriptionFormControl.value,
       longDescription: this.longDescriptionFormControl.value,
       price: this.priceFormControl.value,
-      producer: {
-        producerId: this.selectedProducerId
-      },
-      category: {
-        categoryId: this.selectedProductCategory.categoryId,
-        categoryType: this.selectedProductCategory.categoryType
-      },
+      producer: this.product.producer,
+      category: this.product.category,
       properties: Object.entries(formValues).map(([name, value]) => ({
+        id: this.product.properties.find((property) => property.name === name).id,
         name,
         value
       }))
     };
 
-    this.productManagementService.addProduct(product).subscribe(() => {
-      this.dialogRef.close(true);
+
+    this.productManagementService.editProduct(product).subscribe(() => {
+        this.dialogRef.close(product);
       },
       () => {
         this.snackbar.open('Nie udało dodać się produktu', '', {duration: 3000});
@@ -110,5 +98,23 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public closeDialog(): void {
     this.dialogRef.close();
+  }
+
+  private setCurrentValues(): void {
+    const controls = this.selectedFormGroup.controls;
+
+    Object.entries(controls).forEach(([key, value]) => {
+      value.setValue(this.getPropertyValue(key));
+    });
+
+    this.priceFormControl.setValue(this.product.price);
+    this.descriptionFormControl.setValue(this.product.description);
+    this.longDescriptionFormControl.setValue(this.product.longDescription);
+  }
+
+  private getPropertyValue(propertyType: string): string | number {
+    const {value} = this.product.properties.find(({name}) => name === propertyType);
+
+    return value;
   }
 }
