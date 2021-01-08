@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Product, ProductManagementService} from './product-management.service';
+import {ProductManagementService} from './product-management.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {ProductManagementAddItemDialogComponent} from './product-management-add-item-dialog/product-management-add-item-dialog.component';
+import {Product} from '../../shared/product.model';
 
 @Component({
   selector: 'app-product-management',
@@ -41,7 +42,7 @@ export class ProductManagementComponent implements OnInit {
   }
 
   openAddItemDialog(): void {
-    const dialogRef = this.dialog.open(ProductManagementAddItemDialogComponent, { width: '300px', height: '65%' });
+    const dialogRef = this.dialog.open(ProductManagementAddItemDialogComponent, {width: '300px', height: '65%'});
 
     dialogRef.afterClosed().subscribe((itemAdded) => {
       if (!itemAdded) {

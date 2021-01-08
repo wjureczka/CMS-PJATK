@@ -19,11 +19,12 @@ import {AdminRoutingModule} from './admin-routing.module';
 import { ProductManagementItemComponent } from './product-management/product-management-item/product-management-item.component';
 import { ProductManagementAddItemDialogComponent } from './product-management/product-management-add-item-dialog/product-management-add-item-dialog.component';
 import {SharedModule} from '../shared/shared.module';
+import { ProductManagementEditItemDialogComponent } from './product-management/product-management-edit-item-dialog/product-management-edit-item-dialog.component';
 
 
 
 @NgModule({
-  declarations: [AdminComponent, ProductManagementComponent, ProductManagementItemComponent, ProductManagementAddItemDialogComponent],
+  declarations: [AdminComponent, ProductManagementComponent, ProductManagementItemComponent, ProductManagementAddItemDialogComponent, ProductManagementEditItemDialogComponent],
   imports: [
     CommonModule,
     RouterModule,

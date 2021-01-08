@@ -1,3 +1,5 @@
+import {ProductCategoryType} from './product-category-type.enum';
+
 export interface Product {
   id: number;
   description: string;
