@@ -35,7 +35,7 @@
             <button class="product__button"
                     mat-raised-button color="primary"
                     (click)="selectProduct(product)"
-                    [disabled]="false"
+                    [disabled]="!product.compatible"
             >
               Wybierz
             </button>

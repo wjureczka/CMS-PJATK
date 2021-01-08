@@ -18,7 +18,7 @@ export class ProductCategorySelectorComponent implements OnInit {
 
   @Input() productCategory: ProductCategory;
 
-  @Output() selectedProduct = new EventEmitter<object | undefined>();
+  @Output() selectedProduct = new EventEmitter<CreatorProduct | undefined>();
 
   ngOnInit(): void {
   }
