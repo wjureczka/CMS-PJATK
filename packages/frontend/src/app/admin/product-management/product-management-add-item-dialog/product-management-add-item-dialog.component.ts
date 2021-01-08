@@ -31,30 +31,22 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
     [ProductPropertyType.MEMORY_CL, InputType.TEXT]
   ]);
 
-  public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, any>([
+  public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, FormGroup>([
     [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
-      productProperties: this.formBuilder.group({
         [ProductPropertyType.SOCKET]: ['', [Validators.minLength(2), Validators.required]],
-      })
     })],
     [ProductCategoryType.MEMORY, this.formBuilder.group({
-      productProperties: this.formBuilder.group({
         [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(2), Validators.required]],
         [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
-      })
     })],
     [ProductCategoryType.PROCESSOR, this.formBuilder.group({
-      productProperties: this.formBuilder.group({
         [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
         [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
         [ProductPropertyType.CORE_COUNT]: [0, [Validators.min(1), Validators.required]],
-      })
     })],
     [ProductCategoryType.GRAPHICS_CARD, this.formBuilder.group({
-      productProperties: this.formBuilder.group({
         [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
         [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
-      })
     })],
     [ProductCategoryType.HARDWARE, null]
   ]);
@@ -102,7 +94,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
         categoryId: this.selectedProductCategory.categoryId,
         categoryType: this.selectedProductCategory.categoryType
       },
-      properties: Object.entries(formValues.productProperties).map(([name, value]) => ({
+      properties: Object.entries(formValues).map(([name, value]) => ({
         name,
         value
       }))

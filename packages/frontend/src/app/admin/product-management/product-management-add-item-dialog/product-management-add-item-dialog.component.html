@@ -49,7 +49,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field *ngFor="let control of selectedFormGroup.get('productProperties')['controls'] | keyvalue"
+    <mat-form-field *ngFor="let control of selectedFormGroup.controls | keyvalue"
                     class="add-item-dialog__form-field">
       <mat-label>{{control.key}}</mat-label>
       <input matInput [type]="propertyNameToInputType.get(control.key)" [formControl]="control.value" required>

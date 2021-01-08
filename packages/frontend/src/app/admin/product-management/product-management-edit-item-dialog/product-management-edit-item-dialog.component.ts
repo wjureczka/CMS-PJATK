@@ -36,7 +36,7 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
     [ProductPropertyType.MEMORY_CL, InputType.TEXT]
   ]);
 
-  public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, any>([
+  public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, FormGroup>([
     [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
         [ProductPropertyType.SOCKET]: ['', [Validators.minLength(2), Validators.required]],
     })],
@@ -71,7 +71,7 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
 
   public submitEditItemForm($event): void {
     $event.preventDefault();
-    const formValues = this.selectedFormGroup.getRawValue();
+    const formValues: [string, string] = this.selectedFormGroup.getRawValue();
 
     const product: Product = {
       id: this.product.id,
@@ -80,7 +80,7 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
       price: this.priceFormControl.value,
       producer: this.product.producer,
       category: this.product.category,
-      //@ts-ignore
+      // @ts-ignore
       properties: Object.entries(formValues).map(([name, value]) => ({
         name,
         value
@@ -96,7 +96,11 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
       });
   }
 
-  setCurrentValues(): void {
+  public closeDialog(): void {
+    this.dialogRef.close();
+  }
+
+  private setCurrentValues(): void {
     const controls = this.selectedFormGroup.controls;
 
     Object.entries(controls).forEach(([key, value]) => {
@@ -108,13 +112,9 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
     this.longDescriptionFormControl.setValue(this.product.longDescription);
   }
 
-  getPropertyValue(propertyType: string): string | number {
+  private getPropertyValue(propertyType: string): string | number {
     const {value} = this.product.properties.find(({name}) => name === propertyType);
 
     return value;
-  }
-
-  public closeDialog(): void {
-    this.dialogRef.close();
   }
 }
