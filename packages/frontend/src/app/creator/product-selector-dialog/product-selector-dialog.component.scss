@@ -1,3 +1,5 @@
+@import "~@angular/material/theming";
+
 .product-selector-dialog-title {
   display: flex;
   justify-content: space-between;
@@ -34,7 +36,7 @@
   display: flex;
 
   &__image {
-    height: 100%;
+    max-width: 125px;
   }
 
   &__details {
@@ -66,5 +68,36 @@
 
   &__button {
     margin-top: 20px;
+  }
+
+  &__properties {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+
+  &__property {
+    display: flex;
+
+    &:nth-child(2n) {
+      background-color: map-get($mat-gray, 100);
+    }
+  }
+
+  &__property-name {
+    flex: 2;
+    flex-shrink: 0;
+    text-align: end;
+  }
+
+
+  &__property-value {
+    flex: 2;
+    flex-shrink: 0;
+  }
+
+
+  &__property-divider {
+    flex-basis: 10px;
   }
 }

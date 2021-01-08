@@ -7,11 +7,7 @@ import com.ddebinski.app.product.ProductDto;
 import com.ddebinski.app.product.ProductRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -26,7 +22,7 @@ public class CreatorController {
 
     private final ProductRepository productRepository;
 
-    @GetMapping
+    @PostMapping
     public List<ProductDto> create(@RequestBody CreatorRequest creatorRequest) {
 
         Long requestCategoryId = creatorRequest.getCategory().getCategoryId();
@@ -53,7 +49,7 @@ public class CreatorController {
                             .findAny()
                             .get()
                             .getValue();
-
+                    
                     if (processorSocket.equals(motherboardSocket)) {
                         productDto.setCompatible(true);
                     }

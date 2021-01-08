@@ -2,21 +2,31 @@
 <div mat-dialog-content class="product-selector">
 
   <ul class="products-list">
-    <li class="products-list__item" *ngFor="let product of [1, 2, 3, 4]">
+    <li class="products-list__item" [class.product-list__item--incompatible]="!product.compatible" *ngFor="let product of products">
       <div class="product">
-        <img class="product__image" src="https://i.picsum.photos/id/570/200/300.jpg?hmac=fMlqjNmBSgN75P_tCU-PVSGzRYQxU23Xqd593HxZSZQ">
+        <img class="product__image"
+             src="https://i.picsum.photos/id/570/200/300.jpg?hmac=fMlqjNmBSgN75P_tCU-PVSGzRYQxU23Xqd593HxZSZQ">
 
         <div class="product__details">
 
-          <p class="product__name">Nazwa</p>
+          <p class="product__name">{{product.description}}</p>
 
-          <p class="product__description">Opis</p>
+          <p class="product__description">{{product.longDescription}}</p>
 
+          <div class="product__properties">
+            <p class="product__property" *ngFor="let productProperty of product.properties">
+              <span class="product__property-name">{{productProperty.name}}</span>
+              <span class="product__property-divider"></span>
+              <span class="product__property-value">{{productProperty.value}}</span>
+            </p>
+          </div>
 
           <div class="product__action">
-            <p class="product__price">Cena: 300 PLN</p>
+            <p class="product__price">{{product.price | currency:'PLN'}}</p>
 
-            <button class="product__button" mat-raised-button color="primary" (click)="selectProduct(product)">Wybierz</button>
+            <button class="product__button" mat-raised-button color="primary" (click)="selectProduct(product)" [disabled]="product.compatible">
+              Wybierz
+            </button>
           </div>
         </div>
 

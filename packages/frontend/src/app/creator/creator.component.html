@@ -3,20 +3,20 @@
   <h1 class="mat-h1 creator__header">Kreator komputerowy</h1>
 
   <div class="creator__products-categories">
-    <app-product-category-selector [productCategory]="'Procesor'" (selectedProduct)="handleProcessorChange($event)"></app-product-category-selector>
+    <app-product-category-selector [productCategory]="{categoryId: 2, categoryType: 'PROCESSOR'}"
+                                   (selectedProduct)="handleProcessorChange($event)">
+    </app-product-category-selector>
 
-    <app-product-category-selector [productCategory]="'Karta graficzna'" (selectedProduct)="handleGraphicCardChange($event)"></app-product-category-selector>
+    <app-product-category-selector [productCategory]="{categoryId: 3, categoryType: 'GRAPHICS_CARD' }"
+                                   (selectedProduct)="handleGraphicCardChange($event)"></app-product-category-selector>
 
-    <app-product-category-selector [productCategory]="'Płyta główna'" (selectedProduct)="handleMotherboardChange($event)"></app-product-category-selector>
+    <app-product-category-selector [productCategory]="{categoryId: 1, categoryType: 'MOTHERBOARD' }"
+                                   (selectedProduct)="handleMotherboardChange($event)">
+    </app-product-category-selector>
 
-    <app-product-category-selector [productCategory]="'Pamięć'" (selectedProduct)="handleRAMChange($event)"></app-product-category-selector>
-
-    <app-product-category-selector [productCategory]="'Zasilacz'" (selectedProduct)="handlePowerSupplyChange($event)"></app-product-category-selector>
-
-    <app-product-category-selector [productCategory]="'Obudowa'" (selectedProduct)="handleComputerCaseChange($event)"></app-product-category-selector>
+    <app-product-category-selector [productCategory]="{categoryId: 4, categoryType: 'MEMORY' }"
+                                   (selectedProduct)="handleRAMChange($event)"></app-product-category-selector>
   </div>
 
   <button class="creator__add-to-cart" mat-raised-button color="primary">Dodaj zestaw do koszyka</button>
 </div>
-
-
