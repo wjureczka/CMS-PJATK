@@ -19,4 +19,8 @@ export class ProductSelectorDialogComponent implements OnInit {
   selectProduct(product: any): void {
     this.dialogRef.close(product);
   }
+
+  close(): void {
+    this.dialogRef.close();
+  }
 }

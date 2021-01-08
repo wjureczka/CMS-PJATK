@@ -36,7 +36,7 @@ public class Product {
     private String longDescription;
 
     @Min(1)
-    @NotBlank
+    @NotNull
     private Long price;
 
     @NotNull

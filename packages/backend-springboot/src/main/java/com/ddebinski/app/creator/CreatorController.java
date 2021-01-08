@@ -49,7 +49,7 @@ public class CreatorController {
                             .findAny()
                             .get()
                             .getValue();
-                    
+
                     if (processorSocket.equals(motherboardSocket)) {
                         productDto.setCompatible(true);
                     }
