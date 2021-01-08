@@ -1,4 +1,4 @@
-export enum CategoryType {
+export enum ProductCategoryType {
   MOTHERBOARD = 1,
   PROCESSOR = 2,
   GRAPHICS_CARD = 3,

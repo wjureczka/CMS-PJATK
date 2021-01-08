@@ -18,6 +18,8 @@ import {AdminRoutingModule} from './admin-routing.module';
 import { ProductManagementItemComponent } from './product-management/product-management-item/product-management-item.component';
 import { ProductManagementAddItemDialogComponent } from './product-management/product-management-add-item-dialog/product-management-add-item-dialog.component';
 import {SharedModule} from '../shared/shared.module';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import {SharedModule} from '../shared/shared.module';
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    MatInputModule
   ]
 })
 export class AdminModule {

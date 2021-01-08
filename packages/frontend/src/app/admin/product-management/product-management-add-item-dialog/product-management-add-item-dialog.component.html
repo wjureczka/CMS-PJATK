@@ -1,19 +1,66 @@
 <h1 mat-dialog-title>Dodaj produkt</h1>
 
-<form mat-dialog-content>
-
-  <mat-form-field>
-    <mat-label>Favorite food</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let categoryType of categoryTypes" [value]="categoryType">
-        {{categoryType}}
+<div mat-dialog-content class="add-item-dialog">
+  <mat-form-field class="add-item-dialog__select">
+    <mat-label>Wybierz kategorie</mat-label>
+    <mat-select (valueChange)="handleProductCategoryValueChange($event)" required>
+      <mat-option *ngFor="let productCategory of productCategories$ | async" [value]="productCategory">
+        {{productCategory.categoryType | productCategoryTranslate}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-</form>
+  <mat-form-field class="add-item-dialog__select">
+    <mat-label>Wybierz producenta</mat-label>
+    <mat-select [(value)]="selectedProducerId" required>
+      <mat-option *ngFor="let productProducers of productProducers$ | async" [value]="productProducers.producerId">
+        {{productProducers.producerName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-<div mat-dialog-actions>
-  <button mat-stroked-button color="primary">Zamknij</button>
-  <button mat-raised-button color="primary">Dodaj</button>
+  <form *ngIf="selectedFormGroup"
+        [formGroup]="selectedFormGroup"
+        (ngSubmit)="submitAddItemForm($event)"
+        id="add-new-item-form"
+        class="add-item-dialog__form"
+  >
+    <mat-form-field>
+      <mat-label>Nazwa</mat-label>
+      <input matInput type="text" [formControl]="descriptionFormControl" required>
+      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('required')">Pole wymagane</mat-error>
+      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('minlength')">Pole musi mieć więcej niż 5 znaków
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Opis</mat-label>
+      <textarea matInput type="text" [formControl]="longDescriptionFormControl" required></textarea>
+      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('required')">Pole wymagane</mat-error>
+      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('minlength')">Pole musi mieć więcej niż 15 znaków
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cena</mat-label>
+      <input matInput type="text" [formControl]="priceFormControl" required>
+      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('required')">Pole wymagane</mat-error>
+      <mat-error *ngIf="selectedFormGroup.controls.description.hasError('min')">Ustaw wartość większą niż 0
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngFor="let control of selectedFormGroup.get('productProperties')['controls'] | keyvalue"
+                    class="add-item-dialog__form-field">
+      <mat-label>{{control.key}}</mat-label>
+      <input matInput [type]="propertyNameToInputType.get(control.key)" [formControl]="control.value" required>
+      <mat-error *ngIf="control.value.hasError('required')">Pole wymagane</mat-error>
+      <mat-error *ngIf="control.value.hasError('minlength')">Pole musi mieć więcej niż 1 znak</mat-error>
+      <mat-error *ngIf="control.value.hasError('min')">Minimalna wartość to 1</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions class="add-item-dialog__actions">
+  <button mat-stroked-button color="primary" (click)="closeDialog()">Zamknij</button>
+  <button mat-raised-button color="primary" type="submit" form="add-new-item-form">Dodaj</button>
 </div>

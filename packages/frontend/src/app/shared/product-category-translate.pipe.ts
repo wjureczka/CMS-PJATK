@@ -2,10 +2,10 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 
 @Pipe({
-  name: 'category',
+  name: 'productCategoryTranslate',
   pure: false
 })
-export class CategoryPipe implements PipeTransform {
+export class ProductCategoryTranslatePipe implements PipeTransform {
 
   constructor(private translate: TranslateService) {
   }
