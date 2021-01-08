@@ -7,6 +7,10 @@ export interface Product {
     categoryId: number;
     categoryType: string;
   };
+  producer: {
+    producerId: number;
+    producerName: string;
+  };
   properties: {
     id: number;
     name: string;

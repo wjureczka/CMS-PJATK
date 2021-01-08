@@ -1,6 +1,7 @@
+@import "~@angular/material/theming";
 @import "src/assets/layout";
 
-.details {
+.product {
   display: flex;
   flex-direction: column;
   max-width: $max-width;
@@ -36,11 +37,33 @@
     }
   }
 
-  &__technical {
-    table {
-      width: 100%;
-      margin: 5px 0;
+  &__properties {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__property {
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    &:nth-child(2n - 1) {
+      background-color: map-get($mat-gray, 300);
     }
+  }
+
+  &__property-name {
+    text-align: end;
+    flex: 1;
+  }
+
+  &__property-value {
+    text-align: start;
+    flex: 1;
+  }
+
+  &__property-divider {
+    flex-basis: 30px;
   }
 }
 

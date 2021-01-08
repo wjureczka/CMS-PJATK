@@ -6,5 +6,8 @@ export interface ListingProduct {
   description: string;
   longDescription: string;
   price: number;
-  producer: any;
+  producer: {
+    producerId: number;
+    producerName: string;
+  };
 }
