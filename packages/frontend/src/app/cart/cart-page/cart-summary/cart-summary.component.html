@@ -1,15 +1,29 @@
 <mat-card class="summary">
 
-  <p class="summary__header">Koszyk</p>
+  <ng-container *ngIf="totalPrice; else empty">
+    <p class="summary__header">Koszyk</p>
 
-  <div class="summary__info">
-    <label>DO ZAPŁATY</label>
-    <span>{{totalPrice | currency: 'USD'}}</span>
-  </div>
+    <div class="summary__info">
+      <label>DO ZAPŁATY</label>
+      <span>{{totalPrice | currency: 'PLN'}}</span>
+    </div>
 
-  <button class="summary__btn"
-          mat-raised-button
-          color="primary">Zapłać
-  </button>
+    <button class="summary__btn"
+            mat-raised-button
+            color="primary">Zapłać
+    </button>
+  </ng-container>
+
+  <ng-template #empty>
+    <div class="summary__empty">
+      <span>Twój koszyk jest pusty</span>
+      <mat-icon>shopping_cart</mat-icon>
+      <button class="summary__btn"
+              mat-raised-button
+              color="primary"
+              routerLink="/products">Wróć do przeglądania
+      </button>
+    </div>
+  </ng-template>
 
 </mat-card>

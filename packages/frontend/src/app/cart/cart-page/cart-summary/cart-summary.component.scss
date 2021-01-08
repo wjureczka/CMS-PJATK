@@ -27,6 +27,24 @@
     }
   }
 
+  &__empty {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    span, .mat-icon {
+      text-align: center;
+    }
+
+    .mat-icon {
+      width: 100%;
+      font-size: 80px;
+      opacity: .4;
+    }
+  }
+
   &__btn {
     width: 100%;
   }

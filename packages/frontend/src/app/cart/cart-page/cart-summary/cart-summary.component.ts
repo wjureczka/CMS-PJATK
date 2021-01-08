@@ -1,18 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-cart-summary',
   templateUrl: './cart-summary.component.html',
   styleUrls: ['./cart-summary.component.scss']
 })
-export class CartSummaryComponent implements OnInit {
+export class CartSummaryComponent {
 
   @Input() totalPrice: number;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
 }
