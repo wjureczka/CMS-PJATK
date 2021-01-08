@@ -80,8 +80,8 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
       price: this.priceFormControl.value,
       producer: this.product.producer,
       category: this.product.category,
-      // @ts-ignore
       properties: Object.entries(formValues).map(([name, value]) => ({
+        id: this.product.properties.find((property) => property.name === name).id,
         name,
         value
       }))
@@ -89,7 +89,7 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
 
 
     this.productManagementService.editProduct(product).subscribe(() => {
-        this.dialogRef.close(true);
+        this.dialogRef.close(product);
       },
       () => {
         this.snackbar.open('Nie udało dodać się produktu', '', {duration: 3000});

@@ -15,7 +15,7 @@ export class ProductManagementItemComponent {
 
   @Input() product: Product;
 
-  @Output() productDelete = new EventEmitter<Product>();
+  @Output() productDeleted = new EventEmitter<Product>();
 
   @Output() productEdited = new EventEmitter<Product>();
 
@@ -35,10 +35,12 @@ export class ProductManagementItemComponent {
       data: this.product
     });
 
-    dialogRef.afterClosed().subscribe((itemEdited) => {
-      if (!itemEdited) {
+    dialogRef.afterClosed().subscribe((product) => {
+      if (!product) {
         return;
       }
+
+      this.productEdited.emit(product);
     });
   }
 
@@ -48,7 +50,7 @@ export class ProductManagementItemComponent {
     this.productManagementService.deleteProduct(this.product.id)
       .subscribe(
         () => {
-          this.productDelete.emit(this.product);
+          this.productDeleted.emit(this.product);
         },
         () => {
           this.snackbar.open('Nie udało się usunąć produktu', '', {duration: 3000});

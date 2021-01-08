@@ -37,6 +37,21 @@ export class ProductManagementComponent implements OnInit {
       });
   }
 
+  handleProductEdit(editedProduct: Product): void {
+    let indexToEdit;
+
+    const productFound = this.products.find((product, index) => {
+      if (product.id === editedProduct.id) {
+        indexToEdit = index;
+        return true;
+      }
+
+      return false;
+    });
+
+    this.products.splice(indexToEdit, 1, editedProduct);
+  }
+
   handleProductDelete(deletedProduct: Product): void {
     this.products = this.products.filter((product) => product.id !== deletedProduct.id);
   }

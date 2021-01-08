@@ -12,7 +12,11 @@
 
     <ul class="product-management__list">
       <li *ngFor="let item of products" class="product-management__list-item">
-        <app-product-management-item [product]="item" (productDelete)="handleProductDelete($event)"></app-product-management-item>
+        <app-product-management-item [product]="item"
+                                     (productDeleted)="handleProductDelete($event)"
+                                     (productEdited)="handleProductEdit($event)"
+        >
+        </app-product-management-item>
       </li>
     </ul>
   </section>
