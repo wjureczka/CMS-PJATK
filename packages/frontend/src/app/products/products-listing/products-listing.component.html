@@ -12,7 +12,7 @@
         <app-products-listing-list-item [id]="product.id"
                                         [category]="product.category.categoryType"
                                         [description]="product.description"
-                                        [producer]="product.producer.producerName"
+                                        [producer]="product.producer?.producerName"
                                         [price]="product.price">
         </app-products-listing-list-item>
       </li>

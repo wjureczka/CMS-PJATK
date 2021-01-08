@@ -7,11 +7,12 @@
          width="400"
          height="200">
 
-    <app-details-panel class="panel"
-                       [price]="product.price"
-                       [description]="product.description"
-                       [producer]="product.producer.producerName">
-    </app-details-panel>
+      <app-details-panel class="panel"
+                         [productId]="product.id"
+                         [price]="product.price"
+                         [description]="product.description"
+                         [producer]="product.producer?.producerName">
+      </app-details-panel>
 
   </div>
 

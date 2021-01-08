@@ -10,7 +10,10 @@
       <p class="producer">{{cartItem.producer}}</p>
     </div>
 
-    <div class="cart-list-item__banner-price">{{cartItem.price | currency: 'PLN'}}</div>
+    <div class="cart-list-item__banner-price">
+      <span>Ilość: {{cartItem.quantity}}</span>
+      <span>{{cartItem.price | currency: 'PLN'}}</span>
+    </div>
 
     <div class="cart-list-item__banner-btn">
       <mat-icon color="warn">clear</mat-icon>

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CartItem, CartStore} from '../../../../core/cart/cart.store';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-details-panel',
@@ -16,9 +17,10 @@ export class DetailsPanelComponent implements OnInit {
 
   @Input() producer: string;
 
-  selectedQuantity: 0;
+  selectedQuantity = 1;
 
-  constructor(private cart: CartStore) {
+  constructor(private cart: CartStore,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -33,5 +35,6 @@ export class DetailsPanelComponent implements OnInit {
       quantity: this.selectedQuantity,
     };
     this.cart.putProduct(product);
+    this.router.navigate(['/products']);
   }
 }

@@ -6,7 +6,7 @@
 
     <div class="cart-page__list">
 
-      <ng-container *ngFor="let cartItem of cartItems$ | async">
+      <ng-container *ngFor="let cartItem of (cartItems$ | async) ">
         <app-cart-list-item [cartItem]="cartItem"></app-cart-list-item>
       </ng-container>
 

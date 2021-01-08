@@ -27,9 +27,10 @@
   }
 
   &__banner-info {
-    overflow: hidden;
+
 
     .product-name {
+      overflow: hidden;
       font-size: 1.1rem;
     }
 
@@ -43,6 +44,9 @@
   &__banner-price {
     width: 60%;
     @extend %center-end;
+    span {
+      margin-right: 15px
+    }
   }
 
   &__banner-btn {
