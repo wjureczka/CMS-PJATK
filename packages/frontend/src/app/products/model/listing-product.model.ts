@@ -1,15 +1,10 @@
-import {CategoryType} from '../../shared/category-type.enum';
+import {ProductCategory} from '../../shared/product-category.model';
 
 export interface ListingProduct {
   id: number;
-  category: Category;
+  category: ProductCategory;
   description: string;
   longDescription: string;
   price: number;
   producer: any;
-}
-
-export interface Category {
-  categoryId: number;
-  categoryType: string;
 }

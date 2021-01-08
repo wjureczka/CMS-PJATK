@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {CategoryPipe} from './category.pipe';
+import {ProductCategoryTranslatePipe} from './product-category-translate.pipe';
 
 
 
 @NgModule({
-  declarations: [CategoryPipe],
+  declarations: [ProductCategoryTranslatePipe],
   imports: [
     CommonModule
   ],
   exports: [
-    CategoryPipe
+    ProductCategoryTranslatePipe
   ]
 })
 export class SharedModule { }

@@ -105,8 +105,12 @@ public class ProductController {
     }
 
     ResponseEntity validatePropertiesForCategory(ECategoryType categoryType, Set<ProductProperty> properties) {
-        if (categoryType == null || properties.isEmpty()) {
-            return ResponseEntity.badRequest().body("Category type or properties are empty, fill it and try again.");
+        if (categoryType == null) {
+            return ResponseEntity.badRequest().body("Category type is empty, fill it and try again.");
+        }
+
+        if (properties.isEmpty()) {
+            return ResponseEntity.badRequest().body("Properties are empty, fill it and try again.");
         }
 
         Stream<EProperty> ePropertyStream = properties.stream()

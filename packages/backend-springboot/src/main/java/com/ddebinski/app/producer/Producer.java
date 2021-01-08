@@ -14,7 +14,6 @@ public class Producer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonIgnore
     private Long producerId;
 
     @Enumerated(EnumType.STRING)

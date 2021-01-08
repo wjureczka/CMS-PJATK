@@ -24,11 +24,10 @@ export class ProductManagementComponent implements OnInit {
   ngOnInit(): void {
     this.productManagementService.getProducts().subscribe((response) => {
         this.products = response;
+        this.isLoading = false;
       },
       () => {
         this.snackbar.open('Nie udało pobrać się produktów', '', {duration: 3000});
-      },
-      () => {
         this.isLoading = false;
       });
   }
@@ -38,9 +37,13 @@ export class ProductManagementComponent implements OnInit {
   }
 
   openAddItemDialog(): void {
-    const dialogRef = this.dialog.open(ProductManagementAddItemDialogComponent);
+    const dialogRef = this.dialog.open(ProductManagementAddItemDialogComponent, { width: '300px', height: '65%' });
 
     dialogRef.afterClosed().subscribe((itemAdded) => {
+      if (!itemAdded) {
+        return;
+      }
+
       this.products.unshift(itemAdded);
     });
   }

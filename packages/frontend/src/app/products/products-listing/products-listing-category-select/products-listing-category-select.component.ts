@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from '../../services/products.service';
 import {Observable} from 'rxjs';
-import {Category} from '../../model/listing-product.model';
+import {ProductCategory} from "../../../shared/product-category.model";
 
 @Component({
   selector: 'app-product-category-select',
@@ -10,7 +10,7 @@ import {Category} from '../../model/listing-product.model';
 })
 export class ProductsListingCategorySelectComponent implements OnInit {
 
-  public categories$: Observable<Category[]>;
+  public categories$: Observable<ProductCategory[]>;
 
   constructor(private productService: ProductsService) {
   }
