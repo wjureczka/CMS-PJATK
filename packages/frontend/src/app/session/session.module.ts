@@ -8,11 +8,14 @@ import {RouterModule} from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {RegisterPageComponent} from './register/register-page.component';
 import {SessionService} from './session.service';
+import { LogoutComponent } from './logout/logout.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    LogoutComponent
   ],
   imports: [
     CommonModule,
@@ -20,6 +23,7 @@ import {SessionService} from './session.service';
     CredentialsFormModule,
     TranslateModule,
     RouterModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     SessionService

@@ -48,6 +48,12 @@ export class AuthService {
     });
   }
 
+  public logout(): void {
+    this.user$.next(null);
+
+    this.cookieService.delete(this.AUTH_COOKIE_NAME);
+  }
+
   public loadUser(): void {
     const accessToken = this.cookieService.get(this.AUTH_COOKIE_NAME);
 

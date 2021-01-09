@@ -23,18 +23,18 @@ export class LoginPageComponent {
   }
 
   login(): void {
-    const { email, password } = this.form;
+    const {email, password} = this.form;
 
-    this.sessionService.login({ email, password }).subscribe(
+    this.sessionService.login({email, password}).subscribe(
       (user) => {
-        this.snackbar.open('Zalogowano!');
+        this.snackbar.open('Zalogowano!', '', {duration: 3000});
 
         this.authService.login(user, user.token);
 
         this.router.navigate(['products']);
       },
       (() => {
-        this.snackbar.open('Ups!');
+        this.snackbar.open('Ups!', '', {duration: 3000});
       })
     );
   }
