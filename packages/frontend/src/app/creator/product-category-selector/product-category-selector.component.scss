@@ -11,6 +11,20 @@
     font-size: 18px;
   }
 
+  &__image-container {
+    width: 180px;
+    min-height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    padding-top: 30px;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+
   &__product {
     margin-top: 30px;
   }
