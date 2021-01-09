@@ -8,6 +8,7 @@ import {NotAuthenticatedGuard} from './core/not-authenticated.guard';
 import {ProductsListingComponent} from './products/products-listing/products-listing.component';
 import {ProductPageComponent} from './products/product-page/product-page.component';
 import {CartPageComponent} from './cart/cart-page/cart-page.component';
+import {LogoutComponent} from "./session/logout/logout.component";
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginPageComponent,
     canActivate: [NotAuthenticatedGuard]
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent
   },
   {
     path: 'cart',
