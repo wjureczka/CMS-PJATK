@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 
 export interface CartItem {
   productId: number;
@@ -14,6 +14,8 @@ export interface CartItem {
   providedIn: 'root'
 })
 export class CartStore {
+
+  private storageKey = 'cart';
 
   private cart = new Map<number, CartItem>();
 
@@ -34,18 +36,26 @@ export class CartStore {
       .pipe(
         map(this.calcProductsCount)
       );
+
+    const itemsFromStorage = this.getItemsFromLocalStorage();
+
+    if (itemsFromStorage) {
+      this.subject.next(itemsFromStorage);
+    }
   }
 
   putProduct(cartItem: CartItem): void {
     const cartItems = this.subject.getValue();
-    const newCaratItems = this.addProductAndGetNewMap(cartItem, cartItems);
-    this.subject.next(newCaratItems);
+    const newCartItems = this.addProductAndGetNewMap(cartItem, cartItems);
+    this.addItemsToLocalStorage(newCartItems);
+    this.subject.next(newCartItems);
   }
 
   removeProduct(id: number): void {
     const cartItems = this.subject.getValue();
     const newItems = new Map(cartItems);
     newItems.delete(id);
+    this.addItemsToLocalStorage(newItems);
     this.subject.next(newItems);
   }
 
@@ -61,6 +71,16 @@ export class CartStore {
     }
 
     return newItems;
+  }
+
+  private addItemsToLocalStorage(items: Map<number, CartItem>): void {
+    const stringifyItems = JSON.stringify([...items]);
+    localStorage.setItem(this.storageKey, stringifyItems);
+  }
+
+  private getItemsFromLocalStorage(): Map<number, CartItem> {
+    const itemsFromStorage = localStorage.getItem(this.storageKey);
+    return new Map(JSON.parse(itemsFromStorage));
   }
 
   private calcTotalPrice(items: Map<number, CartItem>): number {
