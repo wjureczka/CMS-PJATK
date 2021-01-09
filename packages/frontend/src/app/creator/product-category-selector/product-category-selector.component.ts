@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ProductSelectorDialogComponent} from '../product-selector-dialog/product-selector-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
+import {ProductSelectorDialogComponent} from '../product-selector-dialog/product-selector-dialog.component';
 import {CreatorProduct, CreatorService} from '../creator.service';
 import {ProductCategory} from '../../shared/product-category.model';
-import {Observable} from 'rxjs';
-import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-product-category-selector',
