@@ -1,0 +1,23 @@
+<section class="cart-page">
+
+  <h1 class="mat-h1 cart-page__header">Twój koszyk</h1>
+
+  <div class="cart-page__content">
+
+    <div class="cart-page__list">
+
+      <ng-container *ngFor="let cartItem of (cartItems$ | async) ">
+        <app-cart-list-item [cartItem]="cartItem"></app-cart-list-item>
+      </ng-container>
+
+    </div>
+
+    <div class="cart-page__summary">
+
+      <app-cart-summary [totalPrice]="totalPrice$ | async"></app-cart-summary>
+
+    </div>
+
+  </div>
+
+</section>
