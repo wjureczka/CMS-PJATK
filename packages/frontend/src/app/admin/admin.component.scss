@@ -1,12 +1,7 @@
 @import "~@angular/material/theming";
 
-:host {
-  height: 100%;
-}
-
 .admin {
   display: flex;
-  height: 100%;
 
   &__sidenav-container {
     background-color: transparent;
