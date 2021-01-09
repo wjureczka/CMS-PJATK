@@ -9,13 +9,16 @@
 
     <div>
       <label class="panel__price">{{price * selectedQuantity | currency:'PLN'}}</label>
-      <button mat-raised-button color="primary">Dodaj do koszyka</button>
+      <button mat-raised-button
+              color="primary"
+              (click)="putToCart()">Dodaj do koszyka
+      </button>
     </div>
 
     <mat-form-field appearance="standard" class="panel__quantity-select">
       <mat-label>Ilość</mat-label>
       <mat-select [(value)]="selectedQuantity">
-        <mat-option *ngFor="let i of [0, 1, 2, 3, 4, 5]" value="{{i}}">{{i}}</mat-option>
+        <mat-option *ngFor="let i of [1, 2, 3, 4, 5]" [value]="+i">{{i}}</mat-option>
       </mat-select>
     </mat-form-field>
 

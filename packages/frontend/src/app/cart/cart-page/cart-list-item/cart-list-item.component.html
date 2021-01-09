@@ -1,0 +1,24 @@
+<div class="cart-list-item">
+
+  <img class="cart-list-item__img"
+       [src]="'assets/img/product.png'" alt="Product FOTO">
+
+  <mat-card class="cart-list-item__banner">
+
+    <div class="cart-list-item__banner-info">
+      <p class="product-name">{{cartItem.description}}</p>
+      <p class="producer">{{cartItem.producer}}</p>
+    </div>
+
+    <div class="cart-list-item__banner-price">
+      <span>Ilość: {{cartItem.quantity}}</span>
+      <span>{{cartItem.price | currency: 'PLN'}}</span>
+    </div>
+
+    <div class="cart-list-item__banner-btn">
+      <mat-icon color="warn" (click)="removeItem()">clear</mat-icon>
+    </div>
+
+  </mat-card>
+
+</div>
