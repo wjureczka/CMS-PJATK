@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {CreatorProduct, CreatorService} from '../creator.service';
 import {ProductCategory} from '../../shared/product-category.model';
 import {Observable} from 'rxjs';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-product-category-selector',
@@ -13,6 +14,7 @@ import {Observable} from 'rxjs';
 export class ProductCategorySelectorComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
+              private snackbar: MatSnackBar,
               private creatorService: CreatorService) {
   }
 
@@ -32,6 +34,12 @@ export class ProductCategorySelectorComponent implements OnInit {
         categoryType: this.productCategory.categoryType
       }).subscribe(
       (response) => {
+        if (response.length === 0) {
+          this.snackbar.open('Brak produktów', '', { duration: 3000 });
+          return;
+        }
+
+
         const dialogRef = this.dialog.open(ProductSelectorDialogComponent, {
           width: '50%',
           height: '80%',
