@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ProductsService} from '../services/products.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ListingProduct} from '../model/listing-product.model';
-import {catchError, finalize} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 
 @Component({
@@ -20,16 +19,19 @@ export class ProductsListingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products$ = this.productsService.getProducts()
-      .pipe(
-        catchError(err => {
-          this.snackbar.open('Nie udało się pobrać produktów', '', {duration: 3000});
-          return throwError(err);
-        }),
-        finalize(() => {
+    this.products$ = this.productsService.products$;
+
+    this.productsService.getProducts()
+      .subscribe(
+        (result) => {
+          this.productsService.setProducts(result);
           this.isLoading = false;
-        })
-      );
+        }, (err) => {
+          this.snackbar.open('Nie udało się pobrać produktów', '', {duration: 3000});
+          this.isLoading = false;
+
+          return throwError(err);
+        });
   }
 
 }

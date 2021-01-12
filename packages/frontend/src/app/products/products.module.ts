@@ -8,7 +8,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {RouterModule} from '@angular/router';
 import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {ProductsListingCategorySelectComponent} from './products-listing/products-listing-category-select/products-listing-category-select.component';
@@ -31,6 +31,7 @@ import {SharedModule} from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     FormsModule,
     MatCheckboxModule,
     RouterModule,

@@ -5,14 +5,19 @@
 
   <mat-card-content>
     <ul class="category-select__list">
-      <li *ngFor="let category of categories$ | async" class="category-select__list-item">
-        <mat-checkbox color="primary">{{category.categoryType | productCategoryTranslate}}</mat-checkbox>
+      <li *ngFor="let control; of categoriesFormArray.controls; index as i" class="category-select__list-item">
+        <mat-checkbox color="primary" [formControl]="categoriesFormArray.controls[i]">
+          {{categories[i].categoryType | productCategoryTranslate}}
+        </mat-checkbox>
       </li>
     </ul>
 
     <button class="category-select__button"
             mat-raised-button
-            color="primary">{{'products.category-select.search' | translate}}
+            color="primary"
+            (click)="getProductsByCategory()"
+    >
+      {{'products.category-select.search' | translate}}
     </button>
   </mat-card-content>
 </mat-card>

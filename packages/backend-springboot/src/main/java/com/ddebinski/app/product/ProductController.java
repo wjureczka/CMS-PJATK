@@ -5,15 +5,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
@@ -40,9 +32,9 @@ public class ProductController {
         return result.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping(path = "/category/{categoryId}")
-    ResponseEntity<List<Product>> getProductByCategoryId(@PathVariable Long categoryId) {
-        List<Product> result = repository.findByCategoryCategoryId(categoryId);
+    @GetMapping("/")
+    ResponseEntity<List<Product>> getProductByCategoryId(@RequestParam("categoryId") List<Long> categoryIds) {
+        List<Product> result = repository.findByCategoryCategoryIdIn(categoryIds);
         return ResponseEntity.ok(result);
     }
 
