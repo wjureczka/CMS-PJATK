@@ -1,5 +1,5 @@
 # CMS-PJATK - WORK IN PROGRESS
-CMS-PJATK is a final exam study project. It consists of 2 subprojects: frontend and backend. The main purpose is to recreate Content Management System from the very bottom.
+CMS-PJATK is a final exam project for CMS subject. It consists of 2 subprojects: frontend and backend. The main purpose is to recreate Content Management System from the very bottom.
 
 ## Prerequisites
 - npm >=6.x.x
