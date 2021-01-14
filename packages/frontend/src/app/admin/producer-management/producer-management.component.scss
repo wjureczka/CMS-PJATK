@@ -1,0 +1,33 @@
+@import "src/assets/layout";
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.producer-management {
+  width: 100%;
+  max-width: $max-width;
+  margin: 30px auto;
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__list {
+    padding-left: 15px;
+  }
+
+  &__list-item {
+    margin-top: 15px;
+  }
+
+  &__add-item-form {
+    background-color: red !important;
+    width: 600px;
+  }
+}

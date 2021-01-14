@@ -34,7 +34,8 @@
     align-items: center;
     color: white;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: map-get($mat-blue, 400);
     }
   }

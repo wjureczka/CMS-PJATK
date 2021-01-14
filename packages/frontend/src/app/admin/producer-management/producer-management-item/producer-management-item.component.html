@@ -1,0 +1,16 @@
+<div class="producer">
+
+  <p class="producer__name">
+    {{producer.producerName}}
+  </p>
+
+  <div class="producer__actions">
+    <button class="producer__actions-button producer__actions-button--edit" (click)="openEditDialog()">
+      <span class="material-icons">edit</span>
+    </button>
+
+    <button class="producer__actions-button producer__actions-button--delete" (click)="deleteProducer()">
+      <span class="material-icons">delete</span>
+    </button>
+  </div>
+</div>

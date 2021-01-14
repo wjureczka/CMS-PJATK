@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.producer-dialog {
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  &__form-field {
+    margin-top: 10px;
+  }
+
+  &__actions {
+    display: grid;
+    grid-template: auto / auto auto;
+    margin-top: auto;
+  }
+}

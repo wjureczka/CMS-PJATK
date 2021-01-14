@@ -1,0 +1,23 @@
+<ng-container *ngIf="isLoading">
+  <div class="loader">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!isLoading">
+  <section class="producer-management">
+    <div class="producer-management__actions">
+      <button mat-raised-button color="primary" (click)="openAddProducerDialog()">Dodaj</button>
+    </div>
+
+    <ul class="producer-management__list">
+      <li *ngFor="let item of producers" class="producer-management__list-item">
+        <app-producer-management-item [producer]="item"
+                                      (producerDeleted)="handleProducerDelete($event)"
+                                      (producerEdited)="handleProducerEdit($event)"
+        >
+        </app-producer-management-item>
+      </li>
+    </ul>
+  </section>
+</ng-container>

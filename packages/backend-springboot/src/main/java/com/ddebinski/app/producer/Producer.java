@@ -1,9 +1,9 @@
 package com.ddebinski.app.producer;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
@@ -16,7 +16,7 @@ public class Producer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long producerId;
 
-    @Enumerated(EnumType.STRING)
-    private EProducer producerName;
+    @NotBlank
+    private String producerName;
 
 }

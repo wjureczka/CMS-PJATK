@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Dodaj producenta</h1>
+
+<div mat-dialog-content class="producer-dialog">
+  <form id="producer-form"
+        class="producer-dialog__form"
+        (submit)="onSubmit($event)"
+  >
+    <mat-form-field>
+      <mat-label>Nazwa</mat-label>
+      <input matInput type="text" [formControl]="producerNameControl" required>
+      <mat-error *ngIf="producerNameControl.hasError('required')">Pole wymagane</mat-error>
+      <mat-error *ngIf="producerNameControl.hasError('minlength')">Pole musi mieć więcej niż 5 znaków
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions class="producer-dialog__actions">
+  <button mat-stroked-button color="primary" (click)="closeDialog()">Zamknij</button>
+  <button mat-raised-button color="primary" type="submit" form="producer-form">Dodaj</button>
+</div>
