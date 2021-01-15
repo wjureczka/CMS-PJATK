@@ -10,6 +10,10 @@
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 30px;
+
+    .mat-tab {
+      width: 100%;
+    }
   }
 
   &__buttons {

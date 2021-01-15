@@ -1,12 +1,24 @@
 <section class="finalization">
 
   <div class="finalization__outlet">
-    <app-additional-services></app-additional-services>
+    <mat-horizontal-stepper #stepper>
+
+      <mat-step>
+        <ng-template matStepLabel>Dodatkowe usługi</ng-template>
+        <app-additional-services></app-additional-services>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Wybór płatności</ng-template>
+        <app-payment-selection></app-payment-selection>
+      </mat-step>
+
+    </mat-horizontal-stepper>
   </div>
 
   <div class="finalization__buttons">
-    <button class="btn" mat-stroked-button color="primary">WRÓĆ</button>
-    <button class="btn" mat-raised-button color="primary">DALEJ</button>
+    <button class="btn" mat-stroked-button color="primary" (click)="previousStep()">WRÓĆ</button>
+    <button class="btn" mat-raised-button color="primary" (click)="nextStep()">DALEJ</button>
   </div>
 
 </section>

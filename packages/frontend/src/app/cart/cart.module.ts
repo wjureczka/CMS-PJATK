@@ -12,6 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {FinalizeTransactionPageComponent} from './finalize-transaction-page/finalize-transaction-page.component';
 import {AdditionalServicesComponent} from './finalize-transaction-page/additional-services/additional-services.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {PaymentSelectionComponent} from './finalize-transaction-page/payment-selection/payment-selection.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -20,11 +22,13 @@ import {ReactiveFormsModule} from '@angular/forms';
     CartListItemComponent,
     CartSummaryComponent,
     FinalizeTransactionPageComponent,
-    AdditionalServicesComponent
+    AdditionalServicesComponent,
+    PaymentSelectionComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    MatStepperModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,

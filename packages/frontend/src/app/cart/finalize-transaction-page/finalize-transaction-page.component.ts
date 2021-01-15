@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatHorizontalStepper} from '@angular/material/stepper';
 
 @Component({
   selector: 'app-finalize-transaction-page',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinalizeTransactionPageComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('stepper')
+  stepper: MatHorizontalStepper;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  nextStep(): void {
+    console.log(this.stepper.steps);
+    this.stepper.next();
+  }
+
+  previousStep(): void {
+    this.stepper.previous();
   }
 
 }

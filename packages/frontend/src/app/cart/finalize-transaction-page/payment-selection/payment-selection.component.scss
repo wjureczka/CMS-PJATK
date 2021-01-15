@@ -22,13 +22,13 @@ $base-color: #673ab7;
     opacity: 0.7;
   }
 
-  &__checkbox:checked + &__label {
+  .active {
     border-bottom: 5px solid $base-color;
   }
 
-  &__checkbox {
+  &__radio-btn {
     position: absolute;
-    left: -100vw;
+    visibility: hidden;
   }
 
 }
