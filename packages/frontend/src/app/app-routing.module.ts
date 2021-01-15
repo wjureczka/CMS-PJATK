@@ -8,6 +8,7 @@ import {NotAuthenticatedGuard} from './core/not-authenticated.guard';
 import {ProductsListingComponent} from './products/products-listing/products-listing.component';
 import {ProductPageComponent} from './products/product-page/product-page.component';
 import {CartPageComponent} from './cart/cart-page/cart-page.component';
+import {FinalizeTransactionPageComponent} from './cart/finalize-transaction-page/finalize-transaction-page.component';
 import {LogoutComponent} from "./session/logout/logout.component";
 
 const routes: Routes = [
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartPageComponent
+  },
+  {
+    path: 'cart/finalize',
+    component: FinalizeTransactionPageComponent
   },
   {
     path: 'products',

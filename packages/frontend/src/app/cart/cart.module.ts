@@ -9,16 +9,22 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {CartSummaryComponent} from './cart-page/cart-summary/cart-summary.component';
 import {MatButtonModule} from '@angular/material/button';
+import {FinalizeTransactionPageComponent} from './finalize-transaction-page/finalize-transaction-page.component';
+import {AdditionalServicesComponent} from './finalize-transaction-page/additional-services/additional-services.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     CartPageComponent,
     CartListItemComponent,
-    CartSummaryComponent
+    CartSummaryComponent,
+    FinalizeTransactionPageComponent,
+    AdditionalServicesComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
