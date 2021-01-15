@@ -14,7 +14,9 @@ import {AdditionalServicesComponent} from './finalize-transaction-page/additiona
 import {ReactiveFormsModule} from '@angular/forms';
 import {PaymentSelectionComponent} from './finalize-transaction-page/payment-selection/payment-selection.component';
 import {MatStepperModule} from '@angular/material/stepper';
-import { TransactionSummaryComponent } from './finalize-transaction-page/transaction-summary/transaction-summary.component';
+import {TransactionSummaryComponent} from './finalize-transaction-page/transaction-summary/transaction-summary.component';
+import {OrderSuccessDialogComponent} from './finalize-transaction-page/order-success-dialog/order-success-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -25,16 +27,21 @@ import { TransactionSummaryComponent } from './finalize-transaction-page/transac
     FinalizeTransactionPageComponent,
     AdditionalServicesComponent,
     PaymentSelectionComponent,
-    TransactionSummaryComponent
+    TransactionSummaryComponent,
+    OrderSuccessDialogComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MatStepperModule,
+    MatDialogModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
     RouterModule
+  ],
+  entryComponents: [
+    OrderSuccessDialogComponent
   ]
 })
 export class CartModule {

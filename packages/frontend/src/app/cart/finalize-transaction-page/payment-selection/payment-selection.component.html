@@ -1,8 +1,8 @@
-<form class="services" [formGroup]="form">
+<form class="payment" [formGroup]="form">
 
-  <label class="services__label"
+  <label class="payment__label"
          [ngClass]=" getActiveClassIfChecked('TRADITIONAL_TRANSFER')">
-    <input class="services__radio-btn"
+    <input class="payment__radio-btn"
            type="radio"
            id="button1"
            [value]="'TRADITIONAL_TRANSFER'"
@@ -10,9 +10,9 @@
     <span>Przelew tradycyjny</span>
   </label>
 
-  <label class="services__label"
+  <label class="payment__label"
          [ngClass]=" getActiveClassIfChecked('BLIK')">
-    <input class="services__radio-btn"
+    <input class="payment__radio-btn"
            type="radio"
            id="button2"
            [value]="'BLIK'"
@@ -21,9 +21,9 @@
   </label>
 
 
-  <label class="services__label"
+  <label class="payment__label"
          [ngClass]=" getActiveClassIfChecked('CASH_ON_DELIVERY')">
-    <input class="services__radio-btn"
+    <input class="payment__radio-btn"
            type="radio"
            id="button3"
            [value]="'CASH_ON_DELIVERY'"

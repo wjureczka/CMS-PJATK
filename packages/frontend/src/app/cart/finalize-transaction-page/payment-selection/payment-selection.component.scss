@@ -1,6 +1,6 @@
-$base-color: #673ab7;
+$color-primary: #673ab7;
 
-.services {
+.payment {
 
   &__label {
     padding: 90px 10px;
@@ -23,7 +23,7 @@ $base-color: #673ab7;
   }
 
   .active {
-    border-bottom: 5px solid $base-color;
+    border-bottom: 5px solid $color-primary;
   }
 
   &__radio-btn {

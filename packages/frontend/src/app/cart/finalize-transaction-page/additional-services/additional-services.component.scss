@@ -1,4 +1,4 @@
-$base-color: #673ab7;
+$color-primary: #673ab7;
 
 .services {
 
@@ -23,7 +23,7 @@ $base-color: #673ab7;
   }
 
   &__checkbox:checked + &__label {
-    border-bottom: 5px solid $base-color;
+    border-bottom: 5px solid $color-primary;
   }
 
   &__checkbox {

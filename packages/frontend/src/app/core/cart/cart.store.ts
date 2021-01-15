@@ -59,6 +59,14 @@ export class CartStore {
     this.subject.next(newItems);
   }
 
+  emptyTheCart(): void {
+    const cartItems = this.subject.getValue();
+    const newItems = new Map(cartItems);
+    newItems.clear();
+    this.addItemsToLocalStorage(newItems);
+    this.subject.next(newItems);
+  }
+
   private addProductAndGetNewMap(item: CartItem, items: Map<number, CartItem>): Map<number, CartItem> {
     const newItem = {...item};
     const newItems = new Map(items);
