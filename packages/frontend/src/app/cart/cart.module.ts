@@ -14,6 +14,7 @@ import {AdditionalServicesComponent} from './finalize-transaction-page/additiona
 import {ReactiveFormsModule} from '@angular/forms';
 import {PaymentSelectionComponent} from './finalize-transaction-page/payment-selection/payment-selection.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { TransactionSummaryComponent } from './finalize-transaction-page/transaction-summary/transaction-summary.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     CartSummaryComponent,
     FinalizeTransactionPageComponent,
     AdditionalServicesComponent,
-    PaymentSelectionComponent
+    PaymentSelectionComponent,
+    TransactionSummaryComponent
   ],
   imports: [
     CommonModule,
