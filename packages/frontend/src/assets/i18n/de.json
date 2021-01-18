@@ -29,6 +29,11 @@
     "backToListing": "Komm zurück"
   },
 
+  "product": {
+    "description": "Beschreibung",
+    "technicalData": "Technische Daten"
+  },
+
   "category.motherboard": "Hauptplatine",
   "category.processor": "Prozessor",
   "category.graphics_card": "Grafikkarte",

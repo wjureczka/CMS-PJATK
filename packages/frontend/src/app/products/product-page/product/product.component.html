@@ -17,12 +17,12 @@
   </div>
 
   <div class="product__description">
-    <h2>Opis</h2>
+    <h2>{{ 'product.description' | translate }}</h2>
     <p>{{product.longDescription}}</p>
   </div>
 
   <div class="product__technical">
-    <h2>Dane techniczne</h2>
+    <h2>{{ 'product.technicalData' | translate }}</h2>
 
     <ul class="product__properties">
       <li class="product__property" *ngFor="let property of product.properties">

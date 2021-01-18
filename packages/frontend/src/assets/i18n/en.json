@@ -29,6 +29,11 @@
     "backToListing": "Go back to search"
   },
 
+  "product": {
+    "description": "Beschreibung",
+    "technicalData": "Technical Data"
+  },
+
   "category.motherboard": "Motherboard",
   "category.processor": "Processor",
   "category.graphics_card": "Graphics Card",

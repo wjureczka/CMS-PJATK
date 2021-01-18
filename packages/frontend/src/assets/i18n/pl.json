@@ -29,6 +29,11 @@
     "backToListing": "Wróć do wyszukiwarki"
   },
 
+  "product": {
+    "description": "Beschreibung",
+    "technicalData": "Dane techniczne"
+  },
+
   "category.motherboard": "Płyta główna",
   "category.processor": "Procesor",
   "category.graphics_card": "Karta graficzna",
