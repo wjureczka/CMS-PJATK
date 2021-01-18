@@ -18,6 +18,7 @@ import { ProductsListingItemComponent } from './products-listing/products-listin
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductComponent } from './product-page/product/product.component';
 import {SharedModule} from '../shared/shared.module';
+import { RecommendedProductsComponent } from './product-page/recommended-products/recommended-products.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {SharedModule} from '../shared/shared.module';
     ProductsListingComponent,
     ProductsListingItemComponent,
     ProductPageComponent,
-    ProductComponent
+    ProductComponent,
+    RecommendedProductsComponent
   ],
   imports: [
     CommonModule,

@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {share, switchMap} from 'rxjs/operators';
 import {ProductsService} from '../services/products.service';
 import {Product} from '../../shared/product.model';
+import {ListingProduct} from '../model/listing-product.model';
 
 @Component({
   selector: 'app-product-page',
@@ -12,7 +13,9 @@ import {Product} from '../../shared/product.model';
 })
 export class ProductPageComponent implements OnInit {
 
-  product$: Observable<Product>;
+  public  product$: Observable<Product>;
+
+  public recommendedProducts: ListingProduct[] = [];
 
   constructor(private productsService: ProductsService,
               private route: ActivatedRoute) {
