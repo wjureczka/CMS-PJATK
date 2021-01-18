@@ -32,7 +32,12 @@
   "category.hardware": "Hardware",
 
   "creator": {
-    "addSetToCart": "Legen Sie das Kit in den Warenkorb"
+    "title": "Computerassistent",
+    "addSetToCart": "Legen Sie das Kit in den Warenkorb",
+    "selectProduct": "Wählen Sie ein Produkt",
+    "productIncompatible": "Inkompatibles Produkt",
+    "close": "Schließen",
+    "select": "Wählen"
   },
 
   "admin": {

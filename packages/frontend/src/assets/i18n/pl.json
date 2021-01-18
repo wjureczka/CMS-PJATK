@@ -32,7 +32,12 @@
   "category.hardware": "Hardware",
 
   "creator": {
-    "addSetToCart": "Dodaj zestaw do koszyka"
+    "title": "Kreator komputerowy",
+    "addSetToCart": "Dodaj zestaw do koszyka",
+    "selectProduct": "Wybierz produkt",
+    "productIncompatible": "Produkt niekompatybilny",
+    "close": "Zamknij",
+    "select": "Wybierz"
   },
 
   "admin": {

@@ -1,6 +1,8 @@
 <div class="creator">
 
-  <h1 class="mat-h1 creator__header">Kreator komputerowy</h1>
+  <h1 class="mat-h1 creator__header">
+    {{ 'creator.title' | translate }}
+  </h1>
 
   <div class="creator__products-categories">
     <app-product-category-selector [productCategory]="{categoryId: 2, categoryType: 'PROCESSOR'}"

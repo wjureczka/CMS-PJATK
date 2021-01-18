@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Wybierz produkt</h1>
+<h1 mat-dialog-title>{{ 'creator.selectProduct' | translate}}</h1>
 <div mat-dialog-content class="product-selector">
 
   <ul class="products-list">
@@ -6,7 +6,7 @@
 
       <div class="incompatible-block" *ngIf="!product.compatible">
         <p class="incompatible-block__copy" >
-          Produkt niekompatybilny
+          {{ 'creator.productIncompatible' | translate}}
         </p>
       </div>
 
@@ -37,7 +37,7 @@
                     (click)="selectProduct(product)"
                     [disabled]="!product.compatible"
             >
-              Wybierz
+              {{ 'creator.select' | translate}}
             </button>
           </div>
         </div>
@@ -51,5 +51,7 @@
 </div>
 
 <div mat-dialog-actions>
-  <button mat-raised-button color="primary" (click)="close()" class="product-selector__close">Zamknij</button>
+  <button mat-raised-button color="primary" (click)="close()" class="product-selector__close">
+    {{ 'creator.close' | translate}}
+  </button>
 </div>

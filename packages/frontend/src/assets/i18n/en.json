@@ -32,7 +32,12 @@
   "category.hardware": "Hardware",
 
   "creator": {
-    "addSetToCart": "Add set to cart"
+    "title": "Computer creator",
+    "addSetToCart": "Add set to cart",
+    "selectProduct": "Select product",
+    "productIncompatible": "Product incompatible",
+    "close": "Close",
+    "select": "Select"
   },
 
   "admin": {
