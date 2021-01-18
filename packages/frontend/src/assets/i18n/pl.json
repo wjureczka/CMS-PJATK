@@ -31,6 +31,10 @@
   "category.memory": "Pamięć",
   "category.hardware": "Hardware",
 
+  "creator": {
+    "addSetToCart": "Dodaj zestaw do koszyka"
+  },
+
   "admin": {
     "nav": {
       "productManagement": "Zarządzanie produktami",
@@ -62,6 +66,12 @@
     "required": "Pole wymagane",
     "setValueBiggerThan": "Ustaw wartość większą niż",
     "setValueLongerThan": "Minimalna liczba znaków to"
+  },
 
+  "mainPage": {
+    "hero1": "Szukasz dobrego sklepu komputerowego?",
+    "hero2": "Dobrze trafiłeś!",
+    "searchProducts": "Przeglądaj produkty",
+    "checkCreator": "Stwórz własny zestaw"
   }
 }

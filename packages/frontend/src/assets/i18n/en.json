@@ -31,6 +31,10 @@
   "category.memory": "Memory",
   "category.hardware": "Hardware",
 
+  "creator": {
+    "addSetToCart": "Add set to cart"
+  },
+
   "admin": {
     "nav": {
       "productManagement": "Product management",
@@ -63,5 +67,12 @@
     "required": "Field is required",
     "setValueBiggerThan": "Set value bigger than",
     "setValueLongerThan": "Minimum length is"
+  },
+
+  "mainPage": {
+    "hero1": "Are you looking for computer shop?",
+    "hero2": "You've come to the right place!",
+    "searchProducts": "Search products",
+    "checkCreator": "Create your own PC"
   }
 }

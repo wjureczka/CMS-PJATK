@@ -9,17 +9,19 @@ import {CreatorService} from './creator.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import {SharedModule} from "../shared/shared.module";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
   declarations: [ProductCategorySelectorComponent, ProductSelectorDialogComponent, CreatorComponent],
-  imports: [
-    SharedModule,
-    CommonModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatDividerModule
-  ],
+    imports: [
+        SharedModule,
+        CommonModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatDividerModule,
+        TranslateModule
+    ],
   providers: [CreatorService],
 })
 export class CreatorModule {

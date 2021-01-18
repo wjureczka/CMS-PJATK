@@ -31,6 +31,10 @@
   "category.memory": "Computerspeicher",
   "category.hardware": "Hardware",
 
+  "creator": {
+    "addSetToCart": "Legen Sie das Kit in den Warenkorb"
+  },
+
   "admin": {
     "nav": {
       "productManagement": "Produkt Management",
@@ -62,5 +66,12 @@
     "required": "Pflichtfeld",
     "setValueBiggerThan": "Geben Sie einen Wert von mehr als",
     "setValueLongerThan": "Die Mindestanzahl von Zeichen beträgt"
+  },
+
+  "mainPage": {
+    "hero1": "Suchen Sie einen guten Baumarkt?",
+    "hero2": "Sie sind bei uns genau richtig!",
+    "searchProducts": "Suche nach Produkten",
+    "checkCreator": "Erstellen Sie Ihr eigenes Set"
   }
 }
