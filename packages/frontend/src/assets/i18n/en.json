@@ -25,6 +25,10 @@
   "products.category-select.categories": "Categories",
   "products.category-select.search": "Search",
 
+  "productPage": {
+    "backToListing": "Go back to search"
+  },
+
   "category.motherboard": "Motherboard",
   "category.processor": "Processor",
   "category.graphics_card": "Graphics Card",

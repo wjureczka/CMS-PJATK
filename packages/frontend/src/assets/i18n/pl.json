@@ -25,6 +25,10 @@
   "products.category-select.categories": "Kategorie",
   "products.category-select.search": "Szukaj",
 
+  "productPage": {
+    "backToListing": "Wróć do wyszukiwarki"
+  },
+
   "category.motherboard": "Płyta główna",
   "category.processor": "Procesor",
   "category.graphics_card": "Karta graficzna",
