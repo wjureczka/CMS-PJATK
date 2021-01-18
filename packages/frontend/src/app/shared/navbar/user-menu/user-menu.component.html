@@ -14,9 +14,9 @@
 
 <mat-menu #menu="matMenu" xPosition="before">
 
-  <a class="mobile-menu-item" routerLink="/products" routerLinkActive="true" mat-menu-item>Produkty</a>
-  <a class="mobile-menu-item" routerLink="/creator" routerLinkActive="true" mat-menu-item>Kreator</a>
-  <a class="mobile-menu-item" routerLink="/cart" routerLinkActive="true" mat-menu-item>Koszyk</a>
+  <a class="mobile-menu-item" routerLink="/products" routerLinkActive="true" mat-menu-item>{{ 'navbar.productsLink' | translate }}</a>
+  <a class="mobile-menu-item" routerLink="/creator" routerLinkActive="true" mat-menu-item>{{ 'navbar.creatorLink' | translate }}</a>
+  <a class="mobile-menu-item" routerLink="/cart" routerLinkActive="true" mat-menu-item>{{ 'navbar.cartLink' | translate }}</a>
 
   <ng-container *ngIf="(user$ | async)">
     <a *ngIf="(user$ | async)?.roles.includes(role.ROLE_ADMIN)"
@@ -26,12 +26,12 @@
     >
       Admin
     </a>
-    <a routerLink="/logout" routerLinkActive="true" mat-menu-item>Wyloguj się</a>
+    <a routerLink="/logout" routerLinkActive="true" mat-menu-item>{{ 'navbar.logout' | translate }}</a>
   </ng-container>
 
   <ng-container *ngIf="!(user$ | async)">
-    <a routerLink="/login" routerLinkActive="true" mat-menu-item>Zaloguj się</a>
-    <a routerLink="/register" routerLinkActive="true" mat-menu-item>Zarejestruj się</a>
+    <a routerLink="/login" routerLinkActive="true" mat-menu-item>{{ 'navbar.login' | translate }}</a>
+    <a routerLink="/register" routerLinkActive="true" mat-menu-item>{{ 'navbar.register' | translate }}</a>
   </ng-container>
 </mat-menu>
 

@@ -4,6 +4,9 @@
   "navbar.productsLink": "Produkty",
   "navbar.creatorLink": "Kreator",
   "navbar.cartLink": "Koszyk",
+  "navbar.logout": "Wyloguj",
+  "navbar.login": "Zaloguj",
+  "navbar.register": "Zarejestruj",
 
   "button.login": "zaloguj",
   "button.register": "zarejestruj",
@@ -26,6 +29,39 @@
   "category.processor": "Procesor",
   "category.graphics_card": "Karta graficzna",
   "category.memory": "Pamięć",
-  "category.hardware": "Hardware"
+  "category.hardware": "Hardware",
 
+  "admin": {
+    "nav": {
+      "productManagement": "Zarządzanie produktami",
+      "producerManagement": "Zarządzanie producentami"
+    },
+    "productManagement": {
+      "add": "Dodaj",
+      "price": "Cena",
+      "addProduct": "Dodaj produkt",
+      "editProduct": "Edytuj produkt",
+      "name": "Nazwa",
+      "description": "Opis",
+      "chooseCategory": "Wybierz kategorie",
+      "chooseProducer": "Wybierz producenta",
+      "edit": "Edytuj",
+      "close": "Zamknij"
+    },
+    "producerManagement": {
+      "add": "Dodaj",
+      "addProducer": "Dodaj producenta",
+      "editProducer": "Edytuj producenta",
+      "name": "Nazwa",
+      "edit": "Edytuj",
+      "close": "Zamknij"
+    }
+  },
+
+  "inputValidation": {
+    "required": "Pole wymagane",
+    "setValueBiggerThan": "Ustaw wartość większą niż",
+    "setValueLongerThan": "Minimalna liczba znaków to"
+
+  }
 }

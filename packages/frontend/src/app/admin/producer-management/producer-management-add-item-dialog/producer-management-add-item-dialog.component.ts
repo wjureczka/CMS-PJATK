@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import {TranslateService} from '@ngx-translate/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ProducerManagementService} from '../producer-management.service';
@@ -15,7 +16,8 @@ export class ProducerManagementAddItemDialogComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<ProducerManagementAddItemDialogComponent>,
               private producerManagementService: ProducerManagementService,
-              private snackbar: MatSnackBar) { }
+              private snackbar: MatSnackBar,
+              private translate: TranslateService) { }
 
   ngOnInit(): void {
   }

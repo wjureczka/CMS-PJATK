@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Dodaj produkt</h1>
+<h1 mat-dialog-title>{{'admin.productManagement.editProduct' | translate}}</h1>
 
 <div mat-dialog-content class="add-item-dialog">
   <mat-form-field class="add-item-dialog__select">
@@ -16,26 +16,24 @@
         class="add-item-dialog__form"
   >
     <mat-form-field>
-      <mat-label>Nazwa</mat-label>
+      <mat-label>{{'admin.productManagement.name' | translate}}</mat-label>
       <input matInput type="text" [formControl]="descriptionFormControl" required>
-      <mat-error *ngIf="descriptionFormControl.hasError('required')">Pole wymagane</mat-error>
-      <mat-error *ngIf="descriptionFormControl.hasError('minlength')">Pole musi mieć więcej niż 5 znaków
-      </mat-error>
+      <mat-error *ngIf="descriptionFormControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
+      <mat-error *ngIf="descriptionFormControl.hasError('minlength')">{{'inputValidation.setValueLongerThan' | translate}} 5</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Opis</mat-label>
+      <mat-label>{{'admin.productManagement.description' | translate}}</mat-label>
       <textarea matInput type="text" [formControl]="longDescriptionFormControl" required></textarea>
-      <mat-error *ngIf="longDescriptionFormControl.hasError('required')">Pole wymagane</mat-error>
-      <mat-error *ngIf="longDescriptionFormControl.hasError('minlength')">Pole musi mieć więcej niż 15 znaków
-      </mat-error>
+      <mat-error *ngIf="longDescriptionFormControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
+      <mat-error *ngIf="longDescriptionFormControl.hasError('minlength')">{{'inputValidation.setValueLongerThan' | translate}} 15</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Cena</mat-label>
+      <mat-label>{{'admin.productManagement.price' | translate}}</mat-label>
       <input matInput type="number" [formControl]="priceFormControl" required>
-      <mat-error *ngIf="priceFormControl.hasError('required')">Pole wymagane</mat-error>
-      <mat-error *ngIf="priceFormControl.hasError('min')">Ustaw wartość większą niż 0</mat-error>
+      <mat-error *ngIf="priceFormControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
+      <mat-error *ngIf="priceFormControl.hasError('min')">{{'inputValidation.setValueBiggerThan' | translate}} 0</mat-error>
     </mat-form-field>
 
     <mat-form-field *ngFor="let control of selectedFormGroup.controls | keyvalue"
@@ -46,14 +44,14 @@
              [type]="propertyNameToInputType.get(control.key)"
              [formControl]="control.value"
       >
-      <mat-error *ngIf="control.value.hasError('required')">Pole wymagane</mat-error>
-      <mat-error *ngIf="control.value.hasError('minlength')">Pole musi mieć więcej niż 1 znak</mat-error>
-      <mat-error *ngIf="control.value.hasError('min')">Minimalna wartość to 1</mat-error>
+      <mat-error *ngIf="control.value.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
+      <mat-error *ngIf="control.value.hasError('minlength')">{{'inputValidation.setValueLongerThan' | translate}} 1</mat-error>
+      <mat-error *ngIf="control.value.hasError('min')">{{'inputValidation.setValueBiggerThan' | translate}} 1</mat-error>
     </mat-form-field>
   </form>
 </div>
 
 <div mat-dialog-actions class="add-item-dialog__actions">
-  <button mat-stroked-button color="primary" (click)="closeDialog()">Zamknij</button>
-  <button mat-raised-button color="primary" type="submit" form="add-new-item-form">Edytuj</button>
+  <button mat-stroked-button color="primary" (click)="closeDialog()">{{'admin.productManagement.close' | translate}}</button>
+  <button mat-raised-button color="primary" type="submit" form="add-new-item-form">{{'admin.productManagement.edit' | translate}}</button>
 </div>

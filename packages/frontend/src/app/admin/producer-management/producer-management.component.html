@@ -7,7 +7,7 @@
 <ng-container *ngIf="!isLoading">
   <section class="producer-management">
     <div class="producer-management__actions">
-      <button mat-raised-button color="primary" (click)="openAddProducerDialog()">Dodaj</button>
+      <button mat-raised-button color="primary" (click)="openAddProducerDialog()">{{'admin.producerManagement.add' | translate}}</button>
     </div>
 
     <ul class="producer-management__list">

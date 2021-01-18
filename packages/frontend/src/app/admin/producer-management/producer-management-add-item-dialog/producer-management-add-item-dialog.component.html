@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Dodaj producenta</h1>
+<h1 mat-dialog-title>{{ 'admin.producerManagement.addProducer' | translate }}</h1>
 
 <div mat-dialog-content class="producer-dialog">
   <form id="producer-form"
@@ -6,16 +6,15 @@
         (submit)="onSubmit($event)"
   >
     <mat-form-field>
-      <mat-label>Nazwa</mat-label>
+      <mat-label>{{'admin.producerManagement.name' | translate}}</mat-label>
       <input matInput type="text" [formControl]="producerNameControl" required>
-      <mat-error *ngIf="producerNameControl.hasError('required')">Pole wymagane</mat-error>
-      <mat-error *ngIf="producerNameControl.hasError('minlength')">Pole musi mieć więcej niż 5 znaków
-      </mat-error>
+      <mat-error *ngIf="producerNameControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
+      <mat-error *ngIf="producerNameControl.hasError('minlength')">{{'inputValidation.setValueLongerThan' | translate}} 5</mat-error>
     </mat-form-field>
   </form>
 </div>
 
 <div mat-dialog-actions class="producer-dialog__actions">
-  <button mat-stroked-button color="primary" (click)="closeDialog()">Zamknij</button>
-  <button mat-raised-button color="primary" type="submit" form="producer-form">Dodaj</button>
+  <button mat-stroked-button color="primary" (click)="closeDialog()">{{'admin.producerManagement.close' | translate}}</button>
+  <button mat-raised-button color="primary" type="submit" form="producer-form">{{'admin.producerManagement.add' | translate}}</button>
 </div>

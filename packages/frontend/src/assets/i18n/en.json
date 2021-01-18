@@ -4,6 +4,9 @@
   "navbar.productsLink": "Products",
   "navbar.creatorLink": "Creator",
   "navbar.cartLink": "Cart",
+  "navbar.logout": "Logout",
+  "navbar.login": "Login",
+  "navbar.register": "Register",
 
   "button.login": "sign in",
   "button.register": "register",
@@ -26,6 +29,39 @@
   "category.processor": "Processor",
   "category.graphics_card": "Graphics Card",
   "category.memory": "Memory",
-  "category.hardware": "Hardware"
+  "category.hardware": "Hardware",
 
+  "admin": {
+    "nav": {
+      "productManagement": "Product management",
+      "producerManagement": "Producer management"
+    },
+    "productManagement": {
+      "add": "Add",
+      "price": "Price",
+      "addProduct": "Add product",
+      "editProduct": "Edit product",
+      "name": "Name",
+      "description": "Description",
+      "chooseCategory": "Choose category",
+      "chooseProducer": "Choose producer",
+      "edit": "Edit",
+      "close": "Close"
+    },
+    "producerManagement": {
+      "add": "Add",
+      "addProducer": "Add producer",
+      "editProducer": "Edit producer",
+      "name": "Name",
+      "edit": "Edit",
+      "close": "Close",
+      "producersFetchError": "Die Produzenten konnten nicht heiraten"
+    }
+  },
+
+  "inputValidation": {
+    "required": "Field is required",
+    "setValueBiggerThan": "Set value bigger than",
+    "setValueLongerThan": "Minimum length is"
+  }
 }

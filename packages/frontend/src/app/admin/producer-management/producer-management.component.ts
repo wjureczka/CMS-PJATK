@@ -35,6 +35,7 @@ export class ProducerManagementComponent implements OnInit {
         },
         (error) => {
           console.error(error);
+          this.isLoading = false;
           this.snackbar.open('Nie udało się pobrać producentów');
         }
       );

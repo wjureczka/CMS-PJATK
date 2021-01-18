@@ -24,6 +24,7 @@ import {ProducerManagementComponent} from './producer-management/producer-manage
 import {ProducerManagementItemComponent} from './producer-management/producer-management-item/producer-management-item.component';
 import { ProducerManagementAddItemDialogComponent } from './producer-management/producer-management-add-item-dialog/producer-management-add-item-dialog.component';
 import { ProducerManagementEditItemDialogComponent } from './producer-management/producer-management-edit-item-dialog/producer-management-edit-item-dialog.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -38,24 +39,25 @@ import { ProducerManagementEditItemDialogComponent } from './producer-management
     ProducerManagementAddItemDialogComponent,
     ProducerManagementEditItemDialogComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatTabsModule,
-    AdminRoutingModule,
-    MatTableModule,
-    MatButtonModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatChipsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        MatTabsModule,
+        AdminRoutingModule,
+        MatTableModule,
+        MatButtonModule,
+        MatListModule,
+        MatProgressSpinnerModule,
+        MatChipsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        TranslateModule
+    ]
 })
 export class AdminModule {
 }
