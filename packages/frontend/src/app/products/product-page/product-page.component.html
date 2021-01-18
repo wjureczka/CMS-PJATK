@@ -12,4 +12,8 @@
   <ng-container *ngIf="!(product$ | async) as product">
     <mat-spinner></mat-spinner>
   </ng-container>
+
+  <ng-container *ngIf="product$ | async">
+    <h2>{{ 'productPage.recommended' | translate }}</h2>
+  </ng-container>
 </section>

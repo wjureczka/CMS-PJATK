@@ -26,7 +26,8 @@
   "products.category-select.search": "Szukaj",
 
   "productPage": {
-    "backToListing": "Wróć do wyszukiwarki"
+    "backToListing": "Wróć do wyszukiwarki",
+    "recommended": "Polecane"
   },
 
   "product": {
