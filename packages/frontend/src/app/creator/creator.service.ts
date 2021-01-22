@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {ProductCategory} from '../shared/product-category.model';
 import {Product} from '../shared/product.model';
 import {Observable} from 'rxjs';
+import {CartStore} from '../core/cart/cart.store';
 
 export interface CreatorProduct extends Product {
   compatible: boolean;
@@ -25,7 +26,28 @@ export class CreatorService {
 
   public selectedComputerCase: CreatorProduct | undefined;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cartStore: CartStore) { }
+
+  public addSetToCart(): void {
+    const products = [
+      this.selectedComputerCase,
+      this.selectedPowerSupply,
+      this.selectedRAM,
+      this.selectedMotherBoard,
+      this.selectedGraphicCard,
+      this.selectedProcessor
+    ].filter(Boolean);
+
+    products.forEach((product) => {
+      this.cartStore.putProduct({
+        description: product.description,
+        price: 0,
+        producer: product.producer.producerName,
+        productId: product.id,
+        quantity: 1
+      });
+    });
+  }
 
   public getCompatibleProductsFromCategory(productCategory: ProductCategory): Observable<CreatorProduct[]> {
     return this.http.post<CreatorProduct[]>('/api/creator', {

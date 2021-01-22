@@ -13,6 +13,10 @@ export class CreatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public handleAddToCartClick(): void {
+    this.creatorService.addSetToCart();
+  }
+
   public handleProcessorChange($event: CreatorProduct): void {
     this.creatorService.selectedProcessor = $event;
   }

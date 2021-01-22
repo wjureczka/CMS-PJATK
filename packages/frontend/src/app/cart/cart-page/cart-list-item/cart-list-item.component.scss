@@ -52,6 +52,7 @@
   &__banner-btn {
     @extend %center-end;
     width: 20%;
+    margin-left: auto;
 
     .mat-icon {
       cursor: pointer;
