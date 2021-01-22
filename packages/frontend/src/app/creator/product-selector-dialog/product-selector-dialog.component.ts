@@ -16,7 +16,7 @@ export class ProductSelectorDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectProduct(product: any): void {
+  selectProduct(product: CreatorProduct): void {
     this.dialogRef.close(product);
   }
 
