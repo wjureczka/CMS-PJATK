@@ -42,7 +42,6 @@ export class ProductManagementItemComponent implements OnInit {
           this.productImageBase64 = response as string;
         },
         () => {
-          this.snackbar.open('Nie udało się pobrać zdjecia', '', { duration: 3000 });
         }
       );
   }

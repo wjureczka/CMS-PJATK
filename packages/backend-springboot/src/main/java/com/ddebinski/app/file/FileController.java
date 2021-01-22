@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Base64;
+import java.util.List;
 
 @Controller
 @CrossOrigin("http://localhost:4200")
@@ -37,9 +38,14 @@ public class FileController {
     }
 
     @GetMapping("{id}/base64-file")
-    public ResponseEntity<String> getBase64File(@PathVariable Long id) {
-        FileDB file = storageService.getFileByProductId(id);
-        byte[] fileData = file.getData();
+    public ResponseEntity getBase64File(@PathVariable Long id) {
+        List<FileDB> file = storageService.getFileByProductId(id);
+
+        if (file.size() == 0) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        byte[] fileData = file.get(file.size() - 1).getData();
 
         String encodedString = Base64.getEncoder().encodeToString(fileData);
 

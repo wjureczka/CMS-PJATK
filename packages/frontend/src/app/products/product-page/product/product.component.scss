@@ -27,7 +27,10 @@
   }
 
   &__header-image {
+    display: flex;
+    justify-content: center;
     max-height: 300px;
+    width: 55%;
 
     img {
       height: 100%;

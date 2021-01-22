@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -22,7 +23,7 @@ public class FileStorageService {
     }
 
     @Transactional
-    public FileDB getFileByProductId(Long productId) {
+    public List<FileDB> getFileByProductId(Long productId) {
         return fileRepository.findByProductId(productId);
     }
 }
