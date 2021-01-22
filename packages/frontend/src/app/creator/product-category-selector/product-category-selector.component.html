@@ -2,8 +2,20 @@
 
   <h2 class="product-category-selector__category-name">{{productCategory.categoryType | productCategoryTranslate}}</h2>
 
-  <div class="product-category-selector__image-container" *ngIf="!(selectedProduct | async) as product">
-    <img [src]="productCategoryImageURL" alt="Category image" class="product-category-selector__image"/>
+  <div class="product-category-selector__image-container">
+    <img [src]="productCategoryImageURL" alt="Category image" class="product-category-selector__image" *ngIf="!(selectedProduct | async) as product"/>
+
+    <img
+      class="product-category-selector__image"
+      src="assets/barcode.jpeg"
+      *ngIf="!productImageBase64 && (selectedProduct | async)"
+    />
+
+    <img
+      class="product-category-selector__image"
+      [src]="domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, ' + productImageBase64)"
+      *ngIf="productImageBase64"
+    />
   </div>
 
   <div class="product-category-selector__product" *ngIf="selectedProduct | async as product">

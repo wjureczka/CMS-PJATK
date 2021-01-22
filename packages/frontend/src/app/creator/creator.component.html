@@ -24,7 +24,7 @@
                                    (selectedProduct)="handleRAMChange($event)"></app-product-category-selector>
   </div>
 
-  <button class="creator__add-to-cart" mat-raised-button color="primary">
+  <button class="creator__add-to-cart" mat-raised-button color="primary" (click)="handleAddToCartClick()">
     {{ 'creator.addSetToCart' | translate }}
   </button>
 </div>

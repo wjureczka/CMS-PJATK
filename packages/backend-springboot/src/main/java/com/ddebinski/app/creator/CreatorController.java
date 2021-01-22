@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
@@ -30,10 +29,34 @@ public class CreatorController {
         List<Product> requestProductList = productRepository.findByCategoryCategoryId(requestCategoryId);
 
         List<ProductDto> productDtos = requestProductList.stream()
-                .map(product -> ProductDto.map(product))
+                .map(ProductDto::map)
                 .collect(Collectors.toList());
 
-        if (creatorRequest.getCategory().getCategoryType().equals(ECategoryType.MOTHERBOARD)) {
+        if (creatorRequest.getCategory().getCategoryType().equals(ECategoryType.PROCESSOR)) {
+            if (creatorRequest.getMotherboardId() != null) {
+                Product motherboard = productRepository.findById(creatorRequest.getMotherboardId()).orElseThrow(() -> new EntityNotFoundException());
+
+                String motherboardSocket = motherboard.getProperties().stream()
+                        .filter(property -> property.getName().equals(EProperty.SOCKET))
+                        .findAny()
+                        .get()
+                        .getValue();
+
+                productDtos.forEach(productDto -> {
+                    String processorSocket = productDto.getProperties().stream()
+                            .filter(property -> property.getName().equals(EProperty.SOCKET))
+                            .findAny()
+                            .get()
+                            .getValue();
+
+                    if (motherboardSocket.equals(processorSocket)) {
+                        productDto.setCompatible(true);
+                    }
+                });
+            } else {
+                productDtos.forEach(product -> product.setCompatible(true));
+            }
+        } else if (creatorRequest.getCategory().getCategoryType().equals(ECategoryType.MOTHERBOARD)) {
             if (creatorRequest.getProcessorId() != null) {
                 Product processor = productRepository.findById(creatorRequest.getProcessorId()).orElseThrow(() -> new EntityNotFoundException());
 
@@ -58,6 +81,8 @@ public class CreatorController {
             } else {
                 productDtos.forEach(product -> product.setCompatible(true));
             }
+        } else {
+            productDtos.forEach(product -> product.setCompatible(true));
         }
 
         return productDtos;

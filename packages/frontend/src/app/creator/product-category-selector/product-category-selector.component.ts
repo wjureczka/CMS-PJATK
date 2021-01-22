@@ -5,6 +5,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {ProductSelectorDialogComponent} from '../product-selector-dialog/product-selector-dialog.component';
 import {CreatorProduct, CreatorService} from '../creator.service';
 import {ProductCategory} from '../../shared/product-category.model';
+import {ProductsService} from '../../products/services/products.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-category-selector',
@@ -15,7 +17,9 @@ export class ProductCategorySelectorComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
               private snackbar: MatSnackBar,
-              private creatorService: CreatorService) {
+              private creatorService: CreatorService,
+              private productsService: ProductsService,
+              public domSanitizer: DomSanitizer) {
   }
 
   @Input() productCategory: ProductCategory;
@@ -23,6 +27,8 @@ export class ProductCategorySelectorComponent implements OnInit {
   @Input() productCategoryImageURL: string;
 
   @Output() selectedProduct = new EventEmitter<CreatorProduct | undefined>();
+
+  public productImageBase64: string;
 
   ngOnInit(): void {
   }
@@ -46,15 +52,28 @@ export class ProductCategorySelectorComponent implements OnInit {
           data: response
         });
 
-        dialogRef.afterClosed().subscribe(result => {
-          if (!result) {
+        dialogRef.afterClosed().subscribe(product => {
+          if (!product) {
             return;
           }
 
-          this.selectedProduct.emit(result);
+          this.selectedProduct.emit(product);
+          this.getProductImage(product.id);
         });
       }, (error) => {
         console.log(error);
       });
+  }
+
+  private getProductImage(productId: number): void {
+    this.productsService.getProductImage(productId)
+      .subscribe(
+        (response) => {
+          // @ts-ignore
+          this.productImageBase64 = response as string;
+        },
+        () => {
+        }
+      );
   }
 }

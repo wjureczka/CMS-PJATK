@@ -1,0 +1,40 @@
+<div class="product" [class.product--incompatible]="!product.compatible">
+
+  <img class="product__image"
+       src="assets/barcode.jpeg"
+       *ngIf="!productImageBase64"
+  >
+
+  <img class="product__image"
+       [src]="domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, ' + productImageBase64)"
+       *ngIf="productImageBase64"
+  >
+
+  <div class="product__details">
+
+    <p class="product__name">{{product.description}}</p>
+
+    <p class="product__description">{{product.longDescription}}</p>
+
+    <div class="product__properties">
+      <p class="product__property" *ngFor="let productProperty of product.properties">
+        <span class="product__property-name">{{productProperty.name}}</span>
+        <span class="product__property-divider"></span>
+        <span class="product__property-value">{{productProperty.value}}</span>
+      </p>
+    </div>
+
+    <div class="product__action">
+      <p class="product__price">{{product.price | currency:'PLN'}}</p>
+
+      <button class="product__button"
+              mat-raised-button color="primary"
+              (click)="selectProduct(product)"
+              [disabled]="!product.compatible"
+      >
+        {{ 'creator.select' | translate}}
+      </button>
+    </div>
+  </div>
+
+</div>

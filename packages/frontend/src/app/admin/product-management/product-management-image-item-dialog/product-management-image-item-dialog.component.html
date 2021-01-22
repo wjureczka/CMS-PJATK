@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{'admin.productManagement.editProduct' | translate}}</h1>
+
+<div mat-dialog-content class="add-item-dialog">
+  <form id="image-form" (submit)="uploadPhoto($event)">
+    <input type="file" accept="image/*" name="file" id="file">
+  </form>
+</div>
+
+<div mat-dialog-actions class="add-item-dialog__actions">
+  <button mat-stroked-button color="primary" (click)="closeDialog()">{{'admin.productManagement.close' | translate}}</button>
+
+  <button mat-raised-button color="primary"
+          type="submit"
+          form="image-form"
+  >
+    {{'admin.productManagement.edit' | translate}}
+  </button>
+</div>

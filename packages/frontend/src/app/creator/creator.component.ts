@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CreatorProduct, CreatorService} from './creator.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-creator',
@@ -8,9 +9,14 @@ import {CreatorProduct, CreatorService} from './creator.service';
 })
 export class CreatorComponent implements OnInit {
 
-  constructor(private creatorService: CreatorService) { }
+  constructor(private creatorService: CreatorService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  public handleAddToCartClick(): void {
+    this.creatorService.addSetToCart();
+    this.router.navigate(['/cart']);
   }
 
   public handleProcessorChange($event: CreatorProduct): void {

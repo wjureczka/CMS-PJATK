@@ -10,10 +10,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import {SharedModule} from "../shared/shared.module";
 import {TranslateModule} from "@ngx-translate/core";
+import { ProductSelectorDialogItemComponent } from './product-selector-dialog/product-selector-dialog-item/product-selector-dialog-item.component';
 
 
 @NgModule({
-  declarations: [ProductCategorySelectorComponent, ProductSelectorDialogComponent, CreatorComponent],
+  declarations: [ProductCategorySelectorComponent, ProductSelectorDialogComponent, CreatorComponent, ProductSelectorDialogItemComponent],
     imports: [
         SharedModule,
         CommonModule,

@@ -1,7 +1,15 @@
 <div class="cart-list-item">
 
   <img class="cart-list-item__img"
-       [src]="'assets/img/product.png'" alt="Product FOTO">
+       [src]="'assets/img/product.png'"
+       alt="Product PHOTO"
+       *ngIf="!productImageBase64"
+  >
+
+  <img [src]="domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, ' + productImageBase64)"
+       *ngIf="productImageBase64"
+       class="cart-list-item__img"
+  />
 
   <mat-card class="cart-list-item__banner">
 

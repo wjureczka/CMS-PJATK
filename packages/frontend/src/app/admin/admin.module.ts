@@ -25,6 +25,7 @@ import {ProducerManagementItemComponent} from './producer-management/producer-ma
 import { ProducerManagementAddItemDialogComponent } from './producer-management/producer-management-add-item-dialog/producer-management-add-item-dialog.component';
 import { ProducerManagementEditItemDialogComponent } from './producer-management/producer-management-edit-item-dialog/producer-management-edit-item-dialog.component';
 import {TranslateModule} from "@ngx-translate/core";
+import { ProductManagementImageItemDialogComponent } from './product-management/product-management-image-item-dialog/product-management-image-item-dialog.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {TranslateModule} from "@ngx-translate/core";
     ProducerManagementComponent,
     ProducerManagementItemComponent,
     ProducerManagementAddItemDialogComponent,
-    ProducerManagementEditItemDialogComponent
+    ProducerManagementEditItemDialogComponent,
+    ProductManagementImageItemDialogComponent
   ],
     imports: [
         CommonModule,

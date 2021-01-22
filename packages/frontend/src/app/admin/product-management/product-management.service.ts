@@ -32,6 +32,15 @@ export class ProductManagementService {
     return this.http.put<HttpResponseBase>('/api/products', { ...product });
   }
 
+  public getProductImage(productId: number): Observable<ArrayBuffer> {
+    // @ts-ignore
+    return this.http.get<ArrayBuffer>(`/api/products/${productId}/base64-file`, { responseType: 'text' });
+  }
+
+  public uploadProductImage(productId: number, productImage: any): Observable<HttpResponseBase> {
+    return this.http.post<HttpResponseBase>(`/api/products/${productId}/upload`, productImage);
+  }
+
   public getProductCategories(): Observable<ProductCategory[]> {
     return this.http.get<ProductCategory[]>('/api/categories');
   }

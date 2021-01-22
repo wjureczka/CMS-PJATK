@@ -1,18 +1,27 @@
 <div class="product">
   <div class="product__header">
 
-    <img class="img"
-         [src]="'assets/img/product.png'"
-         alt="Product PHOTO"
-         width="400"
-         height="200">
+    <div class="product__header-image">
+      <img
+        class="img"
+        [src]="'assets/img/product.png'"
+        alt="Product PHOTO"
+        *ngIf="!productImageBase64"
+      />
 
-      <app-details-panel class="panel"
-                         [productId]="product.id"
-                         [price]="product.price"
-                         [description]="product.description"
-                         [producer]="product.producer?.producerName">
-      </app-details-panel>
+      <img
+        class="img"
+        [src]="domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, ' + productImageBase64)"
+        *ngIf="productImageBase64"
+      />
+    </div>
+
+    <app-details-panel class="panel"
+                       [productId]="product.id"
+                       [price]="product.price"
+                       [description]="product.description"
+                       [producer]="product.producer?.producerName">
+    </app-details-panel>
 
   </div>
 
