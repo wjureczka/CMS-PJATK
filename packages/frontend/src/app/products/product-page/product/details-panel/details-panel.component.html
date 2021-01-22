@@ -11,7 +11,7 @@
       <label class="panel__price">{{price * selectedQuantity | currency:'PLN'}}</label>
       <button mat-raised-button
               color="primary"
-              (click)="putToCart()">Dodaj do koszyka
+              (click)="putToCart()">{{'product.addToCart' | translate}}
       </button>
     </div>
 

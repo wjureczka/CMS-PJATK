@@ -3,7 +3,7 @@
 
   "navbar.productsLink": "Produkte",
   "navbar.creatorLink": "Schöpfer",
-  "navbar.cartLink": "Korb",
+  "navbar.cartLink": "Einkaufswagen",
   "navbar.logout": "Ausloggen",
   "navbar.login": "Einloggen",
   "navbar.register": "Registrieren",
@@ -32,7 +32,31 @@
 
   "product": {
     "description": "Beschreibung",
-    "technicalData": "Technische Daten"
+    "technicalData": "Technische Daten",
+    "addToCart": "Einkaufswagen legen"
+  },
+
+  "cart": {
+    "cart": "Einkaufswagen",
+    "goBackToProducts": "Zurück zu den Produkten",
+    "yourCart": "Ihr Einkaufswagen",
+    "yourCartIsEmpty": "Ihr Einkaufswagen ist leer",
+    "goPay": "Zahlen",
+    "toPay": "Bezahlen",
+    "next": "Nächster",
+    "back": "Zurück",
+    "quantity": "Menge",
+    "finalize": {
+      "extraServices": "Zusatzleitungen",
+      "payment": "Wahl der Zahlung",
+      "summary": "Zusammenfassung",
+      "assembling": "Computer zusammenbauen",
+      "extendedWarranty": "Erweiterte Garantie",
+      "expressShipping": "Expressversand",
+      "transfer": "traditioneller Transfer",
+      "blik": "BLIK",
+      "cashOnDelivery": "Barzahlung bei Lieferung"
+    }
   },
 
   "category.motherboard": "Hauptplatine",

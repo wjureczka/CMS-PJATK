@@ -31,8 +31,32 @@
   },
 
   "product": {
-    "description": "Beschreibung",
-    "technicalData": "Technical Data"
+    "description": "Description",
+    "technicalData": "Technical Data",
+    "addToCart": "Put it in the cart"
+  },
+
+  "cart": {
+    "cart": "Cart",
+    "goBackToProducts": "Go back to products",
+    "yourCart": "Your Cart",
+    "yourCartIsEmpty": "Your Cart is empty",
+    "goPay": "Pay",
+    "toPay": "To pay",
+    "next": "Next",
+    "back": "Back",
+    "quantity": "Quantity",
+    "finalize": {
+      "extraServices": "Extra services",
+      "payment": "Payment method",
+      "summary": "Summary",
+      "assembling": "Assembling the computer",
+      "extendedWarranty": "Extended warranty",
+      "expressShipping": "Express shipping",
+      "transfer": "Traditional transfer",
+      "blik": "BLIK",
+      "cashOnDelivery": "Cash on delivery"
+    }
   },
 
   "category.motherboard": "Motherboard",

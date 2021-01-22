@@ -7,7 +7,7 @@
            id="button1"
            [value]="'TRADITIONAL_TRANSFER'"
            [formControlName]="'paymentType'">
-    <span>Przelew tradycyjny</span>
+    <span>{{'cart.finalize.transfer' | translate}}</span>
   </label>
 
   <label class="payment__label"
@@ -17,7 +17,7 @@
            id="button2"
            [value]="'BLIK'"
            [formControlName]="'paymentType'">
-    <span>BLIK</span>
+    <span>{{'cart.finalize.blik' | translate}}</span>
   </label>
 
 
@@ -28,7 +28,7 @@
            id="button3"
            [value]="'CASH_ON_DELIVERY'"
            [formControlName]="'paymentType'">
-    <span>Płatność przy odbiorze</span>
+    <span>{{'cart.finalize.cashOnDelivery' | translate}}</span>
   </label>
 
 </form>

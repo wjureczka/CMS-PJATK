@@ -1,28 +1,28 @@
 <mat-card class="summary">
 
   <ng-container *ngIf="totalPrice; else empty">
-    <p class="summary__header">Koszyk</p>
+    <p class="summary__header">{{'cart.cart' | translate}}</p>
 
     <div class="summary__info">
-      <label>DO ZAPŁATY</label>
+      <label>{{'cart.toPay' | translate | uppercase}}</label>
       <span>{{totalPrice | currency: 'PLN'}}</span>
     </div>
 
     <button class="summary__btn"
             mat-raised-button
             color="primary"
-            routerLink="./finalize">Zapłać
+            routerLink="./finalize">{{'cart.goPay' | translate}}
     </button>
   </ng-container>
 
   <ng-template #empty>
     <div class="summary__empty">
-      <span>Twój koszyk jest pusty</span>
+      <span>{{'cart.yourCartIsEmpty' | translate}}</span>
       <mat-icon>shopping_cart</mat-icon>
       <button class="summary__btn"
               mat-raised-button
               color="primary"
-              routerLink="/products">Wróć do przeglądania
+              routerLink="/products">{{'cart.goBackToProducts' | translate}}
       </button>
     </div>
   </ng-template>

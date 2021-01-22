@@ -17,6 +17,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {TransactionSummaryComponent} from './finalize-transaction-page/transaction-summary/transaction-summary.component';
 import {OrderSuccessDialogComponent} from './finalize-transaction-page/order-success-dialog/order-success-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ],
   entryComponents: [
     OrderSuccessDialogComponent
