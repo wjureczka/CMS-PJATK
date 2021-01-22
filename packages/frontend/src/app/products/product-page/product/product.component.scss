@@ -20,13 +20,18 @@
     display: flex;
     flex-direction: row;
 
-    img {
-      width: 55%;
-      height: auto;
-    }
-
     .panel {
       width: 45%;
+      margin-left: auto;
+    }
+  }
+
+  &__header-image {
+    max-height: 300px;
+
+    img {
+      height: 100%;
+      width: auto;
     }
   }
 

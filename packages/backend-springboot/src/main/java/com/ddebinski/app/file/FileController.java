@@ -2,6 +2,7 @@ package com.ddebinski.app.file;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,8 +29,7 @@ public class FileController {
         try {
             storageService.store(id, file);
 
-            message = "Uploaded the file successfully: " + file.getOriginalFilename();
-            return ResponseEntity.status(HttpStatus.OK).body(message);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             message = "Could not upload the file: " + file.getOriginalFilename() + "!";
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
@@ -43,6 +43,6 @@ public class FileController {
 
         String encodedString = Base64.getEncoder().encodeToString(fileData);
 
-        return ResponseEntity.status(HttpStatus.OK).body(encodedString);
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.TEXT_PLAIN).body(encodedString);
     }
 }

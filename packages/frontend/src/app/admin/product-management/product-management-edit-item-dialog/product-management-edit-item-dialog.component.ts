@@ -1,15 +1,13 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 import {ProductCategoryType} from '../../../shared/product-category-type.enum';
-import {ProductManagementService, ProductProducer} from '../product-management.service';
+import {ProductManagementService} from '../product-management.service';
 import {ProductPropertyType} from '../shared/product-property-type.enum';
 import {InputType} from '../shared/input-type.enum';
 import {Product} from '../../../shared/product.model';
-import {PropertyType} from 'codelyzer/componentMaxInlineDeclarationsRule';
 
 @Component({
   selector: 'app-product-management-edit-item-dialog',

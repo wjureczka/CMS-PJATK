@@ -3,7 +3,16 @@
   <img class="product-card__image"
        mat-card-image
        [src]="'assets/img/product.png'"
-       alt="Product PHOTO">
+       alt="Product PHOTO"
+       *ngIf="!productImageBase64"
+  />
+
+  <img [src]="domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, ' + productImageBase64)"
+       mat-card-image
+       class="product-card__image"
+       *ngIf="productImageBase64"
+  />
+
 
   <mat-card-content class="product-card__content">
     <div class="product-card__category">

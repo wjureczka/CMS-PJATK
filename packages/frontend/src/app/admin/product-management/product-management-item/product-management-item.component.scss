@@ -98,6 +98,10 @@
       background: map-get($mat-blue, 500);
     }
 
+    &--image {
+      background: map-get($mat-light-green, 500);
+    }
+
     &--delete {
       background: map-get($mat-red, 500);
     }

@@ -26,6 +26,11 @@ export class ProductsService {
     return this.http.get<ListingProduct[]>('/api/products');
   }
 
+  public getProductImage(productId: number): Observable<ArrayBuffer> {
+    // @ts-ignore
+    return this.http.get<ArrayBuffer>(`/api/products/${productId}/base64-file`, { responseType: 'text' });
+  }
+
   public getProductsByCategory(category: ProductCategoryType[]): Observable<ListingProduct[]> {
     const mappedQueryString = category.map((productCategory) => `categoryId=${productCategory}`).join('&');
 

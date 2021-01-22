@@ -3,7 +3,9 @@
     <mat-spinner [diameter]="50"></mat-spinner>
   </div>
 
-  <img src="assets/barcode.jpeg" class="product__image"/>
+  <img src="assets/barcode.jpeg" class="product__image" *ngIf="!productImageBase64"/>
+
+  <img [src]="domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, ' + productImageBase64)" class="product__image" *ngIf="productImageBase64"/>
 
   <div class="product__details">
 
@@ -23,6 +25,10 @@
   <div class="product__actions">
     <button class="product__actions-button product__actions-button--edit" (click)="editProduct()">
       <span class="material-icons">edit</span>
+    </button>
+
+    <button class="product__actions-button product__actions-button--image" (click)="editImage()">
+      <span class="material-icons">image</span>
     </button>
 
     <button class="product__actions-button product__actions-button--delete" (click)="deleteProduct()">
