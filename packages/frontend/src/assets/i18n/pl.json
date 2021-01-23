@@ -50,12 +50,17 @@
       "extraServices": "Dodatkowe usługi",
       "payment": "Wybór płatności",
       "summary": "Podsumowanie",
-      "assembling": "Składanie komputera",
+      "computerAssembly": "Składanie komputera",
       "extendedWarranty": "Przedłużona gwarancja",
       "expressShipping": "Ekspresowa wysyłka",
       "transfer": "Przelew tradycyjny",
       "blik": "BLIK",
       "cashOnDelivery": "Płatność przy odbiorze"
+    },
+    "summary": {
+      "payment": "Płatnośc",
+      "extraServices": "Dodatkowe usługi",
+      "totalCost": "Razem do zapłaty"
     }
   },
 

@@ -10,6 +10,10 @@ export class PaymentSelectionComponent implements OnInit {
 
   form: FormGroup;
 
+  get paymentMethod(): string {
+    return this.form.get('paymentType').value as string;
+  }
+
   constructor(private formBuilder: FormBuilder) {
   }
 
@@ -20,7 +24,7 @@ export class PaymentSelectionComponent implements OnInit {
   }
 
   getActiveClassIfChecked(controlValue: string): { active: boolean } {
-    const selected = this.form.get('paymentType').value as string;
+    const selected = this.paymentMethod;
     return {active: selected === controlValue};
   }
 

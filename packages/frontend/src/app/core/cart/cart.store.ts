@@ -23,6 +23,8 @@ export class CartStore {
 
   cartItems$ = this.subject.asObservable();
 
+  cartItemsList$: Observable<CartItem[]>;
+
   totalPrice$: Observable<number>;
 
   productCount$: Observable<number>;
@@ -35,6 +37,10 @@ export class CartStore {
     this.productCount$ = this.cartItems$
       .pipe(
         map(this.calcProductsCount)
+      );
+    this.cartItemsList$ = this.cartItems$
+      .pipe(
+        map(items => Array.from(items, ([key, value]) => value))
       );
 
     const itemsFromStorage = this.getItemsFromLocalStorage();

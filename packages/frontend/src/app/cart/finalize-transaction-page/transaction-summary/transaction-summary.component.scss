@@ -1,0 +1,37 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    margin: 2px 0;
+  }
+
+  &__item-img {
+    width: 100px;
+    height: auto;
+  }
+
+  &__description {
+    display: block;
+    margin-left: 10px;
+  }
+
+  &__description > p {
+    margin: 10px 0;
+  }
+
+  &__info {
+    margin-top: 10px;
+  }
+
+  &__info > p {
+    margin: 5px 0;
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
+}

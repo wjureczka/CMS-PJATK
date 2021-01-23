@@ -50,12 +50,17 @@
       "extraServices": "Zusatzleitungen",
       "payment": "Wahl der Zahlung",
       "summary": "Zusammenfassung",
-      "assembling": "Computer zusammenbauen",
+      "computerAssembly": "Computer zusammenbauen",
       "extendedWarranty": "Erweiterte Garantie",
       "expressShipping": "Expressversand",
       "transfer": "traditioneller Transfer",
       "blik": "BLIK",
       "cashOnDelivery": "Barzahlung bei Lieferung"
+    },
+    "summary": {
+      "payment": "Zahlung",
+      "extraServices": "Zusatzleitungen",
+      "totalCost": "Gesamtkosten"
     }
   },
 

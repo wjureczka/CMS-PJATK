@@ -5,17 +5,20 @@
 
       <mat-step completed="false">
         <ng-template matStepLabel>{{'cart.finalize.extraServices' | translate}}</ng-template>
-        <app-additional-services></app-additional-services>
+        <app-additional-services #services></app-additional-services>
       </mat-step>
 
       <mat-step completed="false">
         <ng-template matStepLabel>{{'cart.finalize.payment' | translate}}</ng-template>
-        <app-payment-selection></app-payment-selection>
+        <app-payment-selection #payment></app-payment-selection>
       </mat-step>
 
       <mat-step completed="false">
         <ng-template matStepLabel>{{'cart.finalize.summary' | translate}}</ng-template>
-        <app-transaction-summary></app-transaction-summary>
+        <app-transaction-summary
+          [extraServices]="services.checkedServices"
+          [paymentMethod]="payment.paymentMethod">
+        </app-transaction-summary>
       </mat-step>
 
     </mat-horizontal-stepper>

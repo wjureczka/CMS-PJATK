@@ -50,12 +50,17 @@
       "extraServices": "Extra services",
       "payment": "Payment method",
       "summary": "Summary",
-      "assembling": "Assembling the computer",
+      "computerAssembly": "Assembling the computer",
       "extendedWarranty": "Extended warranty",
       "expressShipping": "Express shipping",
       "transfer": "Traditional transfer",
       "blik": "BLIK",
       "cashOnDelivery": "Cash on delivery"
+    },
+    "summary": {
+      "payment": "Payment",
+      "extraServices": "Extra Services",
+      "totalCost": "Total cost"
     }
   },
 
