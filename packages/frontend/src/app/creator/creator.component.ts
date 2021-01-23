@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+
 import {CreatorProduct, CreatorService} from './creator.service';
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-creator',
   templateUrl: './creator.component.html',
   styleUrls: ['./creator.component.scss']
 })
-export class CreatorComponent implements OnInit {
+export class CreatorComponent implements OnDestroy {
 
   constructor(private creatorService: CreatorService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.creatorService.resetCreator();
   }
 
   public handleAddToCartClick(): void {

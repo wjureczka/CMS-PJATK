@@ -1,6 +1,8 @@
 $color-primary: #673ab7;
 
 .payment {
+  dispay: flex;
+  flex-wrap: wrap;
 
   &__label {
     padding: 90px 10px;

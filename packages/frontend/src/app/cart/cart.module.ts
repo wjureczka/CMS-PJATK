@@ -18,6 +18,8 @@ import {TransactionSummaryComponent} from './finalize-transaction-page/transacti
 import {OrderSuccessDialogComponent} from './finalize-transaction-page/order-success-dialog/order-success-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {TranslateModule} from '@ngx-translate/core';
+import { TransactionSummaryItemComponent } from './finalize-transaction-page/transaction-summary/transaction-summary-item/transaction-summary-item.component';
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -29,19 +31,21 @@ import {TranslateModule} from '@ngx-translate/core';
     AdditionalServicesComponent,
     PaymentSelectionComponent,
     TransactionSummaryComponent,
-    OrderSuccessDialogComponent
+    OrderSuccessDialogComponent,
+    TransactionSummaryItemComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatStepperModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    RouterModule,
-    TranslateModule
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatStepperModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        RouterModule,
+        TranslateModule,
+        MatDividerModule
+    ],
   entryComponents: [
     OrderSuccessDialogComponent
   ]

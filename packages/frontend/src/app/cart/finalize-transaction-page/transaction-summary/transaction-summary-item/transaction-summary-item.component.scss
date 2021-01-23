@@ -1,0 +1,33 @@
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  margin: 2px 0;
+
+  &__img-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100px;
+    max-width: 100px;
+    overflow: hidden;
+  }
+
+  &__img {
+    height: 100%;
+    width: auto;
+  }
+
+  &__description {
+    display: block;
+    margin-left: 10px;
+  }
+
+  &__description > p {
+    margin: 10px 0;
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
+}

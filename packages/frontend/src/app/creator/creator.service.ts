@@ -28,6 +28,15 @@ export class CreatorService {
 
   constructor(private http: HttpClient, private cartStore: CartStore) { }
 
+  public resetCreator(): void {
+    this.selectedProcessor = undefined;
+    this.selectedGraphicCard = undefined;
+    this.selectedMotherBoard = undefined;
+    this.selectedRAM = undefined;
+    this.selectedPowerSupply = undefined;
+    this.selectedComputerCase = undefined;
+  }
+
   public addSetToCart(): void {
     const products = [
       this.selectedComputerCase,

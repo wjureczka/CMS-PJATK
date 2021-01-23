@@ -1,15 +1,9 @@
 <div class="summary">
   <ng-container *ngFor="let item of cartItemsList$ | async">
-    <div class="summary__item">
-      <img class="summary__item-img" [src]="'assets/img/product.png'" alt="PRODUCT">
-      <div class="summary__description">
-        <p>{{item.description}}</p>
-        <p class="bold">
-          x{{item.quantity}} = {{(item.price * item.quantity) | currency: 'PLN'}}
-        </p>
-      </div>
-    </div>
+    <app-transaction-summary-item [cartItem]="item"></app-transaction-summary-item>
   </ng-container>
+
+  <mat-divider style="margin-top: 15px;"></mat-divider>
 
   <div class="summary__info">
     <p>{{'cart.summary.payment' | translate}}:
@@ -17,6 +11,7 @@
     </p>
     <p>{{'cart.summary.extraServices' | translate}}:
       <b class="bold">{{listExtraServices()}}</b>
+      <b class="bold" *ngIf="extraServices.length === 0">-</b>
     </p>
     <p>{{'cart.summary.totalCost' | translate}}:
       <b class="bold">{{(totalPrice$ | async) | currency: 'PLN'}}</b>
