@@ -48,7 +48,7 @@ export class ProductManagementItemComponent implements OnInit {
 
   editProduct(): void {
     const dialogRef = this.dialog.open(ProductManagementEditItemDialogComponent, {
-      width: '300px',
+      width: '600px',
       height: '65%',
       data: this.product
     });
@@ -65,6 +65,7 @@ export class ProductManagementItemComponent implements OnInit {
   public editImage(): void {
     const dialogRef = this.dialog.open(ProductManagementImageItemDialogComponent, {
       width: '500px',
+      minWidth: '300px',
       height: '65%',
       data: this.product.id
     });
