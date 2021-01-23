@@ -1,12 +1,12 @@
 <section class="cart-page">
 
-  <h1 class="mat-h1 cart-page__header">Twój koszyk</h1>
+  <h1 class="mat-h1 cart-page__header">{{'cart.yourCart' | translate}}</h1>
 
   <div class="cart-page__content">
 
     <div class="cart-page__list">
 
-      <ng-container *ngFor="let cartItem of (cartItems$ | async) ">
+      <ng-container *ngFor="let cartItem of (cartItemsList$ | async) ">
         <app-cart-list-item [cartItem]="cartItem"></app-cart-list-item>
       </ng-container>
 

@@ -1,0 +1,32 @@
+.finalization {
+  height: 400px;
+
+  &__stepper {
+    margin-top: 120px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 30px;
+
+    .mat-tab {
+      width: 100%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 30px 0;
+
+    .btn {
+      width: 150px;
+      margin: 0 30px;
+    }
+  }
+
+}

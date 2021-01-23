@@ -1,0 +1,26 @@
+<div class="summary">
+  <ng-container *ngFor="let item of cartItemsList$ | async">
+    <div class="summary__item">
+      <img class="summary__item-img" [src]="'assets/img/product.png'" alt="PRODUCT">
+      <div class="summary__description">
+        <p>{{item.description}}</p>
+        <p class="bold">
+          x{{item.quantity}} = {{(item.price * item.quantity) | currency: 'PLN'}}
+        </p>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="summary__info">
+    <p>{{'cart.summary.payment' | translate}}:
+      <b class="bold">{{paymentMethod}}</b>
+    </p>
+    <p>{{'cart.summary.extraServices' | translate}}:
+      <b class="bold">{{listExtraServices()}}</b>
+    </p>
+    <p>{{'cart.summary.totalCost' | translate}}:
+      <b class="bold">{{(totalPrice$ | async) | currency: 'PLN'}}</b>
+    </p>
+  </div>
+
+</div>

@@ -31,8 +31,37 @@
   },
 
   "product": {
-    "description": "Beschreibung",
-    "technicalData": "Dane techniczne"
+    "description": "Opis",
+    "technicalData": "Dane techniczne",
+    "addToCart": "Dodaj do koszyka"
+  },
+
+  "cart": {
+    "cart": "Koszyk",
+    "goBackToProducts": "Wróć do produktów",
+    "yourCart": "Twój koszyk",
+    "yourCartIsEmpty": "Twój koszyk jest pusty",
+    "goPay": "Zapłać",
+    "toPay": "Do Zapłaty",
+    "next": "Dalej",
+    "back": "Wróć",
+    "quantity": "Ilość",
+    "finalize": {
+      "extraServices": "Dodatkowe usługi",
+      "payment": "Wybór płatności",
+      "summary": "Podsumowanie",
+      "computerAssembly": "Składanie komputera",
+      "extendedWarranty": "Przedłużona gwarancja",
+      "expressShipping": "Ekspresowa wysyłka",
+      "transfer": "Przelew tradycyjny",
+      "blik": "BLIK",
+      "cashOnDelivery": "Płatność przy odbiorze"
+    },
+    "summary": {
+      "payment": "Płatnośc",
+      "extraServices": "Dodatkowe usługi",
+      "totalCost": "Razem do zapłaty"
+    }
   },
 
   "category.motherboard": "Płyta główna",

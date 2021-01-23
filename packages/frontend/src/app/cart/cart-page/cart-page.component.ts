@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CartItem, CartStore} from '../../core/cart/cart.store';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-cart-page',
@@ -10,7 +9,7 @@ import {map} from 'rxjs/operators';
 })
 export class CartPageComponent implements OnInit {
 
-  cartItems$: Observable<CartItem[]>;
+  cartItemsList$: Observable<CartItem[]>;
 
   totalPrice$: Observable<number>;
 
@@ -18,8 +17,7 @@ export class CartPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cartItems$ = this.cart.cartItems$
-      .pipe(map(items => Array.from(items, ([key, value]) => value)));
+    this.cartItemsList$ = this.cart.cartItemsList$;
     this.totalPrice$ = this.cart.totalPrice$;
   }
 

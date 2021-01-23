@@ -9,20 +9,41 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {CartSummaryComponent} from './cart-page/cart-summary/cart-summary.component';
 import {MatButtonModule} from '@angular/material/button';
+import {FinalizeTransactionPageComponent} from './finalize-transaction-page/finalize-transaction-page.component';
+import {AdditionalServicesComponent} from './finalize-transaction-page/additional-services/additional-services.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {PaymentSelectionComponent} from './finalize-transaction-page/payment-selection/payment-selection.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {TransactionSummaryComponent} from './finalize-transaction-page/transaction-summary/transaction-summary.component';
+import {OrderSuccessDialogComponent} from './finalize-transaction-page/order-success-dialog/order-success-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
   declarations: [
     CartPageComponent,
     CartListItemComponent,
-    CartSummaryComponent
+    CartSummaryComponent,
+    FinalizeTransactionPageComponent,
+    AdditionalServicesComponent,
+    PaymentSelectionComponent,
+    TransactionSummaryComponent,
+    OrderSuccessDialogComponent
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    MatDialogModule,
     MatButtonModule,
     MatCardModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
+  ],
+  entryComponents: [
+    OrderSuccessDialogComponent
   ]
 })
 export class CartModule {

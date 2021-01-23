@@ -1,0 +1,38 @@
+<section class="finalization">
+
+  <div class="finalization__stepper">
+    <mat-horizontal-stepper #stepper>
+
+      <mat-step completed="false">
+        <ng-template matStepLabel>{{'cart.finalize.extraServices' | translate}}</ng-template>
+        <app-additional-services #services></app-additional-services>
+      </mat-step>
+
+      <mat-step completed="false">
+        <ng-template matStepLabel>{{'cart.finalize.payment' | translate}}</ng-template>
+        <app-payment-selection #payment></app-payment-selection>
+      </mat-step>
+
+      <mat-step completed="false">
+        <ng-template matStepLabel>{{'cart.finalize.summary' | translate}}</ng-template>
+        <app-transaction-summary
+          [extraServices]="services.checkedServices"
+          [paymentMethod]="payment.paymentMethod">
+        </app-transaction-summary>
+      </mat-step>
+
+    </mat-horizontal-stepper>
+  </div>
+
+  <div class="finalization__buttons">
+    <button class="btn"
+            mat-stroked-button
+            color="primary"
+            (click)="previousStep()">{{'cart.back' | translate | uppercase}}</button>
+    <button class="btn"
+            mat-raised-button
+            color="primary"
+            (click)="nextStep()">{{'cart.next' | translate | uppercase}}</button>
+  </div>
+
+</section>

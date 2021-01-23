@@ -1,0 +1,34 @@
+$color-primary: #673ab7;
+
+.services {
+
+  &__label {
+    padding: 90px 10px;
+    margin: 10px;
+    width: 210px;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    border-radius: 2px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+  }
+
+  &__label:not(:last-child) {
+    margin-right: 16px;
+  }
+
+  &__label:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
+
+  &__checkbox:checked + &__label {
+    border-bottom: 5px solid $color-primary;
+  }
+
+  &__checkbox {
+    position: absolute;
+    left: -100vw;
+  }
+
+}
