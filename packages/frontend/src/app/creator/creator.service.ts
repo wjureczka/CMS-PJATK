@@ -50,7 +50,7 @@ export class CreatorService {
     products.forEach((product) => {
       this.cartStore.putProduct({
         description: product.description,
-        price: 0,
+        price: product.price,
         producer: product.producer.producerName,
         productId: product.id,
         quantity: 1
