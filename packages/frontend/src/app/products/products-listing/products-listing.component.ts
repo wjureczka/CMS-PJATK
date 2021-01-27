@@ -26,11 +26,12 @@ export class ProductsListingComponent implements OnInit {
         (result) => {
           this.productsService.setProducts(result);
           this.isLoading = false;
-        }, (err) => {
+        }, (error) => {
+          console.error(error);
           this.snackbar.open('Nie udało się pobrać produktów', '', {duration: 3000});
           this.isLoading = false;
 
-          return throwError(err);
+          return throwError(error);
         });
   }
 

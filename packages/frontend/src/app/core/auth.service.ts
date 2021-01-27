@@ -14,6 +14,7 @@ export interface User {
   username: string;
   email: string;
   roles: Role[];
+  accessToken?: string;
 }
 
 interface JWTPayload {
@@ -64,7 +65,11 @@ export class AuthService {
     const jwtPayload = jwtDecode(accessToken) as JWTPayload;
 
     this.user$.next({
-      username: jwtPayload.sub, roles: jwtPayload.roles, email: jwtPayload.email, id: jwtPayload.id
+      username: jwtPayload.sub,
+      roles: jwtPayload.roles,
+      email: jwtPayload.email,
+      id: jwtPayload.id,
+      accessToken,
     });
   }
 }
