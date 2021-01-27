@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ProductManagementService} from '../product-management.service';
 import {FormBuilder} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-product-management-image-item-dialog',
@@ -11,16 +12,28 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class ProductManagementImageItemDialogComponent implements OnInit {
 
+  public productImageBase64: string;
+
   constructor(
     private dialogRef: MatDialogRef<ProductManagementImageItemDialogComponent>,
     private productManagementService: ProductManagementService,
     private formBuilder: FormBuilder,
     private snackbar: MatSnackBar,
+    public domSanitizer: DomSanitizer,
     @Inject(MAT_DIALOG_DATA) public productId: number
   ) {
   }
 
   ngOnInit(): void {
+    this.productManagementService.getProductImage(this.productId)
+      .subscribe(
+        (response) => {
+          // @ts-ignore
+          this.productImageBase64 = response as string;
+        },
+        () => {
+        }
+      );
   }
 
   public closeDialog(): void {

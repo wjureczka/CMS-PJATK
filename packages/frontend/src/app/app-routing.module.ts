@@ -10,6 +10,8 @@ import {ProductPageComponent} from './products/product-page/product-page.compone
 import {CartPageComponent} from './cart/cart-page/cart-page.component';
 import {FinalizeTransactionPageComponent} from './cart/finalize-transaction-page/finalize-transaction-page.component';
 import {LogoutComponent} from "./session/logout/logout.component";
+import {RoleGuard} from "./core/role.guard";
+import {Role} from "./core/auth.service";
 
 const routes: Routes = [
   {
@@ -57,6 +59,13 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [RoleGuard],
+    data: {
+      roles: [
+        Role.ROLE_ADMIN,
+        Role.ROLE_MODERATOR
+      ]
+    },
     loadChildren: () => import('src/app/admin/admin.module').then((module) => module.AdminModule)
   }];
 

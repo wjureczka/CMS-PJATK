@@ -96,7 +96,8 @@
       "chooseCategory": "Choose category",
       "chooseProducer": "Choose producer",
       "edit": "Edit",
-      "close": "Close"
+      "close": "Close",
+      "currentPhoto": "Current photo"
     },
     "producerManagement": {
       "add": "Add",

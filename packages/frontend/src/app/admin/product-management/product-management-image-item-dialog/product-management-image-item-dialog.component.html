@@ -1,7 +1,14 @@
 <h1 mat-dialog-title>{{'admin.productManagement.editProduct' | translate}}</h1>
 
 <div mat-dialog-content class="add-item-dialog">
-  <form id="image-form" (submit)="uploadPhoto($event)">
+  <div class="add-item-dialog__image-wrapper" *ngIf="productImageBase64">
+    <h2>{{'admin.productManagement.currentPhoto' | translate}}</h2>
+    <img [src]="domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, ' + productImageBase64)"
+         class="add-item-dialog__image"/>
+  </div>
+
+
+  <form id="image-form" (submit)="uploadPhoto($event)" class="add-item-dialog__form">
     <input type="file" accept="image/*" name="file" id="file">
   </form>
 </div>

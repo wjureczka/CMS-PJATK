@@ -96,7 +96,8 @@
       "chooseCategory": "Wählen Sie Kategorien",
       "chooseProducer": "Wählen Sie einen Hersteller",
       "edit": "Bearbeiten",
-      "close": "Schließen"
+      "close": "Schließen",
+      "currentPhoto": "Aktuelles Foto"
     },
     "producerManagement": {
       "add": "Hinzufügen",

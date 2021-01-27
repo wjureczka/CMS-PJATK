@@ -40,16 +40,22 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
     })],
     [ProductCategoryType.MEMORY, this.formBuilder.group({
         [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(2), Validators.required]],
-        [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
+        [ProductPropertyType.MEMORY_COUNT]: ['', [Validators.min(1), Validators.required]],
     })],
     [ProductCategoryType.PROCESSOR, this.formBuilder.group({
         [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
-        [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
-        [ProductPropertyType.CORE_COUNT]: [0, [Validators.min(1), Validators.required]],
+        [ProductPropertyType.CLOCK_SPEED]: ['', [Validators.min(1), Validators.required]],
+        [ProductPropertyType.CORE_COUNT]: ['', [Validators.min(1), Validators.required]],
     })],
     [ProductCategoryType.GRAPHICS_CARD, this.formBuilder.group({
-        [ProductPropertyType.MEMORY_COUNT]: [0, [Validators.min(1), Validators.required]],
-        [ProductPropertyType.CLOCK_SPEED]: [0, [Validators.min(1), Validators.required]],
+        [ProductPropertyType.MEMORY_COUNT]: ['', [Validators.min(1), Validators.required]],
+        [ProductPropertyType.CLOCK_SPEED]: ['', [Validators.min(1), Validators.required]],
+    })],
+    [ProductCategoryType.POWER_SUPPLY, this.formBuilder.group({
+      [ProductPropertyType.POWER]: ['', [Validators.min(1), Validators.required]],
+    })],
+    [ProductCategoryType.COMPUTER_CASE, this.formBuilder.group({
+      [ProductPropertyType.CASE_TYPE]: ['', [Validators.minLength(1), Validators.required]],
     })],
     [ProductCategoryType.HARDWARE, null]
   ]);
