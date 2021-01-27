@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CartItem, CartStore} from '../../../core/cart/cart.store';
-import {ProductsService} from "../../../products/services/products.service";
-import {DomSanitizer} from "@angular/platform-browser";
+import {ProductsService} from '../../../products/services/products.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cart-list-item',

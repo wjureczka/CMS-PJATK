@@ -52,8 +52,9 @@
   }
 
   &__banner-price {
-    width: 60%;
     @extend %center-end;
+    margin-left: auto;
+
     span {
       margin-right: 15px
     }
@@ -61,8 +62,6 @@
 
   &__banner-btn {
     @extend %center-end;
-    width: 20%;
-    margin-left: auto;
 
     .mat-icon {
       cursor: pointer;
