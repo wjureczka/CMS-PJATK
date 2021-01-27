@@ -22,6 +22,14 @@
     <app-product-category-selector [productCategory]="{categoryId: 4, categoryType: 'MEMORY' }"
                                    [productCategoryImageURL]="'assets/img/ram.png'"
                                    (selectedProduct)="handleRAMChange($event)"></app-product-category-selector>
+
+    <app-product-category-selector [productCategory]="{categoryId: 6, categoryType: 'COMPUTER_CASE' }"
+                                   [productCategoryImageURL]="'assets/img/computercase.png'"
+                                   (selectedProduct)="handleComputerCaseChange($event)"></app-product-category-selector>
+
+    <app-product-category-selector [productCategory]="{categoryId: 7, categoryType: 'POWER_SUPPLY' }"
+                                   [productCategoryImageURL]="'assets/img/powersupply.png'"
+                                   (selectedProduct)="handlePowerSupplyChange($event)"></app-product-category-selector>
   </div>
 
   <button class="creator__add-to-cart" mat-raised-button color="primary" (click)="handleAddToCartClick()">

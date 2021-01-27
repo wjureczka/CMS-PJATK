@@ -69,6 +69,8 @@
   "category.graphics_card": "Grafikkarte",
   "category.memory": "Computerspeicher",
   "category.hardware": "Hardware",
+  "category.computer_case": "Computer case",
+  "category.power_supply": "Power supply",
 
   "creator": {
     "title": "Computerassistent",

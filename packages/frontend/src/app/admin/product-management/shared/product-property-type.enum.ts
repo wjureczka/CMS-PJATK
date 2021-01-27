@@ -5,5 +5,5 @@ export enum ProductPropertyType {
   MEMORY_COUNT = 'MEMORY_COUNT',
   MEMORY_CL = 'MEMORY_CL',
   POWER = 'POWER',
-  CASE_TYPE = 'CASE_TYPE'
+  CASE_TYPE = 'CASE_TYPE',
 }

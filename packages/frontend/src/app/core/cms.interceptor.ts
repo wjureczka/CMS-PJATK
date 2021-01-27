@@ -22,7 +22,6 @@ export class CMSInterceptor implements HttpInterceptor {
     });
 
     if (user) {
-      console.log(user.accessToken);
       apiRequest = apiRequest.clone({
         setHeaders: { Authorization: `Bearer ${user.accessToken}` }
       });

@@ -25,7 +25,7 @@
         id="add-new-item-form"
         class="add-item-dialog__form"
   >
-    <mat-form-field>
+    <mat-form-field class="add-item-dialog__form-field">
       <mat-label>{{'admin.productManagement.name' | translate}}</mat-label>
       <input matInput type="text" [formControl]="descriptionFormControl" required>
       <mat-error *ngIf="descriptionFormControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
@@ -33,7 +33,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="add-item-dialog__form-field">
       <mat-label>{{'admin.productManagement.description' | translate}}</mat-label>
       <textarea matInput type="text" [formControl]="longDescriptionFormControl" required></textarea>
       <mat-error *ngIf="longDescriptionFormControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
@@ -41,7 +41,7 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="add-item-dialog__form-field">
       <mat-label>{{'admin.productManagement.price' | translate}}</mat-label>
       <input matInput type="number" [formControl]="priceFormControl" required>
       <mat-error *ngIf="priceFormControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>

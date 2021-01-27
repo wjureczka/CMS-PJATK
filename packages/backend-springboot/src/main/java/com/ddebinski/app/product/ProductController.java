@@ -135,7 +135,16 @@ public class ProductController {
                             || eProperty.equals(EProperty.CASE_TYPE)
                             || eProperty.equals(EProperty.SOCKET)
                             || eProperty.equals(EProperty.POWER));
+        } else if (categoryType.equals(ECategoryType.POWER_SUPPLY)) {
+            invalidate = ePropertyStream
+                    .anyMatch(eProperty -> eProperty.equals(EProperty.CLOCK_SPEED)
+                            || eProperty.equals(EProperty.CORE_COUNT)
+                            || eProperty.equals(EProperty.CASE_TYPE)
+                            || eProperty.equals(EProperty.SOCKET)
+                            || eProperty.equals(EProperty.MEMORY_CL)
+                            || eProperty.equals(EProperty.MEMORY_COUNT));
         }
+
 
         if (invalidate) {
             return ResponseEntity.badRequest().body("Invalidate properties for this category");

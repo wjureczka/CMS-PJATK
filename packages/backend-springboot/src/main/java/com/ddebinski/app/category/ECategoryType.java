@@ -5,5 +5,7 @@ public enum ECategoryType {
     PROCESSOR,
     MEMORY,
     GRAPHICS_CARD,
+    COMPUTER_CASE,
+    POWER_SUPPLY,
     HARDWARE
 }

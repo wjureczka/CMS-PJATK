@@ -69,6 +69,8 @@
   "category.graphics_card": "Graphics Card",
   "category.memory": "Memory",
   "category.hardware": "Hardware",
+  "category.computer_case": "Computer case",
+  "category.power_supply": "Power supply",
 
   "creator": {
     "title": "Computer creator",

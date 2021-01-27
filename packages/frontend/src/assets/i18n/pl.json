@@ -69,6 +69,8 @@
   "category.graphics_card": "Karta graficzna",
   "category.memory": "Pamięć",
   "category.hardware": "Hardware",
+  "category.computer_case": "Obudowa",
+  "category.power_supply": "Zasilacz",
 
   "creator": {
     "title": "Kreator komputerowy",
