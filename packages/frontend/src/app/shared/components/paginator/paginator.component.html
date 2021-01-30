@@ -1,18 +1,18 @@
 <nav class="paginator">
   <ul class="paginator__pages">
 
-    <li class="paginator__page-item active" (click)="changePage(config.activePage - 1)">
+    <li class="paginator__page-item active" (click)="changePage(activePage - 1)">
       <a><</a>
     </li>
 
     <li class="paginator__page-item"
         *ngFor="let page of pages"
         (click)="changePage(page - 1)"
-        [ngClass]="{'active': config.activePage === page - 1}">
+        [ngClass]="{'active': activePage === page - 1}">
       <a>{{page}}</a>
     </li>
 
-    <li class="paginator__page-item active" (click)="changePage( config.activePage + 1)">
+    <li class="paginator__page-item active" (click)="changePage( activePage + 1)">
       <a>></a>
     </li>
 

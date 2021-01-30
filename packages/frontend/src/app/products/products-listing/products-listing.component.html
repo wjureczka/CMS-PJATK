@@ -22,7 +22,9 @@
 
   <div class="products__paginator">
 
-    <app-paginator (pageChange)="changePage($event)"></app-paginator>
+    <app-paginator [totalPages]="pageCfg.totalPages"
+                   (pageChange)="changePage($event)">
+    </app-paginator>
 
   </div>
 

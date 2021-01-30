@@ -6,6 +6,7 @@ import {ListingProduct} from '../model/listing-product.model';
 import {ProductCategory} from '../../shared/product-category.model';
 import {Product} from '../../shared/product.model';
 import {ProductCategoryType} from '../../shared/product-category-type.enum';
+import {Page} from '../../shared/model/page';
 
 
 @Injectable({
@@ -26,9 +27,15 @@ export class ProductsService {
     return this.http.get<ListingProduct[]>('/api/products');
   }
 
+  public getProductsPage(page: number, size: number): Observable<Page<Product>> {
+    return this.http.get<Page<Product>>('/api/products/paged',
+      {params: {page: `${page}`, size: `${size}`}}
+      );
+  }
+
   public getProductImage(productId: number): Observable<ArrayBuffer> {
     // @ts-ignore
-    return this.http.get<ArrayBuffer>(`/api/products/${productId}/base64-file`, { responseType: 'text' });
+    return this.http.get<ArrayBuffer>(`/api/products/${productId}/base64-file`, {responseType: 'text'});
   }
 
   public getProductsByCategory(category: ProductCategoryType[]): Observable<ListingProduct[]> {
@@ -41,7 +48,7 @@ export class ProductsService {
     return this.http.get<ProductCategory[]>('/api/categories');
   }
 
-  public getProductById(id: string): Observable<Product > {
+  public getProductById(id: string): Observable<Product> {
     return this.http.get<Product>(`/api/products/${id}`);
   }
 

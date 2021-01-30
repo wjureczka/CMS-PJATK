@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 export interface PaginatorCfg {
   totalPages: number;
@@ -11,33 +11,37 @@ export interface PaginatorCfg {
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss']
 })
-export class PaginatorComponent implements OnInit {
+export class PaginatorComponent {
 
-  @Input() config: PaginatorCfg = {
-    totalPages: 7,
-    itemsPerPage: 10,
-    activePage: 0
-  };
+  @Input() totalPages = 0;
 
   @Output() pageChange = new EventEmitter<number>();
+
+  activePage = 0;
 
   pages: number[];
 
   constructor() {
-  }
-
-  ngOnInit(): void {
-    this.pages = this.getAvailablePages(this.config.totalPages);
+    this.pages = this.getPagesSlice();
   }
 
   changePage(pageNumber: number): void {
-    if (pageNumber >= 0 && pageNumber <= this.config.totalPages - 1) {
-      this.config.activePage = pageNumber;
+    if (pageNumber >= 0 && pageNumber <= this.totalPages - 1) {
+      this.activePage = pageNumber;
       this.pageChange.emit(pageNumber);
+    }
+    if (this.activePage === this.pages.length || this.activePage === this.pages[0] - 2) {
+      this.pages = this.getPagesSlice();
     }
   }
 
- private getAvailablePages(pagesCount: number): number[] {
+  getPagesSlice(): number [] {
+    const start = this.activePage + 1;
+    const range = 4;
+    return [...Array(range).keys()].map(i => i + start);
+  }
+
+  private getAvailablePages(pagesCount: number): number[] {
     return Array.from({length: pagesCount}, (_, i) => i + 1);
   }
 
