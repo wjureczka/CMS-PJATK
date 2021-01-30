@@ -20,7 +20,14 @@ export class ProductsListingComponent implements OnInit {
 
   ngOnInit(): void {
     this.products$ = this.productsService.products$;
+    this.initProducts();
+  }
 
+  changePage(pageNumber: number): void {
+    this.initProducts(pageNumber);
+  }
+
+  private initProducts(page = 0, size = 10): void {
     this.productsService.getProducts()
       .subscribe(
         (result) => {
