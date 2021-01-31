@@ -3,7 +3,6 @@ package com.ddebinski.app.product;
 import com.ddebinski.app.category.Category;
 import com.ddebinski.app.producer.Producer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +13,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -55,13 +53,29 @@ public class Product {
     @JsonIgnoreProperties("product")
     private Set<ProductProperty> properties = new HashSet<>();
 
+    @OneToMany(
+            mappedBy = "product",
+            cascade = CascadeType.ALL
+    )
+    @JsonIgnoreProperties("product")
+    private Set<Translation> translations = new HashSet<>();
+
     public void addProperties(Set<ProductProperty> properties) {
         properties.forEach(this::addProperty);
     }
 
-    public void addProperty(ProductProperty property) {
+    public void addTranslations(Set<Translation> translations) {
+        translations.forEach(this::addTranslation);
+    }
+
+    private void addProperty(ProductProperty property) {
         properties.add(property);
         property.setProduct(this);
+    }
+
+    private void addTranslation(Translation translation) {
+        translations.add(translation);
+        translation.setProduct(this);
     }
 
     public void removeProperty(ProductProperty property) {
@@ -72,5 +86,10 @@ public class Product {
     public void clearAllProperties() {
         this.properties.forEach(property -> property.setProduct(null));
         this.properties.clear();
+    }
+
+    public void clearAllTranslations() {
+        this.translations.forEach(translation -> translation.setProduct(null));
+        this.translations.clear();
     }
 }

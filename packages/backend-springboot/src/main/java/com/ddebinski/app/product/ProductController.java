@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
@@ -20,16 +22,35 @@ import java.util.stream.Stream;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class ProductController {
     private final ProductRepository repository;
+    private final SocketRepository socketRepository;
 
     @GetMapping
     ResponseEntity<List<Product>> getProducts() {
         return ResponseEntity.ok(repository.findAll());
     }
 
+    @GetMapping("/sockets")
+    ResponseEntity<List<SocketDictionary>> getSockets() {
+        return ResponseEntity.ok(socketRepository.findAll());
+    }
+
+    @PostMapping("/sockets")
+    ResponseEntity<HttpStatus> addSocket(@RequestBody SocketDictionary socketDictionary) {
+        socketRepository.save(socketDictionary);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping(path = "/{id}")
-    ResponseEntity<Product> getProductById(@PathVariable Long id) {
+    ResponseEntity<ProductDto> getProductById(@PathVariable Long id, @PathParam("lang") String lang) {
         Optional<Product> result = repository.findById(id);
-        return result.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        if (result.isPresent()) {
+            Set<Translation> translationList = result.get().getTranslations().stream()
+                    .filter(translation -> translation.getLang().equals(lang))
+                    .collect(Collectors.toSet());
+            result.get().setTranslations(translationList);
+        }
+
+        return result.map(ProductDto::map).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping("/")
@@ -53,6 +74,9 @@ public class ProductController {
                 domain.setProducer(product.getProducer());
                 domain.clearAllProperties();
                 domain.addProperties(product.getProperties());
+                domain.clearAllTranslations();
+                domain.addTranslations(product.getTranslations());
+
                 repository.save(domain);
 
                 return new ResponseEntity<>(HttpStatus.CREATED);
@@ -77,6 +101,7 @@ public class ProductController {
             newProduct.setLongDescription(product.getLongDescription());
             newProduct.setProducer(product.getProducer());
             newProduct.addProperties(product.getProperties());
+            newProduct.addTranslations(product.getTranslations());
 
             repository.save(newProduct);
 
