@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 export interface PaginatorCfg {
   totalPages: number;
@@ -11,34 +11,51 @@ export interface PaginatorCfg {
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss']
 })
-export class PaginatorComponent {
+export class PaginatorComponent implements OnInit {
 
   @Input() totalPages = 0;
 
   @Output() pageChange = new EventEmitter<number>();
 
-  activePage = 0;
+  private maxRange = 4;
 
-  pages: number[];
+  public activePage = 0;
+
+  public pages: number[];
+
+  public pageSlice: number[];
 
   constructor() {
-    this.pages = this.getPagesSlice();
   }
 
-  changePage(pageNumber: number): void {
+  ngOnInit(): void {
+    this.pages = this.getAvailablePages(this.totalPages);
+    this.pageSlice = this.getPagesSlice(1);
+  }
+
+  nextPage(pageNumber: number): void {
+    this.changePage(pageNumber);
+    if (this.activePage < this.totalPages  && this.activePage === this.pageSlice[this.pageSlice.length - 1]) {
+      this.pageSlice = this.pageSlice.map(val => val + 1);
+    }
+  }
+
+  previousPage(pageNumber: number): void {
+    this.changePage(pageNumber);
+    if (this.activePage - 1 >= 0 && this.activePage === this.pageSlice[0] - 1) {
+      this.pageSlice = this.pageSlice.map(val => val - 1);
+    }
+  }
+
+  private changePage(pageNumber: number): void {
     if (pageNumber >= 0 && pageNumber <= this.totalPages - 1) {
       this.activePage = pageNumber;
       this.pageChange.emit(pageNumber);
     }
-    if (this.activePage === this.pages.length || this.activePage === this.pages[0] - 2) {
-      this.pages = this.getPagesSlice();
-    }
   }
 
-  getPagesSlice(): number [] {
-    const start = this.activePage + 1;
-    const range = 4;
-    return [...Array(range).keys()].map(i => i + start);
+  private getPagesSlice(start: number): number [] {
+    return [...Array(this.maxRange).keys()].map(i => i + start);
   }
 
   private getAvailablePages(pagesCount: number): number[] {
