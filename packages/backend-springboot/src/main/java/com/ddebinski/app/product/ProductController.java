@@ -53,6 +53,12 @@ public class ProductController {
         return result.map(ProductDto::map).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping(path = "/{id}")
+    ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        Optional<Product> result = repository.findById(id);
+        return result.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @GetMapping("/")
     ResponseEntity<List<Product>> getProductByCategoryId(@RequestParam("categoryId") List<Long> categoryIds) {
         List<Product> result = repository.findByCategoryCategoryIdIn(categoryIds);
