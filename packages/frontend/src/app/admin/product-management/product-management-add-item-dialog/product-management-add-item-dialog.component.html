@@ -46,10 +46,26 @@
     </mat-form-field>
 
     <mat-form-field class="add-item-dialog__form-field">
-      <mat-label>{{'admin.productManagement.description' | translate}}</mat-label>
-      <textarea matInput type="text" [formControl]="longDescriptionFormControl" required></textarea>
-      <mat-error *ngIf="longDescriptionFormControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
-      <mat-error *ngIf="longDescriptionFormControl.hasError('minlength')">{{'inputValidation.setValueLongerThan' | translate}} 15
+      <mat-label>{{'admin.productManagement.description' | translate}}: ENG</mat-label>
+      <textarea matInput type="text" [formControl]="englishDescriptionFormControl" required></textarea>
+      <mat-error *ngIf="englishDescriptionFormControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
+      <mat-error *ngIf="englishDescriptionFormControl.hasError('minlength')">{{'inputValidation.setValueLongerThan' | translate}} 15
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="add-item-dialog__form-field">
+      <mat-label>{{'admin.productManagement.description' | translate}}: GER</mat-label>
+      <textarea matInput type="text" [formControl]="germanDescriptionFormControl" required></textarea>
+      <mat-error *ngIf="germanDescriptionFormControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
+      <mat-error *ngIf="germanDescriptionFormControl.hasError('minlength')">{{'inputValidation.setValueLongerThan' | translate}} 15
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="add-item-dialog__form-field">
+      <mat-label>{{'admin.productManagement.description' | translate}}: POL</mat-label>
+      <textarea matInput type="text" [formControl]="polishDescriptionFormControl" required></textarea>
+      <mat-error *ngIf="polishDescriptionFormControl.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
+      <mat-error *ngIf="polishDescriptionFormControl.hasError('minlength')">{{'inputValidation.setValueLongerThan' | translate}} 15
       </mat-error>
     </mat-form-field>
 

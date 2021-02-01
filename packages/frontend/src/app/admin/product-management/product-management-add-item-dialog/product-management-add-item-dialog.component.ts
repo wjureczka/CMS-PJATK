@@ -9,6 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ProductPropertyType} from '../shared/product-property-type.enum';
 import {InputType} from '../shared/input-type.enum';
+import {AvailableLanguageToCode} from "../../../../environments/available-languages-codes";
 
 @Component({
   selector: 'app-product-management-add-item-dialog',
@@ -62,7 +63,11 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public descriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
 
-  public longDescriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(15)]);
+  public englishDescriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(15)]);
+
+  public germanDescriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(15)]);
+
+  public polishDescriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(15)]);
 
   public selectedFormGroup: FormGroup | undefined;
 
@@ -95,7 +100,6 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
     const product = {
       description: this.descriptionFormControl.value,
-      longDescription: this.longDescriptionFormControl.value,
       price: this.priceFormControl.value,
       producer: {
         producerId: this.selectedProducerId
@@ -108,6 +112,20 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
         name,
         value
       }))
+      ],
+      translations: [
+        {
+          lang: AvailableLanguageToCode.English,
+          value: this.englishDescriptionFormControl.value
+        },
+        {
+          lang: AvailableLanguageToCode.German,
+          value: this.germanDescriptionFormControl.value
+        },
+        {
+          lang: AvailableLanguageToCode.Polish,
+          value: this.polishDescriptionFormControl.value
+        }
       ]
     };
 
@@ -124,7 +142,8 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
     this.productManagementService.addProduct(product).subscribe(() => {
         this.dialogRef.close(true);
       },
-      () => {
+      (error) => {
+        console.error(error);
         this.snackbar.open('Nie udało dodać się produktu', '', {duration: 3000});
       });
   }

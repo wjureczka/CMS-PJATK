@@ -22,7 +22,7 @@ export class ProductManagementService {
   constructor(private http: HttpClient) { }
 
   public getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>('/api/products');
+    return this.http.get<Product[]>('/api/products/with-translation');
   }
 
   public deleteProduct(productId: number): Observable<HttpResponseBase> {

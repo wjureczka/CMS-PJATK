@@ -29,6 +29,11 @@ public class ProductController {
         return ResponseEntity.ok(repository.findAll());
     }
 
+    @GetMapping("/with-translation")
+    ResponseEntity<List<Product>> getProductsWithTranslation() {
+        return ResponseEntity.ok(repository.findAll());
+    }
+
     @GetMapping("/sockets")
     ResponseEntity<List<SocketDictionary>> getSockets() {
         return ResponseEntity.ok(socketRepository.findAll());

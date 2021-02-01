@@ -30,7 +30,6 @@ public class Product {
     @NotBlank
     private String description;
 
-    @NotBlank
     private String longDescription;
 
     @Min(1)
