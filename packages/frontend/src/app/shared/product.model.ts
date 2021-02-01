@@ -18,4 +18,7 @@ export interface Product {
     name: string;
     value: string;
   }[];
+  translation?: {
+    value: string;
+  };
 }
