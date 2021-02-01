@@ -92,7 +92,7 @@
       "addProduct": "Dodaj produkt",
       "editProduct": "Edytuj produkt",
       "name": "Nazwa",
-      "description": "Opis",
+      "description": "Domyślny opis",
       "chooseCategory": "Wybierz kategorie",
       "chooseProducer": "Wybierz producenta",
       "edit": "Edytuj",

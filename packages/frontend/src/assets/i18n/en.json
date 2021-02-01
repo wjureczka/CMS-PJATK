@@ -92,7 +92,7 @@
       "addProduct": "Add product",
       "editProduct": "Edit product",
       "name": "Name",
-      "description": "Description",
+      "description": "Default description",
       "chooseCategory": "Choose category",
       "chooseProducer": "Choose producer",
       "edit": "Edit",
