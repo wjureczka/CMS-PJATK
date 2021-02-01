@@ -14,7 +14,7 @@
 
     <p class="product__name">{{product.description}}</p>
 
-    <p class="product__description">{{product.longDescription}}</p>
+    <p class="product__description">{{product.translation ? product.translation.value : product.longDescription}}</p>
 
     <div class="product__properties">
       <p class="product__property" *ngFor="let productProperty of product.properties">
