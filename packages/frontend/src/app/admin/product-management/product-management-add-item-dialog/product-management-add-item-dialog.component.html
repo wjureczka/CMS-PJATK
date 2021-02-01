@@ -25,6 +25,18 @@
         id="add-new-item-form"
         class="add-item-dialog__form"
   >
+    <mat-form-field
+      class="add-item-dialog__select"
+      *ngIf="selectedProductCategory.categoryId === productCategoryType.MOTHERBOARD || selectedProductCategory.categoryId === productCategoryType.PROCESSOR"
+    >
+      <mat-label>sockety</mat-label>
+      <mat-select [(value)]="selectedSocketValue" required>
+        <mat-option *ngFor="let socket of sockets$ | async" [value]="socket.value">
+          {{socket.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <mat-form-field class="add-item-dialog__form-field">
       <mat-label>{{'admin.productManagement.name' | translate}}</mat-label>
       <input matInput type="text" [formControl]="descriptionFormControl" required>

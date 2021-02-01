@@ -4,10 +4,11 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 import {ProductCategoryType} from '../../../shared/product-category-type.enum';
-import {ProductManagementService} from '../product-management.service';
+import {ProductManagementService, Socket} from '../product-management.service';
 import {ProductPropertyType} from '../shared/product-property-type.enum';
 import {InputType} from '../shared/input-type.enum';
 import {Product} from '../../../shared/product.model';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-product-management-edit-item-dialog',
@@ -15,6 +16,8 @@ import {Product} from '../../../shared/product.model';
   styleUrls: ['./product-management-edit-item-dialog.component.scss']
 })
 export class ProductManagementEditItemDialogComponent implements OnInit {
+
+  public sockets$: Observable<Socket[]>;
 
   constructor(private dialogRef: MatDialogRef<ProductManagementEditItemDialogComponent>,
               private productManagementService: ProductManagementService,
@@ -69,6 +72,7 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
   public selectedFormGroup: FormGroup | undefined;
 
   public ngOnInit(): void {
+    this.sockets$ = this.productManagementService.getSockets();
     this.selectedFormGroup = this.productCategoryTypeToFormGroup.get(this.product.category.categoryId);
     this.setCurrentValues();
   }
