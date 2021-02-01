@@ -70,16 +70,16 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
 
   public selectedFormGroup: FormGroup | undefined;
 
-  public selectedSocketValue: Socket | undefined;
+  public selectedSocketFormControl = new FormControl('', [Validators.required]);
 
-  public ngOnInit(): void {
+  public async ngOnInit() {
     this.productManagementService.getSockets()
       .subscribe((sockets) => {
         this.sockets = sockets;
       }, (error) => {
         console.error(error);
       });
-    this.selectedFormGroup = this.productCategoryTypeToFormGroup.get(this.product.category.categoryId);
+    this.selectedFormGroup = await this.productCategoryTypeToFormGroup.get(this.product.category.categoryId);
     this.setCurrentValues();
   }
 
@@ -103,11 +103,13 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
 
     if (this.product.category.categoryId === ProductCategoryType.PROCESSOR
       || this.product.category.categoryId === ProductCategoryType.MOTHERBOARD) {
+      const socket = this.sockets.find((sckt) => sckt.value === this.selectedSocketFormControl.value);
+
       product.properties.push(
         {
-          id: this.selectedSocketValue.id,
+          id: socket.id,
           name: ProductPropertyType.SOCKET,
-          value: this.selectedSocketValue.value
+          value: socket.value
         }
       );
     }
@@ -135,6 +137,7 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
     this.priceFormControl.setValue(this.product.price);
     this.descriptionFormControl.setValue(this.product.description);
     this.longDescriptionFormControl.setValue(this.product.longDescription);
+    this.selectedSocketFormControl.setValue(this.product.properties.find((property) => property.name === ProductPropertyType.SOCKET).value);
   }
 
   private getPropertyValue(propertyType: string): string | number {

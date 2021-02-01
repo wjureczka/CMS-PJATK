@@ -17,11 +17,11 @@
   >
     <mat-form-field
       class="add-item-dialog__select"
-      *ngIf="product.category.categoryId === productCategoryType.MOTHERBOARD || product.category.categoryId === productCategoryType.PROCESSOR"
+      *ngIf="selectedSocketFormControl && (product.category.categoryId === productCategoryType.MOTHERBOARD || product.category.categoryId === productCategoryType.PROCESSOR)"
     >
       <mat-label>Socket</mat-label>
-      <mat-select [(value)]="selectedSocketValue" required>
-        <mat-option *ngFor="let socket of sockets" [value]="socket">
+      <mat-select [formControl]="selectedSocketFormControl" required>
+        <mat-option *ngFor="let socket of sockets" [value]="socket.value"  >
           {{socket.value}}
         </mat-option>
       </mat-select>
