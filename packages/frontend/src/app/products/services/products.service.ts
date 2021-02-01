@@ -28,7 +28,7 @@ export class ProductsService {
   }
 
   public getProductsPage(page: number, size: number): Observable<Page<Product>> {
-    return this.http.get<Page<Product>>('/api/products/paged',
+    return this.http.get<Page<Product>>('/api/products/all',
       {params: {page: `${page}`, size: `${size}`}}
     );
   }
@@ -38,7 +38,7 @@ export class ProductsService {
     return this.http.get<ArrayBuffer>(`/api/products/${productId}/base64-file`, {responseType: 'text'});
   }
 
-  public getProductsByCategory(categories: ProductCategoryType[], page: number, size: number): Observable<Page<Product>> {
+  public getProductsPageByCategory(categories: ProductCategoryType[], page: number, size: number): Observable<Page<Product>> {
     const mappedQueryString = [
       ...categories.map((productCategory) => `categoryId=${productCategory}`),
       `page=${page}`,

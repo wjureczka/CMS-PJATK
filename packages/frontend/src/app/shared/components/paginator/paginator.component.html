@@ -1,5 +1,5 @@
 <nav class="paginator">
-  <ul class="paginator__pages">
+  <ul class="paginator__pages" *ngIf="totalPages">
 
     <li class="paginator__page-item active" (click)="changePage(activePage - 1)">
       <a><</a>

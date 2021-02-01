@@ -29,23 +29,23 @@ public class ProductController {
         return ResponseEntity.ok(repository.findAll());
     }
 
-    @GetMapping("/paged")
-    ResponseEntity<Page<Product>> getProductsPage(@RequestParam("page") int page,
-                                                  @RequestParam("size") int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return ResponseEntity.ok(repository.findAll(pageable));
-    }
-
     @GetMapping(path = "/{id}")
     ResponseEntity<Product> getProductById(@PathVariable Long id) {
         Optional<Product> result = repository.findById(id);
         return result.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/all")
+    ResponseEntity<Page<Product>> getProductsPage(@RequestParam("page") int page,
+                                                  @RequestParam("size") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(repository.findAll(pageable));
+    }
+
     @GetMapping("/")
-    ResponseEntity<Page<Product>> getProductByCategoryId(@RequestParam("categoryId") List<Long> categoryIds,
-                                                         @RequestParam("page") int page,
-                                                         @RequestParam("size") int size) {
+    ResponseEntity<Page<Product>> getProductPageByCategoryId(@RequestParam(value = "categoryId") List<Long> categoryIds,
+                                                             @RequestParam("page") int page,
+                                                             @RequestParam("size") int size) {
         Page<Product> result = repository.findByCategoryCategoryIdIn(categoryIds, PageRequest.of(page, size));
         return ResponseEntity.ok(result);
     }

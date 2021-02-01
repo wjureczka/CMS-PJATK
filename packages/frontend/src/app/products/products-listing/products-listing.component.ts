@@ -3,10 +3,12 @@ import {ProductsService} from '../services/products.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ListingProduct} from '../model/listing-product.model';
 import {combineLatest, Observable, throwError} from 'rxjs';
-import {startWith, tap} from 'rxjs/operators';
+import {startWith, switchMap} from 'rxjs/operators';
 import {PaginatorCfg, PaginatorComponent} from '../../shared/components/paginator/paginator.component';
 import {ProductsListingCategorySelectComponent} from './products-listing-category-select/products-listing-category-select.component';
 import {ProductCategoryType} from '../../shared/product-category-type.enum';
+import {Page} from '../../shared/model/page';
+import {Product} from '../../shared/product.model';
 
 @Component({
   selector: 'app-products',
@@ -20,7 +22,7 @@ export class ProductsListingComponent implements OnInit, AfterViewInit {
   public isLoading = true;
 
   public pageCfg: PaginatorCfg = {
-    totalPages: 7,
+    totalPages: 0,
     itemsPerPage: 1,
     activePage: 0
   };
@@ -36,54 +38,38 @@ export class ProductsListingComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.products$ = this.productsService.products$;
-    this.initProducts();
   }
 
   ngAfterViewInit(): void {
     const categories$ = this.categorySelect.categoriesChange.pipe(startWith([]));
     const page$ = this.paginator.pageChange.pipe(startWith(0));
+
     combineLatest([categories$, page$])
       .pipe(
-       tap(console.log)
-      ).subscribe(([categories, page]) => this.searchByCategories(categories, page));
-  }
-
-  changePage(pageNumber: number): void {
-    this.initProducts(pageNumber);
-  }
-
-  private initProducts(page = 0, size = this.pageCfg.itemsPerPage): void {
-    this.productsService.getProductsPage(page, size).subscribe(
-      ({content, totalPages}) => {
-        this.productsService.setProducts(content);
-        this.pageCfg = {...this.pageCfg, totalPages};
-        this.isLoading = false;
-      }, (error) => {
-        console.error(error);
-        this.snackbar.open('Nie udało się pobrać produktów', '', {duration: 3000});
-        this.isLoading = false;
-
-        return throwError(error);
-      });
-  }
-
-  searchByCategories(categories: ProductCategoryType[], page): void {
-
-    if (!categories.length) {
-      this.initProducts(page);
-      return;
-    }
-
-    this.productsService.getProductsByCategory(categories, page, this.pageCfg.itemsPerPage)
+        switchMap(([categories, page]) =>
+          this.getProductsByCategories(categories, page))
+      )
       .subscribe(
-        ({content, totalPages}) => {
-          this.productsService.setProducts(content);
-          this.pageCfg = {...this.pageCfg, totalPages};
-          this.isLoading = false;
-        }, (error) => {
-          this.snackbar.open('Nie udało się pobrać produktu', '', {duration: 3000});
-
-          return throwError(error);
-        });
+        payload => this.onSuccess(payload),
+        error => this.onError(error)
+      );
   }
+
+  private getProductsByCategories(categories: ProductCategoryType[], page): Observable<Page<Product>> {
+    return !categories.length ?
+      this.productsService.getProductsPage(page, this.pageCfg.itemsPerPage)
+      : this.productsService.getProductsPageByCategory(categories, page, this.pageCfg.itemsPerPage);
+  }
+
+  private onSuccess({content, totalPages}): void {
+    this.productsService.setProducts(content);
+    this.pageCfg = {...this.pageCfg, totalPages};
+    this.isLoading = false;
+  }
+
+  private onError(error): Observable<never> {
+    this.snackbar.open('Nie udało się pobrać produktu', '', {duration: 3000});
+    return throwError(error);
+  }
+
 }

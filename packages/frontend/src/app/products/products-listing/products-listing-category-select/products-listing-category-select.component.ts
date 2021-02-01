@@ -19,7 +19,6 @@ export class ProductsListingCategorySelectComponent implements OnInit {
 
   public categoriesFormArray = new FormArray([]);
 
-
   constructor(private productService: ProductsService, private snackbar: MatSnackBar) {
   }
 
@@ -40,7 +39,6 @@ export class ProductsListingCategorySelectComponent implements OnInit {
     const activeCategories = this.categoriesFormArray.getRawValue()
       .map((isActive, index) => isActive ? this.categories[index].categoryId : null)
       .filter((isActive) => isActive !== null);
-    console.log('categories', activeCategories);
     this.categoriesChange.emit(activeCategories);
   }
 
