@@ -1,7 +1,7 @@
 <ul class="recommended-products">
   <li *ngFor="let product of products">
     <app-products-listing-list-item [category]="product.category.categoryType"
-                                    [description]="product.longDescription"
+                                    [description]="product.translation ? product.translation.value : product.longDescription"
                                     [id]="product.id"
                                     [price]="product.price"
                                     [producer]="product.producer"

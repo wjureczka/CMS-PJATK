@@ -1,9 +1,6 @@
-import {ProductCategoryType} from './product-category-type.enum';
-
 export interface Product {
   id: number;
   description: string;
-  longDescription: string;
   price: number;
   category: {
     categoryId: number;
@@ -16,6 +13,11 @@ export interface Product {
   properties: {
     id: number;
     name: string;
+    value: string;
+  }[];
+  translations?: {
+    id?: number;
+    lang: string;
     value: string;
   }[];
 }

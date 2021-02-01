@@ -27,7 +27,7 @@
 
   <div class="product__description">
     <h2>{{ 'product.description' | translate }}</h2>
-    <p>{{product.longDescription}}</p>
+    <p>{{product.translation ? product.translation.value : product.longDescription}}</p>
   </div>
 
   <div class="product__technical">

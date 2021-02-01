@@ -10,4 +10,7 @@ export interface ListingProduct {
     producerId: number;
     producerName: string;
   };
+  translation?: {
+    value: string;
+  };
 }

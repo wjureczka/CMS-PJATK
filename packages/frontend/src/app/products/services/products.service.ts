@@ -6,6 +6,7 @@ import {ListingProduct} from '../model/listing-product.model';
 import {ProductCategory} from '../../shared/product-category.model';
 import {Product} from '../../shared/product.model';
 import {ProductCategoryType} from '../../shared/product-category-type.enum';
+import {LanguageService} from "../../shared/language.service";
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class ProductsService {
 
   public products$ = new BehaviorSubject<ListingProduct[]>([]);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private languageService: LanguageService) {
   }
 
   public setProducts(products: ListingProduct[]): void {
@@ -42,7 +43,9 @@ export class ProductsService {
   }
 
   public getProductById(id: string): Observable<Product > {
-    return this.http.get<Product>(`/api/products/${id}`);
+    const currentLanguage = this.languageService.currentLanguage.value;
+
+    return this.http.get<Product>(`/api/products/${id}?lang=${currentLanguage}`);
   }
 
 }

@@ -4,10 +4,11 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 import {ProductCategoryType} from '../../../shared/product-category-type.enum';
-import {ProductManagementService} from '../product-management.service';
+import {ProductManagementService, Socket} from '../product-management.service';
 import {ProductPropertyType} from '../shared/product-property-type.enum';
 import {InputType} from '../shared/input-type.enum';
 import {Product} from '../../../shared/product.model';
+import {AvailableLanguageToCode} from '../../../../environments/available-languages-codes';
 
 @Component({
   selector: 'app-product-management-edit-item-dialog',
@@ -15,6 +16,10 @@ import {Product} from '../../../shared/product.model';
   styleUrls: ['./product-management-edit-item-dialog.component.scss']
 })
 export class ProductManagementEditItemDialogComponent implements OnInit {
+
+  public productCategoryType = ProductCategoryType;
+
+  public sockets: Socket[] = [];
 
   constructor(private dialogRef: MatDialogRef<ProductManagementEditItemDialogComponent>,
               private productManagementService: ProductManagementService,
@@ -36,14 +41,12 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
 
   public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, FormGroup>([
     [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
-        [ProductPropertyType.SOCKET]: ['', [Validators.minLength(2), Validators.required]],
     })],
     [ProductCategoryType.MEMORY, this.formBuilder.group({
         [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(2), Validators.required]],
         [ProductPropertyType.MEMORY_COUNT]: ['', [Validators.min(1), Validators.required]],
     })],
     [ProductCategoryType.PROCESSOR, this.formBuilder.group({
-        [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
         [ProductPropertyType.CLOCK_SPEED]: ['', [Validators.min(1), Validators.required]],
         [ProductPropertyType.CORE_COUNT]: ['', [Validators.min(1), Validators.required]],
     })],
@@ -64,12 +67,24 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
 
   public descriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(5)]);
 
-  public longDescriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(15)]);
+  public englishDescriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(15)]);
+
+  public germanDescriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(15)]);
+
+  public polishDescriptionFormControl = new FormControl('', [Validators.required, Validators.minLength(15)]);
 
   public selectedFormGroup: FormGroup | undefined;
 
-  public ngOnInit(): void {
-    this.selectedFormGroup = this.productCategoryTypeToFormGroup.get(this.product.category.categoryId);
+  public selectedSocketFormControl = new FormControl('', [Validators.required]);
+
+  public async ngOnInit(): Promise<void> {
+    this.productManagementService.getSockets()
+      .subscribe((sockets) => {
+        this.sockets = sockets;
+      }, (error) => {
+        console.error(error);
+      });
+    this.selectedFormGroup = await this.productCategoryTypeToFormGroup.get(this.product.category.categoryId);
     this.setCurrentValues();
   }
 
@@ -80,7 +95,6 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
     const product: Product = {
       id: this.product.id,
       description: this.descriptionFormControl.value,
-      longDescription: this.longDescriptionFormControl.value,
       price: this.priceFormControl.value,
       producer: this.product.producer,
       category: this.product.category,
@@ -88,8 +102,35 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
         id: this.product.properties.find((property) => property.name === name).id,
         name,
         value
-      }))
+      })),
+      translations: [
+        {
+          lang: AvailableLanguageToCode.English,
+          value: this.englishDescriptionFormControl.value
+        },
+        {
+          lang: AvailableLanguageToCode.German,
+          value: this.germanDescriptionFormControl.value
+        },
+        {
+          lang: AvailableLanguageToCode.Polish,
+          value: this.polishDescriptionFormControl.value
+        }
+      ]
     };
+
+    if (this.product.category.categoryId === ProductCategoryType.PROCESSOR
+      || this.product.category.categoryId === ProductCategoryType.MOTHERBOARD) {
+      const socket = this.sockets.find((sckt) => sckt.value === this.selectedSocketFormControl.value);
+
+      product.properties.push(
+        {
+          id: socket.id,
+          name: ProductPropertyType.SOCKET,
+          value: socket.value
+        }
+      );
+    }
 
 
     this.productManagementService.editProduct(product).subscribe(() => {
@@ -113,7 +154,21 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
 
     this.priceFormControl.setValue(this.product.price);
     this.descriptionFormControl.setValue(this.product.description);
-    this.longDescriptionFormControl.setValue(this.product.longDescription);
+
+    this.polishDescriptionFormControl
+      .setValue(this.product.translations.find((translation) => translation.lang === AvailableLanguageToCode.Polish).value);
+
+    this.englishDescriptionFormControl
+      .setValue(this.product.translations.find((translation) => translation.lang === AvailableLanguageToCode.English).value);
+
+    this.germanDescriptionFormControl
+      .setValue(this.product.translations.find((translation) => translation.lang === AvailableLanguageToCode.German).value);
+
+    if (this.product.category.categoryId === ProductCategoryType.PROCESSOR
+      || this.product.category.categoryId === ProductCategoryType.MOTHERBOARD) {
+      this.selectedSocketFormControl
+        .setValue(this.product.properties.find((property) => property.name === ProductPropertyType.SOCKET).value || '');
+    }
   }
 
   private getPropertyValue(propertyType: string): string | number {

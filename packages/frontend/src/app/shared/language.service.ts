@@ -17,7 +17,7 @@ export class LanguageService {
 
   private defaultLanguageCode: AvailableLanguageToCode = AvailableLanguageToCode.Polish;
 
-  private currentLanguage: BehaviorSubject<AvailableLanguageToCode> =
+  public currentLanguage: BehaviorSubject<AvailableLanguageToCode> =
     new BehaviorSubject<AvailableLanguageToCode>(this.defaultLanguageCode);
 
   public currentLanguage$: Observable<AvailableLanguageToCode> = this.currentLanguage.asObservable();
