@@ -4,7 +4,7 @@
 
   <div class="products__listing">
 
-    <app-product-category-select></app-product-category-select>
+    <app-product-category-select #categorySelect></app-product-category-select>
 
     <ul class="products__list">
 
@@ -22,9 +22,7 @@
 
   <div class="products__paginator">
 
-    <app-paginator [totalPages]="pageCfg.totalPages"
-                   (pageChange)="changePage($event)">
-    </app-paginator>
+    <app-paginator #paginator [totalPages]="pageCfg.totalPages"></app-paginator>
 
   </div>
 

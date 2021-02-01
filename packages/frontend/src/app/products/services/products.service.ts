@@ -30,7 +30,7 @@ export class ProductsService {
   public getProductsPage(page: number, size: number): Observable<Page<Product>> {
     return this.http.get<Page<Product>>('/api/products/paged',
       {params: {page: `${page}`, size: `${size}`}}
-      );
+    );
   }
 
   public getProductImage(productId: number): Observable<ArrayBuffer> {
@@ -38,10 +38,13 @@ export class ProductsService {
     return this.http.get<ArrayBuffer>(`/api/products/${productId}/base64-file`, {responseType: 'text'});
   }
 
-  public getProductsByCategory(category: ProductCategoryType[]): Observable<ListingProduct[]> {
-    const mappedQueryString = category.map((productCategory) => `categoryId=${productCategory}`).join('&');
-
-    return this.http.get<ListingProduct[]>(`/api/products/?${mappedQueryString}`);
+  public getProductsByCategory(categories: ProductCategoryType[], page: number, size: number): Observable<Page<Product>> {
+    const mappedQueryString = [
+      ...categories.map((productCategory) => `categoryId=${productCategory}`),
+      `page=${page}`,
+      `size=${size}`
+    ].join('&');
+    return this.http.get<Page<Product>>(`/api/products/?${mappedQueryString}`);
   }
 
   public getProductCategories(): Observable<ProductCategory[]> {
