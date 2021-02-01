@@ -43,8 +43,10 @@ public class ProductController {
     }
 
     @GetMapping("/")
-    ResponseEntity<List<Product>> getProductByCategoryId(@RequestParam("categoryId") List<Long> categoryIds) {
-        List<Product> result = repository.findByCategoryCategoryIdIn(categoryIds);
+    ResponseEntity<Page<Product>> getProductByCategoryId(@RequestParam("categoryId") List<Long> categoryIds,
+                                                         @RequestParam("page") int page,
+                                                         @RequestParam("size") int size) {
+        Page<Product> result = repository.findByCategoryCategoryIdIn(categoryIds, PageRequest.of(page, size));
         return ResponseEntity.ok(result);
     }
 
