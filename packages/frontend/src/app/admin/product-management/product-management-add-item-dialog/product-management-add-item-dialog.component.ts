@@ -70,7 +70,7 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
 
   public selectedProducerId: number | undefined;
 
-  public selectedSocketValue: number | undefined;
+  public selectedSocketValue: string | undefined;
 
   constructor(private dialogRef: MatDialogRef<ProductManagementAddItemDialogComponent>,
               private productManagementService: ProductManagementService,
@@ -82,7 +82,6 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
     this.productCategories$ = this.productManagementService.getProductCategories();
     this.productProducers$ = this.productManagementService.getProductProducers();
     this.sockets$ = this.productManagementService.getSockets();
-    console.log(this.productCategoryType);
   }
 
   public handleProductCategoryValueChange($event): void {
@@ -112,7 +111,8 @@ export class ProductManagementAddItemDialogComponent implements OnInit {
       ]
     };
 
-    if (this.selectedProductCategory.categoryId === ProductCategoryType.PROCESSOR || this.selectedProductCategory.categoryId === ProductCategoryType.MOTHERBOARD) {
+    if (this.selectedProductCategory.categoryId === ProductCategoryType.PROCESSOR
+      || this.selectedProductCategory.categoryId === ProductCategoryType.MOTHERBOARD) {
       product.properties.push(
         {
           name: ProductPropertyType.SOCKET,

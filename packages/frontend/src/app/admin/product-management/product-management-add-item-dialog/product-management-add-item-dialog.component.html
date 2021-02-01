@@ -29,7 +29,7 @@
       class="add-item-dialog__select"
       *ngIf="selectedProductCategory.categoryId === productCategoryType.MOTHERBOARD || selectedProductCategory.categoryId === productCategoryType.PROCESSOR"
     >
-      <mat-label>sockety</mat-label>
+      <mat-label>Socket</mat-label>
       <mat-select [(value)]="selectedSocketValue" required>
         <mat-option *ngFor="let socket of sockets$ | async" [value]="socket.value">
           {{socket.value}}

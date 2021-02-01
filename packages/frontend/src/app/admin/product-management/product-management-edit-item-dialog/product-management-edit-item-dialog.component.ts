@@ -8,7 +8,6 @@ import {ProductManagementService, Socket} from '../product-management.service';
 import {ProductPropertyType} from '../shared/product-property-type.enum';
 import {InputType} from '../shared/input-type.enum';
 import {Product} from '../../../shared/product.model';
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-product-management-edit-item-dialog',
@@ -17,7 +16,9 @@ import {Observable} from "rxjs";
 })
 export class ProductManagementEditItemDialogComponent implements OnInit {
 
-  public sockets$: Observable<Socket[]>;
+  public productCategoryType = ProductCategoryType;
+
+  public sockets: Socket[] = [];
 
   constructor(private dialogRef: MatDialogRef<ProductManagementEditItemDialogComponent>,
               private productManagementService: ProductManagementService,
@@ -39,14 +40,12 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
 
   public productCategoryTypeToFormGroup: Map<ProductCategoryType, FormGroup> = new Map<ProductCategoryType, FormGroup>([
     [ProductCategoryType.MOTHERBOARD, this.formBuilder.group({
-        [ProductPropertyType.SOCKET]: ['', [Validators.minLength(2), Validators.required]],
     })],
     [ProductCategoryType.MEMORY, this.formBuilder.group({
         [ProductPropertyType.MEMORY_CL]: ['', [Validators.minLength(2), Validators.required]],
         [ProductPropertyType.MEMORY_COUNT]: ['', [Validators.min(1), Validators.required]],
     })],
     [ProductCategoryType.PROCESSOR, this.formBuilder.group({
-        [ProductPropertyType.SOCKET]: ['', [Validators.minLength(1), Validators.required]],
         [ProductPropertyType.CLOCK_SPEED]: ['', [Validators.min(1), Validators.required]],
         [ProductPropertyType.CORE_COUNT]: ['', [Validators.min(1), Validators.required]],
     })],
@@ -71,8 +70,15 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
 
   public selectedFormGroup: FormGroup | undefined;
 
+  public selectedSocketValue: Socket | undefined;
+
   public ngOnInit(): void {
-    this.sockets$ = this.productManagementService.getSockets();
+    this.productManagementService.getSockets()
+      .subscribe((sockets) => {
+        this.sockets = sockets;
+      }, (error) => {
+        console.error(error);
+      });
     this.selectedFormGroup = this.productCategoryTypeToFormGroup.get(this.product.category.categoryId);
     this.setCurrentValues();
   }
@@ -94,6 +100,17 @@ export class ProductManagementEditItemDialogComponent implements OnInit {
         value
       }))
     };
+
+    if (this.product.category.categoryId === ProductCategoryType.PROCESSOR
+      || this.product.category.categoryId === ProductCategoryType.MOTHERBOARD) {
+      product.properties.push(
+        {
+          id: this.selectedSocketValue.id,
+          name: ProductPropertyType.SOCKET,
+          value: this.selectedSocketValue.value
+        }
+      );
+    }
 
 
     this.productManagementService.editProduct(product).subscribe(() => {
