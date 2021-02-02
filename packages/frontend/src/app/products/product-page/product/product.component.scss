@@ -19,10 +19,12 @@
   &__header {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
 
     .panel {
       width: 45%;
-      margin-left: auto;
+      flex-grow: 1;
     }
   }
 
@@ -31,6 +33,9 @@
     justify-content: center;
     max-height: 300px;
     width: 55%;
+    min-width: 300px;
+    flex-grow: 1;
+    overflow: hidden;
 
     img {
       height: 100%;

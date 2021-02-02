@@ -18,6 +18,11 @@
   margin-right: auto;
 
   &__company-name {
+
+    @media(max-width: 500px) {
+      display: none;
+    }
+
     @media(max-width: 1215px) {
       margin-left: 15px;
     }
