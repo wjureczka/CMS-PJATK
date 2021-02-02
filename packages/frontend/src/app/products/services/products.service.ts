@@ -48,4 +48,7 @@ export class ProductsService {
     return this.http.get<Product>(`/api/products/${id}?lang=${currentLanguage}`);
   }
 
+  public getRecommendedProducts(forCategoryId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`/api/products/recommended?forCategoryId=${forCategoryId}`);
+  }
 }

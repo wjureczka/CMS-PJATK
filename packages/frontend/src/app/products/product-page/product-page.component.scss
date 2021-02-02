@@ -3,9 +3,13 @@
 .product-page {
   display: flex;
   flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
   max-width: $max-width;
+  margin: 0 15px;
+
+  @media (min-width: 1215px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   &__go-back {
     display: flex;
@@ -15,5 +19,10 @@
     margin-top: 10px;
     margin-bottom: 10px;
     padding-left: 0;
+  }
+
+  &__recommended {
+    font-size: 1.6rem;
+    margin-top: 15px;
   }
 }

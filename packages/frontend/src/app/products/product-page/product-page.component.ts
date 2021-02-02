@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {share, switchMap} from 'rxjs/operators';
@@ -13,9 +13,9 @@ import {ListingProduct} from '../model/listing-product.model';
 })
 export class ProductPageComponent implements OnInit {
 
-  public  product$: Observable<Product>;
+  public product$: Observable<Product>;
 
-  public recommendedProducts: ListingProduct[] = [];
+  public recommendedProducts$: Observable<Product[]>;
 
   constructor(private productsService: ProductsService,
               private route: ActivatedRoute) {
@@ -29,5 +29,9 @@ export class ProductPageComponent implements OnInit {
         ),
         share()
       );
+
+    this.recommendedProducts$ = this.product$.pipe(
+      switchMap(product => this.productsService.getRecommendedProducts(product.category.categoryId))
+    );
   }
 }

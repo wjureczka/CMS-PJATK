@@ -34,6 +34,19 @@ public class ProductController {
         return ResponseEntity.ok(repository.findAll());
     }
 
+    @GetMapping("/recommended")
+    ResponseEntity<List<Product>> getRecommendedProducts(@PathParam("forCategoryId") Long forCategoryId) {
+        if (forCategoryId.equals(1L)) {
+            return ResponseEntity.ok(repository.findByCategoryCategoryId(2L));
+        }
+
+        if (forCategoryId.equals(2L)) {
+            return ResponseEntity.ok(repository.findByCategoryCategoryId(1L));
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
     @GetMapping("/sockets")
     ResponseEntity<List<SocketDictionary>> getSockets() {
         return ResponseEntity.ok(socketRepository.findAll());
