@@ -3,6 +3,9 @@ package com.ddebinski.app.product;
 import com.ddebinski.app.category.ECategoryType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -77,9 +80,18 @@ public class ProductController {
         return result.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/all")
+    ResponseEntity<Page<Product>> getProductsPage(@RequestParam("page") int page,
+                                                  @RequestParam("size") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(repository.findAll(pageable));
+    }
+
     @GetMapping("/")
-    ResponseEntity<List<Product>> getProductByCategoryId(@RequestParam("categoryId") List<Long> categoryIds) {
-        List<Product> result = repository.findByCategoryCategoryIdIn(categoryIds);
+    ResponseEntity<Page<Product>> getProductPageByCategoryId(@RequestParam(value = "categoryId") List<Long> categoryIds,
+                                                             @RequestParam("page") int page,
+                                                             @RequestParam("size") int size) {
+        Page<Product> result = repository.findByCategoryCategoryIdIn(categoryIds, PageRequest.of(page, size));
         return ResponseEntity.ok(result);
     }
 

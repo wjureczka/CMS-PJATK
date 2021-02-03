@@ -1,5 +1,7 @@
 package com.ddebinski.app.product;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +15,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByCategoryCategoryId(Long categoryId);
 
-    List<Product> findByCategoryCategoryIdIn(Collection<Long> categoryId);
+    Page<Product> findByCategoryCategoryIdIn(Collection<Long> categoryId, Pageable pageable);
+
+    Page<Product> findAll(Pageable pageable);
 }

@@ -4,7 +4,7 @@
 
   <div class="products__listing">
 
-    <app-product-category-select></app-product-category-select>
+    <app-product-category-select #categorySelect></app-product-category-select>
 
     <ul class="products__list">
 
@@ -17,6 +17,16 @@
         </app-products-listing-list-item>
       </li>
     </ul>
+
+  </div>
+
+  <div class="products__paginator">
+
+    <mat-paginator #paginator
+                   [length]="pageCfg.totalElements"
+                   [pageSize]="pageCfg.itemsPerPage"
+                   [pageSizeOptions]="pageCfg.pageSizeOptions">
+    </mat-paginator>
 
   </div>
 

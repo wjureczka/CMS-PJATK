@@ -21,6 +21,13 @@
   "views.sessions.register-page.haveAccount": "Masz już konto?",
   "views.sessions.register-page.login": "Zaloguj się",
 
+  "paginator": {
+    "itemsPerPage": "Wyników na stronie:",
+    "nextPage":"Następna strona",
+    "previousPage": "Poprzednia strona",
+    "range":"na"
+  },
+
   "products.header": "Nasze produkty",
   "products.category-select.categories": "Kategorie",
   "products.category-select.search": "Szukaj",

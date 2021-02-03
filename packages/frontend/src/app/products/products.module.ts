@@ -13,12 +13,15 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {ProductsListingCategorySelectComponent} from './products-listing/products-listing-category-select/products-listing-category-select.component';
 import {DetailsPanelComponent} from './product-page/product/details-panel/details-panel.component';
-import { ProductsListingComponent } from './products-listing/products-listing.component';
-import { ProductsListingItemComponent } from './products-listing/products-listing-item/products-listing-item.component';
-import { ProductPageComponent } from './product-page/product-page.component';
-import { ProductComponent } from './product-page/product/product.component';
+import {ProductsListingComponent} from './products-listing/products-listing.component';
+import {ProductsListingItemComponent} from './products-listing/products-listing-item/products-listing-item.component';
+import {ProductPageComponent} from './product-page/product-page.component';
+import {ProductComponent} from './product-page/product/product.component';
 import {SharedModule} from '../shared/shared.module';
-import { RecommendedProductsComponent } from './product-page/recommended-products/recommended-products.component';
+import {RecommendedProductsComponent} from './product-page/recommended-products/recommended-products.component';
+import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatPaginatorTranslator} from '../core/intl/mat-paginator-translator';
 
 
 @NgModule({
@@ -45,8 +48,11 @@ import { RecommendedProductsComponent } from './product-page/recommended-product
     MatCardModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    SharedModule,
-  ]
+    MatPaginatorModule,
+    NgxPaginationModule,
+    SharedModule
+  ],
+  providers: [{provide: MatPaginatorIntl, useClass: MatPaginatorTranslator}]
 })
 
 export class ProductsModule {
