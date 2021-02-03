@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ListingProduct} from '../../model/listing-product.model';
+import {Product} from '../../../shared/product.model';
 
 @Component({
   selector: 'app-recommended-products',
@@ -8,11 +8,12 @@ import {ListingProduct} from '../../model/listing-product.model';
 })
 export class RecommendedProductsComponent implements OnInit {
 
-  @Input() products: ListingProduct[] = [];
+  @Input() products: Product[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.products);
   }
 
 }

@@ -1,7 +1,13 @@
 .recommended-products {
   display: grid;
   grid-auto-flow: column;
-  align-items: center;
-  justify-items: center;
+  align-items: stretch;
+  justify-content: space-between;
   grid-gap: 15px;
+  overflow: auto;
+  padding: 5px;
+
+  &__item {
+    width: 250px;
+  }
 }

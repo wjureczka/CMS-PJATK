@@ -6,6 +6,7 @@ import {ListingProduct} from '../model/listing-product.model';
 import {ProductCategory} from '../../shared/product-category.model';
 import {Product} from '../../shared/product.model';
 import {ProductCategoryType} from '../../shared/product-category-type.enum';
+import {LanguageService} from '../../shared/language.service';
 import {Page} from '../../shared/model/page';
 
 
@@ -16,7 +17,7 @@ export class ProductsService {
 
   public products$ = new BehaviorSubject<ListingProduct[]>([]);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private languageService: LanguageService) {
   }
 
   public setProducts(products: ListingProduct[]): void {
@@ -51,8 +52,13 @@ export class ProductsService {
     return this.http.get<ProductCategory[]>('/api/categories');
   }
 
-  public getProductById(id: string): Observable<Product> {
-    return this.http.get<Product>(`/api/products/${id}`);
+  public getProductById(id: string): Observable<Product > {
+    const currentLanguage = this.languageService.currentLanguage.value;
+
+    return this.http.get<Product>(`/api/products/${id}?lang=${currentLanguage}`);
   }
 
+  public getRecommendedProducts(forCategoryId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`/api/products/recommended?forCategoryId=${forCategoryId}`);
+  }
 }
