@@ -19,7 +19,8 @@ import {ProductPageComponent} from './product-page/product-page.component';
 import {ProductComponent} from './product-page/product/product.component';
 import {SharedModule} from '../shared/shared.module';
 import {RecommendedProductsComponent} from './product-page/recommended-products/recommended-products.component';
-import {PaginatorModule} from '../shared/components/paginator/paginator.module';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -46,8 +47,9 @@ import {PaginatorModule} from '../shared/components/paginator/paginator.module';
     MatCardModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    SharedModule,
-    PaginatorModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
+    SharedModule
   ]
 })
 

@@ -3,12 +3,12 @@ import {ProductsService} from '../services/products.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ListingProduct} from '../model/listing-product.model';
 import {combineLatest, Observable, throwError} from 'rxjs';
-import {startWith, switchMap} from 'rxjs/operators';
-import {PaginatorCfg, PaginatorComponent} from '../../shared/components/paginator/paginator.component';
+import {map, startWith, switchMap, tap} from 'rxjs/operators';
 import {ProductsListingCategorySelectComponent} from './products-listing-category-select/products-listing-category-select.component';
 import {ProductCategoryType} from '../../shared/product-category-type.enum';
 import {Page} from '../../shared/model/page';
 import {Product} from '../../shared/product.model';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-products',
@@ -21,17 +21,17 @@ export class ProductsListingComponent implements OnInit, AfterViewInit {
 
   public isLoading = true;
 
-  public pageCfg: PaginatorCfg = {
-    totalPages: 0,
-    itemsPerPage: 1,
-    activePage: 0
+  public pageCfg = {
+    totalElements: 0,
+    itemsPerPage: 5,
+    pageSizeOptions: [5, 10, 15, 20],
   };
 
   @ViewChild('categorySelect')
   categorySelect: ProductsListingCategorySelectComponent;
 
   @ViewChild('paginator')
-  paginator: PaginatorComponent;
+  paginator: MatPaginator;
 
   constructor(private productsService: ProductsService, private snackbar: MatSnackBar) {
   }
@@ -42,12 +42,17 @@ export class ProductsListingComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     const categories$ = this.categorySelect.categoriesChange.pipe(startWith([]));
-    const page$ = this.paginator.pageChange.pipe(startWith(0));
+    const page$ = this.paginator.page
+      .pipe(
+        tap(console.log),
+        map(({pageIndex, pageSize}) => ({pageIndex, pageSize} as Partial<PageEvent>)),
+        startWith({pageIndex: 0, pageSize: this.pageCfg.itemsPerPage})
+      );
 
     combineLatest([categories$, page$])
       .pipe(
         switchMap(([categories, page]) =>
-          this.getProductsByCategories(categories, page))
+          this.getProductsByCategories(categories, page.pageIndex, page.pageSize))
       )
       .subscribe(
         payload => this.onSuccess(payload),
@@ -55,15 +60,15 @@ export class ProductsListingComponent implements OnInit, AfterViewInit {
       );
   }
 
-  private getProductsByCategories(categories: ProductCategoryType[], page): Observable<Page<Product>> {
+  private getProductsByCategories(categories: ProductCategoryType[], page: number, size: number): Observable<Page<Product>> {
     return !categories.length ?
-      this.productsService.getProductsPage(page, this.pageCfg.itemsPerPage)
-      : this.productsService.getProductsPageByCategory(categories, page, this.pageCfg.itemsPerPage);
+      this.productsService.getProductsPage(page, size)
+      : this.productsService.getProductsPageByCategory(categories, page, size);
   }
 
-  private onSuccess({content, totalPages}): void {
+  private onSuccess({content, totalElements}): void {
     this.productsService.setProducts(content);
-    this.pageCfg = {...this.pageCfg, totalPages};
+    this.pageCfg = {...this.pageCfg, totalElements};
     this.isLoading = false;
   }
 
