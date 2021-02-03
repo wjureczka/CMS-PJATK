@@ -19,8 +19,9 @@ import {ProductPageComponent} from './product-page/product-page.component';
 import {ProductComponent} from './product-page/product/product.component';
 import {SharedModule} from '../shared/shared.module';
 import {RecommendedProductsComponent} from './product-page/recommended-products/recommended-products.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatPaginatorTranslator} from '../core/intl/mat-paginator-translator';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatPaginatorModule,
     NgxPaginationModule,
     SharedModule
-  ]
+  ],
+  providers: [{provide: MatPaginatorIntl, useClass: MatPaginatorTranslator}]
 })
 
 export class ProductsModule {
