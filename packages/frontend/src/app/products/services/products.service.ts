@@ -6,7 +6,8 @@ import {ListingProduct} from '../model/listing-product.model';
 import {ProductCategory} from '../../shared/product-category.model';
 import {Product} from '../../shared/product.model';
 import {ProductCategoryType} from '../../shared/product-category-type.enum';
-import {LanguageService} from "../../shared/language.service";
+import {LanguageService} from '../../shared/language.service';
+import {Page} from '../../shared/model/page';
 
 
 @Injectable({
@@ -27,15 +28,24 @@ export class ProductsService {
     return this.http.get<ListingProduct[]>('/api/products');
   }
 
-  public getProductImage(productId: number): Observable<ArrayBuffer> {
-    // @ts-ignore
-    return this.http.get<ArrayBuffer>(`/api/products/${productId}/base64-file`, { responseType: 'text' });
+  public getProductsPage(page: number, size: number): Observable<Page<Product>> {
+    return this.http.get<Page<Product>>('/api/products/all',
+      {params: {page: `${page}`, size: `${size}`}}
+    );
   }
 
-  public getProductsByCategory(category: ProductCategoryType[]): Observable<ListingProduct[]> {
-    const mappedQueryString = category.map((productCategory) => `categoryId=${productCategory}`).join('&');
+  public getProductImage(productId: number): Observable<ArrayBuffer> {
+    // @ts-ignore
+    return this.http.get<ArrayBuffer>(`/api/products/${productId}/base64-file`, {responseType: 'text'});
+  }
 
-    return this.http.get<ListingProduct[]>(`/api/products/?${mappedQueryString}`);
+  public getProductsPageByCategory(categories: ProductCategoryType[], page: number, size: number): Observable<Page<Product>> {
+    const mappedQueryString = [
+      ...categories.map((productCategory) => `categoryId=${productCategory}`),
+      `page=${page}`,
+      `size=${size}`
+    ].join('&');
+    return this.http.get<Page<Product>>(`/api/products/?${mappedQueryString}`);
   }
 
   public getProductCategories(): Observable<ProductCategory[]> {
