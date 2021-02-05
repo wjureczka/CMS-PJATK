@@ -43,7 +43,6 @@ public class ProductDto {
         return builder()
                 .id(product.getId())
                 .description(product.getDescription())
-                .longDescription(product.getLongDescription())
                 .price(product.getPrice())
                 .category(product.getCategory())
                 .producer(product.getProducer())

@@ -106,7 +106,6 @@ public class ProductController {
                 domain.setCategory(product.getCategory());
                 domain.setPrice(product.getPrice());
                 domain.setDescription(product.getDescription());
-                domain.setLongDescription(product.getLongDescription());
                 domain.setProducer(product.getProducer());
                 domain.clearAllProperties();
                 domain.addProperties(product.getProperties());
@@ -134,7 +133,6 @@ public class ProductController {
             newProduct.setPrice(product.getPrice());
             newProduct.setCategory(product.getCategory());
             newProduct.setDescription(product.getDescription());
-            newProduct.setLongDescription(product.getLongDescription());
             newProduct.setProducer(product.getProducer());
             newProduct.addProperties(product.getProperties());
             newProduct.addTranslations(product.getTranslations());
@@ -205,7 +203,6 @@ public class ProductController {
                             || eProperty.equals(EProperty.MEMORY_CL)
                             || eProperty.equals(EProperty.MEMORY_COUNT));
         }
-
 
         if (invalidate) {
             return ResponseEntity.badRequest().body("Invalidate properties for this category");
