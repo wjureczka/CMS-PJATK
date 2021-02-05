@@ -18,7 +18,7 @@
 
     <div class="product__properties">
       <p class="product__property" *ngFor="let productProperty of product.properties">
-        <span class="product__property-name">{{productProperty.name}}</span>
+        <span class="product__property-name">{{productProperty.name | productPropertyTranslate}}</span>
         <span class="product__property-divider"></span>
         <span class="product__property-value">{{productProperty.value}}</span>
       </p>

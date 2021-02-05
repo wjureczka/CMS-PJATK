@@ -35,7 +35,7 @@
 
     <ul class="product__properties">
       <li class="product__property" *ngFor="let property of product.properties">
-        <span class="product__property-name">{{property.name}}</span>
+        <span class="product__property-name">{{property.name | productPropertyTranslate}}</span>
         <span class="product__property-divider"></span>
         <span class="product__property-value">{{property.value}}</span>
       </li>
