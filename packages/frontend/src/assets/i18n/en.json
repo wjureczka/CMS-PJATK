@@ -40,7 +40,16 @@
   "product": {
     "description": "Description",
     "technicalData": "Technical Data",
-    "addToCart": "Put it in the cart"
+    "addToCart": "Put it in the cart",
+    "property": {
+      "socket": "Socket",
+      "core_count": "Core count",
+      "clock_speed": "Clock speed",
+      "memory_count": "Memory count",
+      "memory_cl": "Memory clock",
+      "power": "Power",
+      "case_type": "Case type"
+    }
   },
 
   "cart": {
@@ -60,9 +69,9 @@
       "computerAssembly": "Assembling the computer",
       "extendedWarranty": "Extended warranty",
       "expressShipping": "Express shipping",
-      "transfer": "Traditional transfer",
+      "traditional_transfer": "Traditional transfer",
       "blik": "BLIK",
-      "cashOnDelivery": "Cash on delivery"
+      "cash_on_delivery": "Cash on delivery"
     },
     "summary": {
       "payment": "Payment",

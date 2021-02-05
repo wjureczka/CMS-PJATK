@@ -40,7 +40,16 @@
   "product": {
     "description": "Beschreibung",
     "technicalData": "Technische Daten",
-    "addToCart": "Einkaufswagen legen"
+    "addToCart": "Einkaufswagen legen",
+    "property": {
+      "socket": "Steckdose",
+      "core_count": "Kernanzahl",
+      "clock_speed": "Taktfrequenz",
+      "memory_count": "Speichermenge",
+      "memory_cl": "Speichertakt",
+      "power": "Leistung",
+      "case_type": "Gehäusetyp"
+    }
   },
 
   "cart": {
@@ -60,9 +69,9 @@
       "computerAssembly": "Computer zusammenbauen",
       "extendedWarranty": "Erweiterte Garantie",
       "expressShipping": "Expressversand",
-      "transfer": "traditioneller Transfer",
+      "traditional_transfer": "traditioneller Transfer",
       "blik": "BLIK",
-      "cashOnDelivery": "Barzahlung bei Lieferung"
+      "cash_on_delivery": "Barzahlung bei Lieferung"
     },
     "summary": {
       "payment": "Zahlung",

@@ -20,6 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {TranslateModule} from '@ngx-translate/core';
 import { TransactionSummaryItemComponent } from './finalize-transaction-page/transaction-summary/transaction-summary-item/transaction-summary-item.component';
 import {MatDividerModule} from "@angular/material/divider";
+import { PaymentTypeTranslatePipe } from './pipes/payment-type-translate.pipe';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {MatDividerModule} from "@angular/material/divider";
     PaymentSelectionComponent,
     TransactionSummaryComponent,
     OrderSuccessDialogComponent,
-    TransactionSummaryItemComponent
+    TransactionSummaryItemComponent,
+    PaymentTypeTranslatePipe
   ],
     imports: [
         CommonModule,

@@ -1,17 +1,17 @@
 <form class="payment" [formGroup]="form">
 
   <label class="payment__label"
-         [ngClass]=" getActiveClassIfChecked('TRADITIONAL_TRANSFER')">
+         [ngClass]=" getActiveClassIfChecked(paymentType.TRADITIONAL_TRANSFER)">
     <input class="payment__radio-btn"
            type="radio"
            id="button1"
            [value]="'TRADITIONAL_TRANSFER'"
            [formControlName]="'paymentType'">
-    <span>{{'cart.finalize.transfer' | translate}}</span>
+    <span>{{'cart.finalize.traditional_transfer' | translate}}</span>
   </label>
 
   <label class="payment__label"
-         [ngClass]=" getActiveClassIfChecked('BLIK')">
+         [ngClass]=" getActiveClassIfChecked(paymentType.BLIK)">
     <input class="payment__radio-btn"
            type="radio"
            id="button2"
@@ -20,15 +20,14 @@
     <span>{{'cart.finalize.blik' | translate}}</span>
   </label>
 
-
   <label class="payment__label"
-         [ngClass]=" getActiveClassIfChecked('CASH_ON_DELIVERY')">
+         [ngClass]=" getActiveClassIfChecked(paymentType.CASH_ON_DELIVERY)">
     <input class="payment__radio-btn"
            type="radio"
            id="button3"
            [value]="'CASH_ON_DELIVERY'"
            [formControlName]="'paymentType'">
-    <span>{{'cart.finalize.cashOnDelivery' | translate}}</span>
+    <span>{{'cart.finalize.cash_on_delivery' | translate}}</span>
   </label>
 
 </form>

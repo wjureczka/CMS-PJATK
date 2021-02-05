@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {PaymentType} from '../../model/payment-type.enum';
 
 @Component({
   selector: 'app-payment-selection',
@@ -8,7 +9,9 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 })
 export class PaymentSelectionComponent implements OnInit {
 
-  form: FormGroup;
+  public form: FormGroup;
+
+  public paymentType = PaymentType;
 
   get paymentMethod(): string {
     return this.form.get('paymentType').value as string;
@@ -19,7 +22,7 @@ export class PaymentSelectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      paymentType: 'BLIK'
+      paymentType: this.paymentType.BLIK
     });
   }
 

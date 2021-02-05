@@ -9,7 +9,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ProductPropertyType} from '../shared/product-property-type.enum';
 import {InputType} from '../shared/input-type.enum';
-import {AvailableLanguageToCode} from "../../../../environments/available-languages-codes";
+import {AvailableLanguageToCode} from '../../../../environments/available-languages-codes';
 
 @Component({
   selector: 'app-product-management-add-item-dialog',
