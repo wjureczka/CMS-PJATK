@@ -78,7 +78,7 @@
 
     <mat-form-field *ngFor="let control of selectedFormGroup.controls | keyvalue"
                     class="add-item-dialog__form-field">
-      <mat-label>{{control.key}}</mat-label>
+      <mat-label>{{control.key | productPropertyTranslate}}</mat-label>
       <input matInput [type]="propertyNameToInputType.get(control.key)" [formControl]="control.value" required>
       <mat-error *ngIf="control.value.hasError('required')">{{'inputValidation.required' | translate}}</mat-error>
       <mat-error *ngIf="control.value.hasError('minlength')">{{'inputValidation.setValueLongerThan' | translate}} 1</mat-error>

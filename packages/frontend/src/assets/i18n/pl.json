@@ -40,7 +40,16 @@
   "product": {
     "description": "Opis",
     "technicalData": "Dane techniczne",
-    "addToCart": "Dodaj do koszyka"
+    "addToCart": "Dodaj do koszyka",
+    "property": {
+      "socket": "Gniazdo",
+      "core_count": "Liczba rdzeni",
+      "clock_speed": "Szybkość taktowania",
+      "memory_count": "Ilość pamięci",
+      "memory_cl": "Taktowanie pamięci",
+      "power": "Moc",
+      "case_type": "Typ obudowy"
+    }
   },
 
   "cart": {
@@ -60,9 +69,9 @@
       "computerAssembly": "Składanie komputera",
       "extendedWarranty": "Przedłużona gwarancja",
       "expressShipping": "Ekspresowa wysyłka",
-      "transfer": "Przelew tradycyjny",
+      "traditional_transfer": "Przelew tradycyjny",
       "blik": "BLIK",
-      "cashOnDelivery": "Płatność przy odbiorze"
+      "cash_on_delivery": "Płatność przy odbiorze"
     },
     "summary": {
       "payment": "Płatnośc",
