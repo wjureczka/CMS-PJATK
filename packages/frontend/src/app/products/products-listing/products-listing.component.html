@@ -20,12 +20,15 @@
 
   </div>
 
-  <div class="products__paginator">
+  <div class="products__paginator"
+       *ngIf="(products$ | async)"
+  >
 
     <mat-paginator #paginator
                    [length]="pageCfg.totalElements"
                    [pageSize]="pageCfg.itemsPerPage"
-                   [pageSizeOptions]="pageCfg.pageSizeOptions">
+                   [pageSizeOptions]="pageCfg.pageSizeOptions"
+    >
     </mat-paginator>
 
   </div>

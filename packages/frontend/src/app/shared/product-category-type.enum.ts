@@ -4,6 +4,6 @@ export enum ProductCategoryType {
   GRAPHICS_CARD = 3,
   MEMORY = 4,
   HARDWARE = 5,
-  COMPUTER_CASE = 6,
-  POWER_SUPPLY = 7
+  POWER_SUPPLY = 6,
+  COMPUTER_CASE = 7
 }
