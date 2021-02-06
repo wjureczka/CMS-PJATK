@@ -1,6 +1,8 @@
 $color-primary: #673ab7;
 
 .services {
+  display: flex;
+  align-items: stretch;
 
   &__label {
     padding: 90px 10px;
