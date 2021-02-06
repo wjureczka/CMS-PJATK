@@ -11,7 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
@@ -37,6 +39,8 @@ public class ProductDto {
 
     private Translation translation;
 
+    private List<Translation> translations;
+
     private boolean compatible;
 
     public static ProductDto map(Product product) {
@@ -48,6 +52,7 @@ public class ProductDto {
                 .producer(product.getProducer())
                 .properties(product.getProperties())
                 .translation(product.getTranslations().stream().findFirst().orElse(null))
+                .translations(product.getTranslations().stream().collect(Collectors.toList()))
                 .build();
     }
 }
