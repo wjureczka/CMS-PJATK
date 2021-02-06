@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ProductsService} from '../../../products/services/products.service';
 import {CreatorProduct} from '../../creator.service';
+import {LanguageService} from "../../../shared/language.service";
 
 @Component({
   selector: 'app-product-selector-dialog-item',
@@ -16,12 +17,18 @@ export class ProductSelectorDialogItemComponent implements OnInit {
 
   public productImageBase64: string;
 
+  public translation: string;
+
   constructor(private productsService: ProductsService,
-              public domSanitizer: DomSanitizer
+              public domSanitizer: DomSanitizer,
+              public languageService: LanguageService
   ) {
   }
 
   ngOnInit(): void {
+    this.translation = this.product.translations
+      .find((translation) => translation.lang === this.languageService.currentLanguage.value).value;
+
     this.productsService.getProductImage(this.product.id)
       .subscribe(
         (response) => {
