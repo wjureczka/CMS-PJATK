@@ -3,6 +3,9 @@ import {DomSanitizer} from '@angular/platform-browser';
 
 import {Product} from '../../../shared/product.model';
 import {ProductsService} from '../../services/products.service';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {LanguageService} from '../../../shared/language.service';
 
 @Component({
   selector: 'app-product',
@@ -15,8 +18,11 @@ export class ProductComponent implements OnInit {
 
   public productImageBase64: string;
 
+  public translatedDescription$: Observable<string>;
+
   constructor(private productsService: ProductsService,
-              public domSanitizer: DomSanitizer
+              public domSanitizer: DomSanitizer,
+              private languageService: LanguageService
   ) {
   }
 
@@ -30,6 +36,13 @@ export class ProductComponent implements OnInit {
         () => {
         }
       );
-  }
-}
 
+    this.translatedDescription$ = this.languageService.currentLanguage$
+      .pipe(
+        map(lang => this.product.translations
+          .find(translation => translation.lang === lang)?.value
+        )
+      );
+  }
+
+}
